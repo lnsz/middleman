@@ -14,7 +14,6 @@ USER node
 
 # Build .ts and move files to dist
 RUN npm run build
-COPY ormconfig.json ./dist/
 COPY .env ./dist/
 WORKDIR ./dist
 
