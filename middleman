@@ -1,0 +1,343 @@
+#!/bin/sh
+
+#####################
+# ENV
+#####################
+[ "$ENV_FILE" ]                        || ENV_FILE='./.env'
+[ ! -f "$ENV_FILE" ]                   || . "$ENV_FILE"
+[ "$MODE" ]                            || MODE='dev'
+
+#####################
+# NETWORKING
+#####################
+[ "$LOCAL_IP" ]                        || LOCAL_IP="$(/sbin/ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | head -1)"
+
+#####################
+# FILE PATHS
+#####################
+[ "$DOCKER_COMPOSE" ]                  || DOCKER_COMPOSE='docker-compose.yml'
+[ "$GIT_ROOT" ]                        || GIT_ROOT="$(pwd)"
+
+#####################
+# DOCKER
+#####################
+[ "$DOCKER_REPO" ]                     || DOCKER_REPO='lucaslunasouza/middleman'
+
+#####################
+# CLIENT
+#####################
+[ "$CLIENT_NAME" ]                     || CLIENT_NAME='middleman_client'
+[ "$CLIENT_IMAGE" ]                    || CLIENT_IMAGE='middleman/client'
+[ "$CLIENT_TAG" ]                      || CLIENT_TAG='latest'
+[ "$CLIENT_PATH" ]                     || CLIENT_PATH="${GIT_ROOT}/client"
+[ "$CLIENT_IP" ]                       || CLIENT_IP="${LOCAL_IP}"
+[ "$CLIENT_HP" ]                       || CLIENT_HP='4100'
+[ "$CLIENT_CP" ]                       || CLIENT_CP='4100'
+[ "$CLIENT_PROTOCOL" ]                 || CLIENT_PROTOCOL='http'
+[ "$CLIENT_URL" ]                      || CLIENT_URL="${CLIENT_PROTOCOL}://${CLIENT_IP}:${CLIENT_HP}"
+
+######################
+# API
+######################
+# Server
+[ "$API_NAME" ]                        || API_NAME='middleman_api'
+[ "$API_IMAGE" ]                       || API_IMAGE='middleman/api'
+[ "$API_TAG" ]                         || API_TAG='latest'
+[ "$API_PATH" ]                        || API_PATH="${GIT_ROOT}/api"
+[ "$API_HP" ]                          || API_HP='42000'
+[ "$API_CP" ]                          || API_CP='42000'
+[ "$API_PROTOCOL" ]                    || API_PROTOCOL='http'
+[ "$API_URL" ]                         || API_URL="${API_PROTOCOL}://${API_NAME}:${API_CP}"
+
+# Prisma
+[ "$PRISMA_NAME" ]                     || PRISMA_NAME='middleman_prisma'
+[ "$PRISMA_IMAGE" ]                    || PRISMA_IMAGE='prismagraphql/prisma'
+[ "$PRISMA_SECRET" ]                   || PRISMA_SECRET='1234'
+[ "$PRISMA_TAG" ]                      || PRISMA_TAG='1.32'
+[ "$PRISMA_HP" ]                       || PRISMA_HP='42001'
+[ "$PRISMA_CP" ]                       || PRISMA_CP='42001'
+[ "$PRISMA_PROTOCOL" ]                 || PRISMA_PROTOCOL='http'
+[ "$PRISMA_URL" ]                      || PRISMA_URL="${PRISMA_PROTOCOL}://${PRISMA_NAME}:${PRISMA_CP}"
+[ "$PRISMA_ENDPOINT" ]                 || PRISMA_ENDPOINT="${PRISMA_PROTOCOL}://localhost:${PRISMA_HP}" # Docker name didn't work for this
+
+# Prisma
+[ "$PRISMA_CLI_NAME" ]                 || PRISMA_CLI_NAME='middleman_prisma_cli'
+[ "$PRISMA_CLI_IMAGE" ]                || PRISMA_CLI_IMAGE='middleman/prisma_cli'
+[ "$PRISMA_CLI_TAG" ]                  || PRISMA_CLI_TAG='latest'
+
+# Database
+[ "$DB_NAME" ]                         || DB_NAME='middleman_db'
+[ "$DB_IMAGE" ]                        || DB_IMAGE='postgres'
+[ "$DB_TAG" ]                          || DB_TAG='11.3-alpine'
+[ "$DB_USERNAME" ]                     || DB_USERNAME='prisma'
+[ "$DB_PASSWORD" ]                     || DB_PASSWORD='prisma'
+[ "$DB_VOLUME_NAME" ]                  || DB_VOLUME_NAME='middleman_db_volume'
+[ "$DB_HP" ]                           || DB_HP='42002'
+[ "$DB_CP" ]                           || DB_CP='5432'
+
+######################
+# WORKER_SERVICE
+######################
+# Server
+[ "$WORKER_SERVICE_NAME" ]             || WORKER_SERVICE_NAME="middleman_worker_service"
+[ "$WORKER_QUEUE_SERVICE_NAME" ]       || WORKER_QUEUE_SERVICE_NAME='middleman_worker_queue_service'
+[ "$WORKER_RUNNER_SERVICE_NAME" ]      || WORKER_RUNNER_SERVICE_NAME='middleman_worker_runner_service'
+[ "$WORKER_SERVICE_IMAGE" ]            || WORKER_SERVICE_IMAGE='middleman/middleman_worker_service'
+[ "$WORKER_SERVICE_TAG" ]              || WORKER_SERVICE_TAG='latest'
+[ "$WORKER_SERVICE_PATH" ]             || WORKER_SERVICE_PATH="${GIT_ROOT}/middleman_worker_service"
+[ "$WORKER_QUEUE_SERVICE_HP" ]         || WORKER_QUEUE_SERVICE_HP='42010'
+[ "$WORKER_RUNNER_SERVICE_HP" ]        || WORKER_RUNNER_SERVICE_HP='42010'
+[ "$WORKER_SERVICE_CP" ]               || WORKER_SERVICE_CP='42010'
+[ "$WORKER_SERVICE_PROTOCOL" ]         || WORKER_SERVICE_PROTOCOL='http'
+[ "$WORKER_SERVICE_URL" ]              || WORKER_SERVICE_URL="${WORKER_SERVICE_PROTOCOL}://${WORKER_SERVICE_NAME}:${WORKER_SERVICE_CP}"
+
+# Database
+[ "$WORKER_DB_NAME" ]                  || WORKER_DB_NAME='middleman_worker_db'
+[ "$WORKER_DB_IMAGE" ]                 || WORKER_DB_IMAGE='redis'
+[ "$WORKER_DB_TAG" ]                   || WORKER_DB_TAG='5.0-alpine'
+[ "$WORKER_DB_VOLUME_NAME" ]           || WORKER_DB_VOLUME_NAME='middleman_worker_db_volume'
+[ "$WORKER_DB_HP" ]                    || WORKER_DB_HP='42011'
+[ "$WORKER_DB_CP" ]                    || WORKER_DB_CP='6379' # Default redis port
+
+
+create_compose_file() {
+if [ "$MODE" = 'dev' ]
+then
+cat <<EOT > $DOCKER_COMPOSE
+version: "3.4"
+
+services:
+  ${API_NAME}:
+    image: ${API_IMAGE}:${API_TAG}
+    build:
+      context: ${API_PATH}
+      dockerfile: ${API_PATH}/docker/middleman_api/Dockerfile
+    restart: always
+    ports:
+      - '${API_HP}:${API_CP}'
+    environment:
+      PRISMA_ENDPOINT: ${PRISMA_URL}
+      PORT: ${API_CP}
+    volumes:
+      - ${API_PATH}/src:/app/src
+      - ${API_PATH}/prisma:/app/prisma
+  ${PRISMA_NAME}:
+    image: ${PRISMA_IMAGE}:${PRISMA_TAG}
+    restart: always
+    ports:
+      - '${PRISMA_HP}:${PRISMA_CP}'
+    depends_on:
+      - ${DB_NAME}
+    environment:
+      PRISMA_CONFIG: |
+        port: ${PRISMA_HP}
+        databases:
+          default:
+            connector: postgres
+            host: ${DB_NAME}
+            user: ${DB_USERNAME}
+            password: ${DB_PASSWORD}
+            port: ${DB_CP}
+            migrations: true
+  ${PRISMA_CLI_NAME}:
+    image: ${PRISMA_CLI_IMAGE}:${PRISMA_CLI_TAG}
+    network_mode: host
+    build:
+      network: host
+      context: ${API_PATH}
+      dockerfile: ${API_PATH}/docker/prisma_cli/Dockerfile
+    restart: always
+    environment:
+      PRISMA_ENDPOINT: ${PRISMA_ENDPOINT}
+    volumes:
+      - ${API_PATH}/src:/app/src
+      - ${API_PATH}/prisma:/app/prisma
+  ${DB_NAME}:
+    image: ${DB_IMAGE}:${DB_TAG}
+    restart: always
+    ports:
+      - '${DB_HP}:${DB_CP}'
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ${DB_VOLUME_NAME}:/var/lib/postgresql/data
+volumes:
+  ${DB_VOLUME_NAME}:
+    external: true
+EOT
+elif [ "$MODE" = 'prod' ]
+then
+cat <<EOT > $DOCKER_COMPOSE
+version: "3"
+
+services:
+EOT
+fi
+}
+
+find_container_name() {
+  docker ps -a -q --filter name=$1 --format {{.Names}}
+}
+
+find_container_id() {
+  docker ps -a -q --filter name=$1 --format {{.ID}}
+}
+
+stop_container() {
+  find_container_name $1
+  docker kill find_container_id $1 > /dev/null 2>&1
+  docker rm find_container_id $1   > /dev/null 2>&1
+}
+
+push_image() {
+  IMAGE="${DOCKER_REPO}:${1}"
+  docker tag "${2}:${3}" "$IMAGE"
+  docker push "$IMAGE"
+  docker image rm "$IMAGE"
+}
+
+install_image() {
+  echo 'Installing images'
+  IMAGE="${DOCKER_REPO}:${1}"
+  docker pull "$IMAGE"
+  docker tag "$IMAGE" "${2}:${3}"
+  docker image rm "$IMAGE"
+  echo ''
+}
+
+stop() {
+  echo 'Stopping:'
+  stop_container "$CLIENT_NAME"
+  stop_container "$API_NAME"
+  stop_container "$PRISMA_NAME"
+  stop_container "$PRISMA_CLI_NAME"
+  stop_container "$DB_NAME"
+  stop_container "$WORKER_QUEUE_SERVICE_NAME"
+  stop_container "$WORKER_RUNNER_SERVICE_NAME"
+  stop_container "$WORKER_DB_NAME"
+  echo ''
+}
+
+create_volumes() {
+  echo 'Creating volumes:'
+  docker volume create "$DB_VOLUME_NAME"
+  docker volume create "$WORKER_DB_VOLUME_NAME"
+  echo ''
+}
+
+setup() {
+  stop
+  create_volumes
+}
+
+migrate() {
+  echo "\nUpdating models"
+  sleep 5
+  PRISMA_CLI_CONTAINER=$(find_container_id $PRISMA_CLI_NAME)
+  docker exec -it "$PRISMA_CLI_CONTAINER" prisma deploy --force
+  echo ''
+}
+
+copy_node_modules() {
+  if [ -d "${API_PATH}/node_modules"]; then
+    echo "\nCopying node modules"
+    API_CONTAINER=$(find_container_id $API_NAME)
+    docker cp "${API_CONTAINER}:/app/node_modules" "${API_PATH}"
+    echo ''
+  fi
+}
+
+build() {
+  docker-compose build
+}
+
+start() {
+  setup
+  docker-compose up -d
+  migrate
+  copy_node_modules
+  docker-compose logs -f
+}
+
+reset() {
+  stop
+  delete_database
+}
+
+delete_database() {
+  echo "Deleting databases"
+  docker volume rm "$DB_VOLUME_NAME"         > /dev/null 2>&1 && echo "Removed $DB_VOLUME_NAME"
+  docker volume rm "$WORKER_DB_VOLUME_NAME"  > /dev/null 2>&1 && echo "Removed $WORKER_DB_VOLUME_NAME"
+}
+
+push() {
+  push_image "$CLIENT_NAME" "$CLIENT_IMAGE" "$CLIENT_TAG"
+  push_image "$API_NAME" "$API_IMAGE" "$API_TAG"
+  push_image "$PRISMA_CLI_NAME" "$PRISMA_CLI_IMAGE" "$PRISMA_CLI_TAG"
+  push_image "$WORKER_SERVICE_NAME" "$WORKER_SERVICE_IMAGE" "$WORKER_SERVICE_TAG"
+}
+
+install() {
+  install_image "$CLIENT_NAME" "$CLIENT_IMAGE" "$CLIENT_TAG"
+  install_image "$API_NAME" "$API_IMAGE" "$API_TAG"
+  install_image "$PRISMA_CLI_NAME" "$PRISMA_CLI_IMAGE" "$PRISMA_CLI_TAG"
+  install_image "$WORKER_SERVICE_NAME" "$WORKER_SERVICE_IMAGE" "$WORKER_SERVICE_TAG"
+  docker pull "${DB_IMAGE}:${DB_TAG}"
+  docker pull "${PRISMA_IMAGE}:${PRISMA_TAG}"
+  docker pull "${WORKER_DB_IMAGE}:${WORKER_DB_TAG}"
+}
+
+backup() {
+  DB_CONTAINER=$(find_container_id $DB_NAME)
+  TIMESTAMP=$(date +%y%m%d%H%M%S)
+  echo "$TIMESTAMP - Starting backup"
+  BACKUP_NAME="middleman-db-$TIMESTAMP.sql"
+  docker exec "$DB_CONTAINER" sh -c "pg_dumpall -U ${DB_USERNAME} > /tmp/${BACKUP_NAME}"   \
+  && docker cp "${DB_CONTAINER}:/tmp/${BACKUP_NAME}" ./backups                          \
+  && echo "Backup completed - Saved $(pwd)/backups/${BACKUP_NAME}"                      \
+  || echo "Backup failed"
+}
+
+restore() {
+  BACKUP_FILE="$(pwd)/backups/$1"
+  if [ -f "$BACKUP_FILE" ]; then
+    echo "Restoring ${BACKUP_FILE}"
+    DB_CONTAINER=$(find_container_id $DB_NAME)
+    docker cp "$BACKUP_FILE" "${DB_CONTAINER}:/tmp/$1"                           \
+    && docker exec "$DB_CONTAINER" sh -c "psql -U ${DB_USERNAME} -f /tmp/$1"   \
+    && echo "Restoration completed"                                              \
+    || echo "Restoration failed"
+  else
+    echo "File ${BACKUP_FILE} does not exist"
+    echo "Usage: ./middleman restore middleman-db-xxxxxxxxxx.sql"
+  fi
+
+}
+
+main() {
+  echo "###########\nMiddleman\n###########\n"
+  ARGS="$@"
+  create_compose_file
+  if [ "${ARGS#*build}" != "$ARGS" ]; then
+    build
+  elif [ "${ARGS#*start}" != "$ARGS" ]; then
+    start
+  elif [ "${ARGS#*stop}" != "$ARGS" ]; then
+    stop
+  elif [ "${ARGS#*reset}" != "$ARGS" ]; then
+    reset
+  elif [ "${ARGS#*push}" != "$ARGS" ]; then
+    push
+  elif [ "${ARGS#*install}" != "$ARGS" ]; then
+    install
+  elif [ "${ARGS#*migrate}" != "$ARGS" ]; then
+    migrate
+  elif [ "${ARGS#*backup}" != "$ARGS" ]; then
+    backup
+  elif [ "${ARGS#*restore}" != "$ARGS" ]; then
+    restore "$2"
+  fi
+}
+
+main "$@"

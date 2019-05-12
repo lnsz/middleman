@@ -1,5 +1,5 @@
 # Specifies the HTTP endpoint of your Prisma API.
-endpoint: 'http://192.168.2.75:4466'
+endpoint: ${env:PRISMA_ENDPOINT}
 
 # Defines your models, each model is mapped to the database as a table.
 datamodel: datamodel.prisma
@@ -13,7 +13,3 @@ generate:
 hooks:
   post-deploy:
     - npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma # Runs the codegen tool from nexus-prisma.
-
-# Seeds initial data into the database by running a script.
-seed:
-  run: yarn ts-node ./prisma/seed.ts
