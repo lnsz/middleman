@@ -11,35 +11,85 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  UserCreateInput: { // input type
-    email?: string | null; // String
+  EndpointCreateInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    headers?: NexusGenInputs['HeaderCreateManyWithoutEndpointInput'] | null; // HeaderCreateManyWithoutEndpointInput
     id?: string | null; // ID
-    name: string; // String!
+    params?: NexusGenInputs['ParamCreateManyWithoutEndpointInput'] | null; // ParamCreateManyWithoutEndpointInput
+    translator: NexusGenInputs['TranslatorCreateOneWithoutEndpointsInput']; // TranslatorCreateOneWithoutEndpointsInput!
+    type: NexusGenEnums['RequestType']; // RequestType!
+    url: string; // String!
   }
-  UserUpdateInput: { // input type
-    email?: string | null; // String
-    name?: string | null; // String
+  EndpointCreateManyWithoutTranslatorInput: { // input type
+    connect?: NexusGenInputs['EndpointWhereUniqueInput'][] | null; // [EndpointWhereUniqueInput!]
+    create?: NexusGenInputs['EndpointCreateWithoutTranslatorInput'][] | null; // [EndpointCreateWithoutTranslatorInput!]
   }
-  UserUpdateManyMutationInput: { // input type
-    email?: string | null; // String
-    name?: string | null; // String
+  EndpointCreateOneWithoutHeadersInput: { // input type
+    connect?: NexusGenInputs['EndpointWhereUniqueInput'] | null; // EndpointWhereUniqueInput
+    create?: NexusGenInputs['EndpointCreateWithoutHeadersInput'] | null; // EndpointCreateWithoutHeadersInput
   }
-  UserWhereInput: { // input type
-    AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    email?: string | null; // String
-    email_contains?: string | null; // String
-    email_ends_with?: string | null; // String
-    email_gt?: string | null; // String
-    email_gte?: string | null; // String
-    email_in?: string[] | null; // [String!]
-    email_lt?: string | null; // String
-    email_lte?: string | null; // String
-    email_not?: string | null; // String
-    email_not_contains?: string | null; // String
-    email_not_ends_with?: string | null; // String
-    email_not_in?: string[] | null; // [String!]
-    email_not_starts_with?: string | null; // String
-    email_starts_with?: string | null; // String
+  EndpointCreateOneWithoutParamsInput: { // input type
+    connect?: NexusGenInputs['EndpointWhereUniqueInput'] | null; // EndpointWhereUniqueInput
+    create?: NexusGenInputs['EndpointCreateWithoutParamsInput'] | null; // EndpointCreateWithoutParamsInput
+  }
+  EndpointCreateWithoutHeadersInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    id?: string | null; // ID
+    params?: NexusGenInputs['ParamCreateManyWithoutEndpointInput'] | null; // ParamCreateManyWithoutEndpointInput
+    translator: NexusGenInputs['TranslatorCreateOneWithoutEndpointsInput']; // TranslatorCreateOneWithoutEndpointsInput!
+    type: NexusGenEnums['RequestType']; // RequestType!
+    url: string; // String!
+  }
+  EndpointCreateWithoutParamsInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    headers?: NexusGenInputs['HeaderCreateManyWithoutEndpointInput'] | null; // HeaderCreateManyWithoutEndpointInput
+    id?: string | null; // ID
+    translator: NexusGenInputs['TranslatorCreateOneWithoutEndpointsInput']; // TranslatorCreateOneWithoutEndpointsInput!
+    type: NexusGenEnums['RequestType']; // RequestType!
+    url: string; // String!
+  }
+  EndpointCreateWithoutTranslatorInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    headers?: NexusGenInputs['HeaderCreateManyWithoutEndpointInput'] | null; // HeaderCreateManyWithoutEndpointInput
+    id?: string | null; // ID
+    params?: NexusGenInputs['ParamCreateManyWithoutEndpointInput'] | null; // ParamCreateManyWithoutEndpointInput
+    type: NexusGenEnums['RequestType']; // RequestType!
+    url: string; // String!
+  }
+  EndpointScalarWhereInput: { // input type
+    AND?: NexusGenInputs['EndpointScalarWhereInput'][] | null; // [EndpointScalarWhereInput!]
+    apiKey?: string | null; // String
+    apiKey_contains?: string | null; // String
+    apiKey_ends_with?: string | null; // String
+    apiKey_gt?: string | null; // String
+    apiKey_gte?: string | null; // String
+    apiKey_in?: string[] | null; // [String!]
+    apiKey_lt?: string | null; // String
+    apiKey_lte?: string | null; // String
+    apiKey_not?: string | null; // String
+    apiKey_not_contains?: string | null; // String
+    apiKey_not_ends_with?: string | null; // String
+    apiKey_not_in?: string[] | null; // [String!]
+    apiKey_not_starts_with?: string | null; // String
+    apiKey_starts_with?: string | null; // String
+    body?: string | null; // String
+    body_contains?: string | null; // String
+    body_ends_with?: string | null; // String
+    body_gt?: string | null; // String
+    body_gte?: string | null; // String
+    body_in?: string[] | null; // [String!]
+    body_lt?: string | null; // String
+    body_lte?: string | null; // String
+    body_not?: string | null; // String
+    body_not_contains?: string | null; // String
+    body_not_ends_with?: string | null; // String
+    body_not_in?: string[] | null; // [String!]
+    body_not_starts_with?: string | null; // String
+    body_starts_with?: string | null; // String
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -54,38 +104,1050 @@ export interface NexusGenInputs {
     id_not_in?: string[] | null; // [ID!]
     id_not_starts_with?: string | null; // ID
     id_starts_with?: string | null; // ID
-    name?: string | null; // String
-    name_contains?: string | null; // String
-    name_ends_with?: string | null; // String
-    name_gt?: string | null; // String
-    name_gte?: string | null; // String
-    name_in?: string[] | null; // [String!]
-    name_lt?: string | null; // String
-    name_lte?: string | null; // String
-    name_not?: string | null; // String
-    name_not_contains?: string | null; // String
-    name_not_ends_with?: string | null; // String
-    name_not_in?: string[] | null; // [String!]
-    name_not_starts_with?: string | null; // String
-    name_starts_with?: string | null; // String
-    NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    NOT?: NexusGenInputs['EndpointScalarWhereInput'][] | null; // [EndpointScalarWhereInput!]
+    OR?: NexusGenInputs['EndpointScalarWhereInput'][] | null; // [EndpointScalarWhereInput!]
+    type?: NexusGenEnums['RequestType'] | null; // RequestType
+    type_in?: NexusGenEnums['RequestType'][] | null; // [RequestType!]
+    type_not?: NexusGenEnums['RequestType'] | null; // RequestType
+    type_not_in?: NexusGenEnums['RequestType'][] | null; // [RequestType!]
+    url?: string | null; // String
+    url_contains?: string | null; // String
+    url_ends_with?: string | null; // String
+    url_gt?: string | null; // String
+    url_gte?: string | null; // String
+    url_in?: string[] | null; // [String!]
+    url_lt?: string | null; // String
+    url_lte?: string | null; // String
+    url_not?: string | null; // String
+    url_not_contains?: string | null; // String
+    url_not_ends_with?: string | null; // String
+    url_not_in?: string[] | null; // [String!]
+    url_not_starts_with?: string | null; // String
+    url_starts_with?: string | null; // String
   }
-  UserWhereUniqueInput: { // input type
+  EndpointUpdateInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    headers?: NexusGenInputs['HeaderUpdateManyWithoutEndpointInput'] | null; // HeaderUpdateManyWithoutEndpointInput
+    params?: NexusGenInputs['ParamUpdateManyWithoutEndpointInput'] | null; // ParamUpdateManyWithoutEndpointInput
+    translator?: NexusGenInputs['TranslatorUpdateOneRequiredWithoutEndpointsInput'] | null; // TranslatorUpdateOneRequiredWithoutEndpointsInput
+    type?: NexusGenEnums['RequestType'] | null; // RequestType
+    url?: string | null; // String
+  }
+  EndpointUpdateManyDataInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    type?: NexusGenEnums['RequestType'] | null; // RequestType
+    url?: string | null; // String
+  }
+  EndpointUpdateManyMutationInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    type?: NexusGenEnums['RequestType'] | null; // RequestType
+    url?: string | null; // String
+  }
+  EndpointUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['EndpointUpdateManyDataInput']; // EndpointUpdateManyDataInput!
+    where: NexusGenInputs['EndpointScalarWhereInput']; // EndpointScalarWhereInput!
+  }
+  EndpointUpdateManyWithoutTranslatorInput: { // input type
+    connect?: NexusGenInputs['EndpointWhereUniqueInput'][] | null; // [EndpointWhereUniqueInput!]
+    create?: NexusGenInputs['EndpointCreateWithoutTranslatorInput'][] | null; // [EndpointCreateWithoutTranslatorInput!]
+    delete?: NexusGenInputs['EndpointWhereUniqueInput'][] | null; // [EndpointWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['EndpointScalarWhereInput'][] | null; // [EndpointScalarWhereInput!]
+    disconnect?: NexusGenInputs['EndpointWhereUniqueInput'][] | null; // [EndpointWhereUniqueInput!]
+    set?: NexusGenInputs['EndpointWhereUniqueInput'][] | null; // [EndpointWhereUniqueInput!]
+    update?: NexusGenInputs['EndpointUpdateWithWhereUniqueWithoutTranslatorInput'][] | null; // [EndpointUpdateWithWhereUniqueWithoutTranslatorInput!]
+    updateMany?: NexusGenInputs['EndpointUpdateManyWithWhereNestedInput'][] | null; // [EndpointUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['EndpointUpsertWithWhereUniqueWithoutTranslatorInput'][] | null; // [EndpointUpsertWithWhereUniqueWithoutTranslatorInput!]
+  }
+  EndpointUpdateOneRequiredWithoutHeadersInput: { // input type
+    connect?: NexusGenInputs['EndpointWhereUniqueInput'] | null; // EndpointWhereUniqueInput
+    create?: NexusGenInputs['EndpointCreateWithoutHeadersInput'] | null; // EndpointCreateWithoutHeadersInput
+    update?: NexusGenInputs['EndpointUpdateWithoutHeadersDataInput'] | null; // EndpointUpdateWithoutHeadersDataInput
+    upsert?: NexusGenInputs['EndpointUpsertWithoutHeadersInput'] | null; // EndpointUpsertWithoutHeadersInput
+  }
+  EndpointUpdateOneRequiredWithoutParamsInput: { // input type
+    connect?: NexusGenInputs['EndpointWhereUniqueInput'] | null; // EndpointWhereUniqueInput
+    create?: NexusGenInputs['EndpointCreateWithoutParamsInput'] | null; // EndpointCreateWithoutParamsInput
+    update?: NexusGenInputs['EndpointUpdateWithoutParamsDataInput'] | null; // EndpointUpdateWithoutParamsDataInput
+    upsert?: NexusGenInputs['EndpointUpsertWithoutParamsInput'] | null; // EndpointUpsertWithoutParamsInput
+  }
+  EndpointUpdateWithWhereUniqueWithoutTranslatorInput: { // input type
+    data: NexusGenInputs['EndpointUpdateWithoutTranslatorDataInput']; // EndpointUpdateWithoutTranslatorDataInput!
+    where: NexusGenInputs['EndpointWhereUniqueInput']; // EndpointWhereUniqueInput!
+  }
+  EndpointUpdateWithoutHeadersDataInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    params?: NexusGenInputs['ParamUpdateManyWithoutEndpointInput'] | null; // ParamUpdateManyWithoutEndpointInput
+    translator?: NexusGenInputs['TranslatorUpdateOneRequiredWithoutEndpointsInput'] | null; // TranslatorUpdateOneRequiredWithoutEndpointsInput
+    type?: NexusGenEnums['RequestType'] | null; // RequestType
+    url?: string | null; // String
+  }
+  EndpointUpdateWithoutParamsDataInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    headers?: NexusGenInputs['HeaderUpdateManyWithoutEndpointInput'] | null; // HeaderUpdateManyWithoutEndpointInput
+    translator?: NexusGenInputs['TranslatorUpdateOneRequiredWithoutEndpointsInput'] | null; // TranslatorUpdateOneRequiredWithoutEndpointsInput
+    type?: NexusGenEnums['RequestType'] | null; // RequestType
+    url?: string | null; // String
+  }
+  EndpointUpdateWithoutTranslatorDataInput: { // input type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    headers?: NexusGenInputs['HeaderUpdateManyWithoutEndpointInput'] | null; // HeaderUpdateManyWithoutEndpointInput
+    params?: NexusGenInputs['ParamUpdateManyWithoutEndpointInput'] | null; // ParamUpdateManyWithoutEndpointInput
+    type?: NexusGenEnums['RequestType'] | null; // RequestType
+    url?: string | null; // String
+  }
+  EndpointUpsertWithWhereUniqueWithoutTranslatorInput: { // input type
+    create: NexusGenInputs['EndpointCreateWithoutTranslatorInput']; // EndpointCreateWithoutTranslatorInput!
+    update: NexusGenInputs['EndpointUpdateWithoutTranslatorDataInput']; // EndpointUpdateWithoutTranslatorDataInput!
+    where: NexusGenInputs['EndpointWhereUniqueInput']; // EndpointWhereUniqueInput!
+  }
+  EndpointUpsertWithoutHeadersInput: { // input type
+    create: NexusGenInputs['EndpointCreateWithoutHeadersInput']; // EndpointCreateWithoutHeadersInput!
+    update: NexusGenInputs['EndpointUpdateWithoutHeadersDataInput']; // EndpointUpdateWithoutHeadersDataInput!
+  }
+  EndpointUpsertWithoutParamsInput: { // input type
+    create: NexusGenInputs['EndpointCreateWithoutParamsInput']; // EndpointCreateWithoutParamsInput!
+    update: NexusGenInputs['EndpointUpdateWithoutParamsDataInput']; // EndpointUpdateWithoutParamsDataInput!
+  }
+  EndpointWhereInput: { // input type
+    AND?: NexusGenInputs['EndpointWhereInput'][] | null; // [EndpointWhereInput!]
+    apiKey?: string | null; // String
+    apiKey_contains?: string | null; // String
+    apiKey_ends_with?: string | null; // String
+    apiKey_gt?: string | null; // String
+    apiKey_gte?: string | null; // String
+    apiKey_in?: string[] | null; // [String!]
+    apiKey_lt?: string | null; // String
+    apiKey_lte?: string | null; // String
+    apiKey_not?: string | null; // String
+    apiKey_not_contains?: string | null; // String
+    apiKey_not_ends_with?: string | null; // String
+    apiKey_not_in?: string[] | null; // [String!]
+    apiKey_not_starts_with?: string | null; // String
+    apiKey_starts_with?: string | null; // String
+    body?: string | null; // String
+    body_contains?: string | null; // String
+    body_ends_with?: string | null; // String
+    body_gt?: string | null; // String
+    body_gte?: string | null; // String
+    body_in?: string[] | null; // [String!]
+    body_lt?: string | null; // String
+    body_lte?: string | null; // String
+    body_not?: string | null; // String
+    body_not_contains?: string | null; // String
+    body_not_ends_with?: string | null; // String
+    body_not_in?: string[] | null; // [String!]
+    body_not_starts_with?: string | null; // String
+    body_starts_with?: string | null; // String
+    headers_every?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
+    headers_none?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
+    headers_some?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['EndpointWhereInput'][] | null; // [EndpointWhereInput!]
+    OR?: NexusGenInputs['EndpointWhereInput'][] | null; // [EndpointWhereInput!]
+    params_every?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
+    params_none?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
+    params_some?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
+    translator?: NexusGenInputs['TranslatorWhereInput'] | null; // TranslatorWhereInput
+    type?: NexusGenEnums['RequestType'] | null; // RequestType
+    type_in?: NexusGenEnums['RequestType'][] | null; // [RequestType!]
+    type_not?: NexusGenEnums['RequestType'] | null; // RequestType
+    type_not_in?: NexusGenEnums['RequestType'][] | null; // [RequestType!]
+    url?: string | null; // String
+    url_contains?: string | null; // String
+    url_ends_with?: string | null; // String
+    url_gt?: string | null; // String
+    url_gte?: string | null; // String
+    url_in?: string[] | null; // [String!]
+    url_lt?: string | null; // String
+    url_lte?: string | null; // String
+    url_not?: string | null; // String
+    url_not_contains?: string | null; // String
+    url_not_ends_with?: string | null; // String
+    url_not_in?: string[] | null; // [String!]
+    url_not_starts_with?: string | null; // String
+    url_starts_with?: string | null; // String
+  }
+  EndpointWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
+  HeaderCreateInput: { // input type
+    endpoint: NexusGenInputs['EndpointCreateOneWithoutHeadersInput']; // EndpointCreateOneWithoutHeadersInput!
+    id?: string | null; // ID
+    key: string; // String!
+    value: string; // String!
+  }
+  HeaderCreateManyWithoutEndpointInput: { // input type
+    connect?: NexusGenInputs['HeaderWhereUniqueInput'][] | null; // [HeaderWhereUniqueInput!]
+    create?: NexusGenInputs['HeaderCreateWithoutEndpointInput'][] | null; // [HeaderCreateWithoutEndpointInput!]
+  }
+  HeaderCreateWithoutEndpointInput: { // input type
+    id?: string | null; // ID
+    key: string; // String!
+    value: string; // String!
+  }
+  HeaderScalarWhereInput: { // input type
+    AND?: NexusGenInputs['HeaderScalarWhereInput'][] | null; // [HeaderScalarWhereInput!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    key?: string | null; // String
+    key_contains?: string | null; // String
+    key_ends_with?: string | null; // String
+    key_gt?: string | null; // String
+    key_gte?: string | null; // String
+    key_in?: string[] | null; // [String!]
+    key_lt?: string | null; // String
+    key_lte?: string | null; // String
+    key_not?: string | null; // String
+    key_not_contains?: string | null; // String
+    key_not_ends_with?: string | null; // String
+    key_not_in?: string[] | null; // [String!]
+    key_not_starts_with?: string | null; // String
+    key_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['HeaderScalarWhereInput'][] | null; // [HeaderScalarWhereInput!]
+    OR?: NexusGenInputs['HeaderScalarWhereInput'][] | null; // [HeaderScalarWhereInput!]
+    value?: string | null; // String
+    value_contains?: string | null; // String
+    value_ends_with?: string | null; // String
+    value_gt?: string | null; // String
+    value_gte?: string | null; // String
+    value_in?: string[] | null; // [String!]
+    value_lt?: string | null; // String
+    value_lte?: string | null; // String
+    value_not?: string | null; // String
+    value_not_contains?: string | null; // String
+    value_not_ends_with?: string | null; // String
+    value_not_in?: string[] | null; // [String!]
+    value_not_starts_with?: string | null; // String
+    value_starts_with?: string | null; // String
+  }
+  HeaderUpdateInput: { // input type
+    endpoint?: NexusGenInputs['EndpointUpdateOneRequiredWithoutHeadersInput'] | null; // EndpointUpdateOneRequiredWithoutHeadersInput
+    key?: string | null; // String
+    value?: string | null; // String
+  }
+  HeaderUpdateManyDataInput: { // input type
+    key?: string | null; // String
+    value?: string | null; // String
+  }
+  HeaderUpdateManyMutationInput: { // input type
+    key?: string | null; // String
+    value?: string | null; // String
+  }
+  HeaderUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['HeaderUpdateManyDataInput']; // HeaderUpdateManyDataInput!
+    where: NexusGenInputs['HeaderScalarWhereInput']; // HeaderScalarWhereInput!
+  }
+  HeaderUpdateManyWithoutEndpointInput: { // input type
+    connect?: NexusGenInputs['HeaderWhereUniqueInput'][] | null; // [HeaderWhereUniqueInput!]
+    create?: NexusGenInputs['HeaderCreateWithoutEndpointInput'][] | null; // [HeaderCreateWithoutEndpointInput!]
+    delete?: NexusGenInputs['HeaderWhereUniqueInput'][] | null; // [HeaderWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['HeaderScalarWhereInput'][] | null; // [HeaderScalarWhereInput!]
+    disconnect?: NexusGenInputs['HeaderWhereUniqueInput'][] | null; // [HeaderWhereUniqueInput!]
+    set?: NexusGenInputs['HeaderWhereUniqueInput'][] | null; // [HeaderWhereUniqueInput!]
+    update?: NexusGenInputs['HeaderUpdateWithWhereUniqueWithoutEndpointInput'][] | null; // [HeaderUpdateWithWhereUniqueWithoutEndpointInput!]
+    updateMany?: NexusGenInputs['HeaderUpdateManyWithWhereNestedInput'][] | null; // [HeaderUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['HeaderUpsertWithWhereUniqueWithoutEndpointInput'][] | null; // [HeaderUpsertWithWhereUniqueWithoutEndpointInput!]
+  }
+  HeaderUpdateWithWhereUniqueWithoutEndpointInput: { // input type
+    data: NexusGenInputs['HeaderUpdateWithoutEndpointDataInput']; // HeaderUpdateWithoutEndpointDataInput!
+    where: NexusGenInputs['HeaderWhereUniqueInput']; // HeaderWhereUniqueInput!
+  }
+  HeaderUpdateWithoutEndpointDataInput: { // input type
+    key?: string | null; // String
+    value?: string | null; // String
+  }
+  HeaderUpsertWithWhereUniqueWithoutEndpointInput: { // input type
+    create: NexusGenInputs['HeaderCreateWithoutEndpointInput']; // HeaderCreateWithoutEndpointInput!
+    update: NexusGenInputs['HeaderUpdateWithoutEndpointDataInput']; // HeaderUpdateWithoutEndpointDataInput!
+    where: NexusGenInputs['HeaderWhereUniqueInput']; // HeaderWhereUniqueInput!
+  }
+  HeaderWhereInput: { // input type
+    AND?: NexusGenInputs['HeaderWhereInput'][] | null; // [HeaderWhereInput!]
+    endpoint?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    key?: string | null; // String
+    key_contains?: string | null; // String
+    key_ends_with?: string | null; // String
+    key_gt?: string | null; // String
+    key_gte?: string | null; // String
+    key_in?: string[] | null; // [String!]
+    key_lt?: string | null; // String
+    key_lte?: string | null; // String
+    key_not?: string | null; // String
+    key_not_contains?: string | null; // String
+    key_not_ends_with?: string | null; // String
+    key_not_in?: string[] | null; // [String!]
+    key_not_starts_with?: string | null; // String
+    key_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['HeaderWhereInput'][] | null; // [HeaderWhereInput!]
+    OR?: NexusGenInputs['HeaderWhereInput'][] | null; // [HeaderWhereInput!]
+    value?: string | null; // String
+    value_contains?: string | null; // String
+    value_ends_with?: string | null; // String
+    value_gt?: string | null; // String
+    value_gte?: string | null; // String
+    value_in?: string[] | null; // [String!]
+    value_lt?: string | null; // String
+    value_lte?: string | null; // String
+    value_not?: string | null; // String
+    value_not_contains?: string | null; // String
+    value_not_ends_with?: string | null; // String
+    value_not_in?: string[] | null; // [String!]
+    value_not_starts_with?: string | null; // String
+    value_starts_with?: string | null; // String
+  }
+  HeaderWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
+  ParamCreateInput: { // input type
+    endpoint: NexusGenInputs['EndpointCreateOneWithoutParamsInput']; // EndpointCreateOneWithoutParamsInput!
+    id?: string | null; // ID
+    key: string; // String!
+    value: string; // String!
+  }
+  ParamCreateManyWithoutEndpointInput: { // input type
+    connect?: NexusGenInputs['ParamWhereUniqueInput'][] | null; // [ParamWhereUniqueInput!]
+    create?: NexusGenInputs['ParamCreateWithoutEndpointInput'][] | null; // [ParamCreateWithoutEndpointInput!]
+  }
+  ParamCreateWithoutEndpointInput: { // input type
+    id?: string | null; // ID
+    key: string; // String!
+    value: string; // String!
+  }
+  ParamScalarWhereInput: { // input type
+    AND?: NexusGenInputs['ParamScalarWhereInput'][] | null; // [ParamScalarWhereInput!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    key?: string | null; // String
+    key_contains?: string | null; // String
+    key_ends_with?: string | null; // String
+    key_gt?: string | null; // String
+    key_gte?: string | null; // String
+    key_in?: string[] | null; // [String!]
+    key_lt?: string | null; // String
+    key_lte?: string | null; // String
+    key_not?: string | null; // String
+    key_not_contains?: string | null; // String
+    key_not_ends_with?: string | null; // String
+    key_not_in?: string[] | null; // [String!]
+    key_not_starts_with?: string | null; // String
+    key_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['ParamScalarWhereInput'][] | null; // [ParamScalarWhereInput!]
+    OR?: NexusGenInputs['ParamScalarWhereInput'][] | null; // [ParamScalarWhereInput!]
+    value?: string | null; // String
+    value_contains?: string | null; // String
+    value_ends_with?: string | null; // String
+    value_gt?: string | null; // String
+    value_gte?: string | null; // String
+    value_in?: string[] | null; // [String!]
+    value_lt?: string | null; // String
+    value_lte?: string | null; // String
+    value_not?: string | null; // String
+    value_not_contains?: string | null; // String
+    value_not_ends_with?: string | null; // String
+    value_not_in?: string[] | null; // [String!]
+    value_not_starts_with?: string | null; // String
+    value_starts_with?: string | null; // String
+  }
+  ParamUpdateInput: { // input type
+    endpoint?: NexusGenInputs['EndpointUpdateOneRequiredWithoutParamsInput'] | null; // EndpointUpdateOneRequiredWithoutParamsInput
+    key?: string | null; // String
+    value?: string | null; // String
+  }
+  ParamUpdateManyDataInput: { // input type
+    key?: string | null; // String
+    value?: string | null; // String
+  }
+  ParamUpdateManyMutationInput: { // input type
+    key?: string | null; // String
+    value?: string | null; // String
+  }
+  ParamUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['ParamUpdateManyDataInput']; // ParamUpdateManyDataInput!
+    where: NexusGenInputs['ParamScalarWhereInput']; // ParamScalarWhereInput!
+  }
+  ParamUpdateManyWithoutEndpointInput: { // input type
+    connect?: NexusGenInputs['ParamWhereUniqueInput'][] | null; // [ParamWhereUniqueInput!]
+    create?: NexusGenInputs['ParamCreateWithoutEndpointInput'][] | null; // [ParamCreateWithoutEndpointInput!]
+    delete?: NexusGenInputs['ParamWhereUniqueInput'][] | null; // [ParamWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['ParamScalarWhereInput'][] | null; // [ParamScalarWhereInput!]
+    disconnect?: NexusGenInputs['ParamWhereUniqueInput'][] | null; // [ParamWhereUniqueInput!]
+    set?: NexusGenInputs['ParamWhereUniqueInput'][] | null; // [ParamWhereUniqueInput!]
+    update?: NexusGenInputs['ParamUpdateWithWhereUniqueWithoutEndpointInput'][] | null; // [ParamUpdateWithWhereUniqueWithoutEndpointInput!]
+    updateMany?: NexusGenInputs['ParamUpdateManyWithWhereNestedInput'][] | null; // [ParamUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['ParamUpsertWithWhereUniqueWithoutEndpointInput'][] | null; // [ParamUpsertWithWhereUniqueWithoutEndpointInput!]
+  }
+  ParamUpdateWithWhereUniqueWithoutEndpointInput: { // input type
+    data: NexusGenInputs['ParamUpdateWithoutEndpointDataInput']; // ParamUpdateWithoutEndpointDataInput!
+    where: NexusGenInputs['ParamWhereUniqueInput']; // ParamWhereUniqueInput!
+  }
+  ParamUpdateWithoutEndpointDataInput: { // input type
+    key?: string | null; // String
+    value?: string | null; // String
+  }
+  ParamUpsertWithWhereUniqueWithoutEndpointInput: { // input type
+    create: NexusGenInputs['ParamCreateWithoutEndpointInput']; // ParamCreateWithoutEndpointInput!
+    update: NexusGenInputs['ParamUpdateWithoutEndpointDataInput']; // ParamUpdateWithoutEndpointDataInput!
+    where: NexusGenInputs['ParamWhereUniqueInput']; // ParamWhereUniqueInput!
+  }
+  ParamWhereInput: { // input type
+    AND?: NexusGenInputs['ParamWhereInput'][] | null; // [ParamWhereInput!]
+    endpoint?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    key?: string | null; // String
+    key_contains?: string | null; // String
+    key_ends_with?: string | null; // String
+    key_gt?: string | null; // String
+    key_gte?: string | null; // String
+    key_in?: string[] | null; // [String!]
+    key_lt?: string | null; // String
+    key_lte?: string | null; // String
+    key_not?: string | null; // String
+    key_not_contains?: string | null; // String
+    key_not_ends_with?: string | null; // String
+    key_not_in?: string[] | null; // [String!]
+    key_not_starts_with?: string | null; // String
+    key_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['ParamWhereInput'][] | null; // [ParamWhereInput!]
+    OR?: NexusGenInputs['ParamWhereInput'][] | null; // [ParamWhereInput!]
+    value?: string | null; // String
+    value_contains?: string | null; // String
+    value_ends_with?: string | null; // String
+    value_gt?: string | null; // String
+    value_gte?: string | null; // String
+    value_in?: string[] | null; // [String!]
+    value_lt?: string | null; // String
+    value_lte?: string | null; // String
+    value_not?: string | null; // String
+    value_not_contains?: string | null; // String
+    value_not_ends_with?: string | null; // String
+    value_not_in?: string[] | null; // [String!]
+    value_not_starts_with?: string | null; // String
+    value_starts_with?: string | null; // String
+  }
+  ParamWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
+  RunCreateInput: { // input type
+    actual: string; // String!
+    expected: string; // String!
+    id?: string | null; // ID
+    result: NexusGenEnums['ResultType']; // ResultType!
+    test: NexusGenInputs['TestCreateOneWithoutRunsInput']; // TestCreateOneWithoutRunsInput!
+  }
+  RunCreateManyWithoutTestInput: { // input type
+    connect?: NexusGenInputs['RunWhereUniqueInput'][] | null; // [RunWhereUniqueInput!]
+    create?: NexusGenInputs['RunCreateWithoutTestInput'][] | null; // [RunCreateWithoutTestInput!]
+  }
+  RunCreateWithoutTestInput: { // input type
+    actual: string; // String!
+    expected: string; // String!
+    id?: string | null; // ID
+    result: NexusGenEnums['ResultType']; // ResultType!
+  }
+  RunScalarWhereInput: { // input type
+    actual?: string | null; // String
+    actual_contains?: string | null; // String
+    actual_ends_with?: string | null; // String
+    actual_gt?: string | null; // String
+    actual_gte?: string | null; // String
+    actual_in?: string[] | null; // [String!]
+    actual_lt?: string | null; // String
+    actual_lte?: string | null; // String
+    actual_not?: string | null; // String
+    actual_not_contains?: string | null; // String
+    actual_not_ends_with?: string | null; // String
+    actual_not_in?: string[] | null; // [String!]
+    actual_not_starts_with?: string | null; // String
+    actual_starts_with?: string | null; // String
+    AND?: NexusGenInputs['RunScalarWhereInput'][] | null; // [RunScalarWhereInput!]
+    expected?: string | null; // String
+    expected_contains?: string | null; // String
+    expected_ends_with?: string | null; // String
+    expected_gt?: string | null; // String
+    expected_gte?: string | null; // String
+    expected_in?: string[] | null; // [String!]
+    expected_lt?: string | null; // String
+    expected_lte?: string | null; // String
+    expected_not?: string | null; // String
+    expected_not_contains?: string | null; // String
+    expected_not_ends_with?: string | null; // String
+    expected_not_in?: string[] | null; // [String!]
+    expected_not_starts_with?: string | null; // String
+    expected_starts_with?: string | null; // String
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['RunScalarWhereInput'][] | null; // [RunScalarWhereInput!]
+    OR?: NexusGenInputs['RunScalarWhereInput'][] | null; // [RunScalarWhereInput!]
+    result?: NexusGenEnums['ResultType'] | null; // ResultType
+    result_in?: NexusGenEnums['ResultType'][] | null; // [ResultType!]
+    result_not?: NexusGenEnums['ResultType'] | null; // ResultType
+    result_not_in?: NexusGenEnums['ResultType'][] | null; // [ResultType!]
+  }
+  RunUpdateInput: { // input type
+    actual?: string | null; // String
+    expected?: string | null; // String
+    result?: NexusGenEnums['ResultType'] | null; // ResultType
+    test?: NexusGenInputs['TestUpdateOneRequiredWithoutRunsInput'] | null; // TestUpdateOneRequiredWithoutRunsInput
+  }
+  RunUpdateManyDataInput: { // input type
+    actual?: string | null; // String
+    expected?: string | null; // String
+    result?: NexusGenEnums['ResultType'] | null; // ResultType
+  }
+  RunUpdateManyMutationInput: { // input type
+    actual?: string | null; // String
+    expected?: string | null; // String
+    result?: NexusGenEnums['ResultType'] | null; // ResultType
+  }
+  RunUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['RunUpdateManyDataInput']; // RunUpdateManyDataInput!
+    where: NexusGenInputs['RunScalarWhereInput']; // RunScalarWhereInput!
+  }
+  RunUpdateManyWithoutTestInput: { // input type
+    connect?: NexusGenInputs['RunWhereUniqueInput'][] | null; // [RunWhereUniqueInput!]
+    create?: NexusGenInputs['RunCreateWithoutTestInput'][] | null; // [RunCreateWithoutTestInput!]
+    delete?: NexusGenInputs['RunWhereUniqueInput'][] | null; // [RunWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['RunScalarWhereInput'][] | null; // [RunScalarWhereInput!]
+    disconnect?: NexusGenInputs['RunWhereUniqueInput'][] | null; // [RunWhereUniqueInput!]
+    set?: NexusGenInputs['RunWhereUniqueInput'][] | null; // [RunWhereUniqueInput!]
+    update?: NexusGenInputs['RunUpdateWithWhereUniqueWithoutTestInput'][] | null; // [RunUpdateWithWhereUniqueWithoutTestInput!]
+    updateMany?: NexusGenInputs['RunUpdateManyWithWhereNestedInput'][] | null; // [RunUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['RunUpsertWithWhereUniqueWithoutTestInput'][] | null; // [RunUpsertWithWhereUniqueWithoutTestInput!]
+  }
+  RunUpdateWithWhereUniqueWithoutTestInput: { // input type
+    data: NexusGenInputs['RunUpdateWithoutTestDataInput']; // RunUpdateWithoutTestDataInput!
+    where: NexusGenInputs['RunWhereUniqueInput']; // RunWhereUniqueInput!
+  }
+  RunUpdateWithoutTestDataInput: { // input type
+    actual?: string | null; // String
+    expected?: string | null; // String
+    result?: NexusGenEnums['ResultType'] | null; // ResultType
+  }
+  RunUpsertWithWhereUniqueWithoutTestInput: { // input type
+    create: NexusGenInputs['RunCreateWithoutTestInput']; // RunCreateWithoutTestInput!
+    update: NexusGenInputs['RunUpdateWithoutTestDataInput']; // RunUpdateWithoutTestDataInput!
+    where: NexusGenInputs['RunWhereUniqueInput']; // RunWhereUniqueInput!
+  }
+  RunWhereInput: { // input type
+    actual?: string | null; // String
+    actual_contains?: string | null; // String
+    actual_ends_with?: string | null; // String
+    actual_gt?: string | null; // String
+    actual_gte?: string | null; // String
+    actual_in?: string[] | null; // [String!]
+    actual_lt?: string | null; // String
+    actual_lte?: string | null; // String
+    actual_not?: string | null; // String
+    actual_not_contains?: string | null; // String
+    actual_not_ends_with?: string | null; // String
+    actual_not_in?: string[] | null; // [String!]
+    actual_not_starts_with?: string | null; // String
+    actual_starts_with?: string | null; // String
+    AND?: NexusGenInputs['RunWhereInput'][] | null; // [RunWhereInput!]
+    expected?: string | null; // String
+    expected_contains?: string | null; // String
+    expected_ends_with?: string | null; // String
+    expected_gt?: string | null; // String
+    expected_gte?: string | null; // String
+    expected_in?: string[] | null; // [String!]
+    expected_lt?: string | null; // String
+    expected_lte?: string | null; // String
+    expected_not?: string | null; // String
+    expected_not_contains?: string | null; // String
+    expected_not_ends_with?: string | null; // String
+    expected_not_in?: string[] | null; // [String!]
+    expected_not_starts_with?: string | null; // String
+    expected_starts_with?: string | null; // String
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['RunWhereInput'][] | null; // [RunWhereInput!]
+    OR?: NexusGenInputs['RunWhereInput'][] | null; // [RunWhereInput!]
+    result?: NexusGenEnums['ResultType'] | null; // ResultType
+    result_in?: NexusGenEnums['ResultType'][] | null; // [ResultType!]
+    result_not?: NexusGenEnums['ResultType'] | null; // ResultType
+    result_not_in?: NexusGenEnums['ResultType'][] | null; // [ResultType!]
+    test?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
+  }
+  RunWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
+  TestCreateInput: { // input type
+    expected: string; // String!
+    id?: string | null; // ID
+    request: string; // String!
+    runs?: NexusGenInputs['RunCreateManyWithoutTestInput'] | null; // RunCreateManyWithoutTestInput
+    translator: NexusGenInputs['TranslatorCreateOneWithoutTestsInput']; // TranslatorCreateOneWithoutTestsInput!
+  }
+  TestCreateManyWithoutTranslatorInput: { // input type
+    connect?: NexusGenInputs['TestWhereUniqueInput'][] | null; // [TestWhereUniqueInput!]
+    create?: NexusGenInputs['TestCreateWithoutTranslatorInput'][] | null; // [TestCreateWithoutTranslatorInput!]
+  }
+  TestCreateOneWithoutRunsInput: { // input type
+    connect?: NexusGenInputs['TestWhereUniqueInput'] | null; // TestWhereUniqueInput
+    create?: NexusGenInputs['TestCreateWithoutRunsInput'] | null; // TestCreateWithoutRunsInput
+  }
+  TestCreateWithoutRunsInput: { // input type
+    expected: string; // String!
+    id?: string | null; // ID
+    request: string; // String!
+    translator: NexusGenInputs['TranslatorCreateOneWithoutTestsInput']; // TranslatorCreateOneWithoutTestsInput!
+  }
+  TestCreateWithoutTranslatorInput: { // input type
+    expected: string; // String!
+    id?: string | null; // ID
+    request: string; // String!
+    runs?: NexusGenInputs['RunCreateManyWithoutTestInput'] | null; // RunCreateManyWithoutTestInput
+  }
+  TestScalarWhereInput: { // input type
+    AND?: NexusGenInputs['TestScalarWhereInput'][] | null; // [TestScalarWhereInput!]
+    expected?: string | null; // String
+    expected_contains?: string | null; // String
+    expected_ends_with?: string | null; // String
+    expected_gt?: string | null; // String
+    expected_gte?: string | null; // String
+    expected_in?: string[] | null; // [String!]
+    expected_lt?: string | null; // String
+    expected_lte?: string | null; // String
+    expected_not?: string | null; // String
+    expected_not_contains?: string | null; // String
+    expected_not_ends_with?: string | null; // String
+    expected_not_in?: string[] | null; // [String!]
+    expected_not_starts_with?: string | null; // String
+    expected_starts_with?: string | null; // String
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['TestScalarWhereInput'][] | null; // [TestScalarWhereInput!]
+    OR?: NexusGenInputs['TestScalarWhereInput'][] | null; // [TestScalarWhereInput!]
+    request?: string | null; // String
+    request_contains?: string | null; // String
+    request_ends_with?: string | null; // String
+    request_gt?: string | null; // String
+    request_gte?: string | null; // String
+    request_in?: string[] | null; // [String!]
+    request_lt?: string | null; // String
+    request_lte?: string | null; // String
+    request_not?: string | null; // String
+    request_not_contains?: string | null; // String
+    request_not_ends_with?: string | null; // String
+    request_not_in?: string[] | null; // [String!]
+    request_not_starts_with?: string | null; // String
+    request_starts_with?: string | null; // String
+  }
+  TestUpdateInput: { // input type
+    expected?: string | null; // String
+    request?: string | null; // String
+    runs?: NexusGenInputs['RunUpdateManyWithoutTestInput'] | null; // RunUpdateManyWithoutTestInput
+    translator?: NexusGenInputs['TranslatorUpdateOneRequiredWithoutTestsInput'] | null; // TranslatorUpdateOneRequiredWithoutTestsInput
+  }
+  TestUpdateManyDataInput: { // input type
+    expected?: string | null; // String
+    request?: string | null; // String
+  }
+  TestUpdateManyMutationInput: { // input type
+    expected?: string | null; // String
+    request?: string | null; // String
+  }
+  TestUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['TestUpdateManyDataInput']; // TestUpdateManyDataInput!
+    where: NexusGenInputs['TestScalarWhereInput']; // TestScalarWhereInput!
+  }
+  TestUpdateManyWithoutTranslatorInput: { // input type
+    connect?: NexusGenInputs['TestWhereUniqueInput'][] | null; // [TestWhereUniqueInput!]
+    create?: NexusGenInputs['TestCreateWithoutTranslatorInput'][] | null; // [TestCreateWithoutTranslatorInput!]
+    delete?: NexusGenInputs['TestWhereUniqueInput'][] | null; // [TestWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['TestScalarWhereInput'][] | null; // [TestScalarWhereInput!]
+    disconnect?: NexusGenInputs['TestWhereUniqueInput'][] | null; // [TestWhereUniqueInput!]
+    set?: NexusGenInputs['TestWhereUniqueInput'][] | null; // [TestWhereUniqueInput!]
+    update?: NexusGenInputs['TestUpdateWithWhereUniqueWithoutTranslatorInput'][] | null; // [TestUpdateWithWhereUniqueWithoutTranslatorInput!]
+    updateMany?: NexusGenInputs['TestUpdateManyWithWhereNestedInput'][] | null; // [TestUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['TestUpsertWithWhereUniqueWithoutTranslatorInput'][] | null; // [TestUpsertWithWhereUniqueWithoutTranslatorInput!]
+  }
+  TestUpdateOneRequiredWithoutRunsInput: { // input type
+    connect?: NexusGenInputs['TestWhereUniqueInput'] | null; // TestWhereUniqueInput
+    create?: NexusGenInputs['TestCreateWithoutRunsInput'] | null; // TestCreateWithoutRunsInput
+    update?: NexusGenInputs['TestUpdateWithoutRunsDataInput'] | null; // TestUpdateWithoutRunsDataInput
+    upsert?: NexusGenInputs['TestUpsertWithoutRunsInput'] | null; // TestUpsertWithoutRunsInput
+  }
+  TestUpdateWithWhereUniqueWithoutTranslatorInput: { // input type
+    data: NexusGenInputs['TestUpdateWithoutTranslatorDataInput']; // TestUpdateWithoutTranslatorDataInput!
+    where: NexusGenInputs['TestWhereUniqueInput']; // TestWhereUniqueInput!
+  }
+  TestUpdateWithoutRunsDataInput: { // input type
+    expected?: string | null; // String
+    request?: string | null; // String
+    translator?: NexusGenInputs['TranslatorUpdateOneRequiredWithoutTestsInput'] | null; // TranslatorUpdateOneRequiredWithoutTestsInput
+  }
+  TestUpdateWithoutTranslatorDataInput: { // input type
+    expected?: string | null; // String
+    request?: string | null; // String
+    runs?: NexusGenInputs['RunUpdateManyWithoutTestInput'] | null; // RunUpdateManyWithoutTestInput
+  }
+  TestUpsertWithWhereUniqueWithoutTranslatorInput: { // input type
+    create: NexusGenInputs['TestCreateWithoutTranslatorInput']; // TestCreateWithoutTranslatorInput!
+    update: NexusGenInputs['TestUpdateWithoutTranslatorDataInput']; // TestUpdateWithoutTranslatorDataInput!
+    where: NexusGenInputs['TestWhereUniqueInput']; // TestWhereUniqueInput!
+  }
+  TestUpsertWithoutRunsInput: { // input type
+    create: NexusGenInputs['TestCreateWithoutRunsInput']; // TestCreateWithoutRunsInput!
+    update: NexusGenInputs['TestUpdateWithoutRunsDataInput']; // TestUpdateWithoutRunsDataInput!
+  }
+  TestWhereInput: { // input type
+    AND?: NexusGenInputs['TestWhereInput'][] | null; // [TestWhereInput!]
+    expected?: string | null; // String
+    expected_contains?: string | null; // String
+    expected_ends_with?: string | null; // String
+    expected_gt?: string | null; // String
+    expected_gte?: string | null; // String
+    expected_in?: string[] | null; // [String!]
+    expected_lt?: string | null; // String
+    expected_lte?: string | null; // String
+    expected_not?: string | null; // String
+    expected_not_contains?: string | null; // String
+    expected_not_ends_with?: string | null; // String
+    expected_not_in?: string[] | null; // [String!]
+    expected_not_starts_with?: string | null; // String
+    expected_starts_with?: string | null; // String
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['TestWhereInput'][] | null; // [TestWhereInput!]
+    OR?: NexusGenInputs['TestWhereInput'][] | null; // [TestWhereInput!]
+    request?: string | null; // String
+    request_contains?: string | null; // String
+    request_ends_with?: string | null; // String
+    request_gt?: string | null; // String
+    request_gte?: string | null; // String
+    request_in?: string[] | null; // [String!]
+    request_lt?: string | null; // String
+    request_lte?: string | null; // String
+    request_not?: string | null; // String
+    request_not_contains?: string | null; // String
+    request_not_ends_with?: string | null; // String
+    request_not_in?: string[] | null; // [String!]
+    request_not_starts_with?: string | null; // String
+    request_starts_with?: string | null; // String
+    runs_every?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
+    runs_none?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
+    runs_some?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
+    translator?: NexusGenInputs['TranslatorWhereInput'] | null; // TranslatorWhereInput
+  }
+  TestWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
+  TranslatorCreateInput: { // input type
+    endpoints?: NexusGenInputs['EndpointCreateManyWithoutTranslatorInput'] | null; // EndpointCreateManyWithoutTranslatorInput
+    id?: string | null; // ID
+    requestFunction?: string | null; // String
+    responseFunction?: string | null; // String
+    tests?: NexusGenInputs['TestCreateManyWithoutTranslatorInput'] | null; // TestCreateManyWithoutTranslatorInput
+    type: NexusGenEnums['TranslatorType']; // TranslatorType!
+  }
+  TranslatorCreateOneWithoutEndpointsInput: { // input type
+    connect?: NexusGenInputs['TranslatorWhereUniqueInput'] | null; // TranslatorWhereUniqueInput
+    create?: NexusGenInputs['TranslatorCreateWithoutEndpointsInput'] | null; // TranslatorCreateWithoutEndpointsInput
+  }
+  TranslatorCreateOneWithoutTestsInput: { // input type
+    connect?: NexusGenInputs['TranslatorWhereUniqueInput'] | null; // TranslatorWhereUniqueInput
+    create?: NexusGenInputs['TranslatorCreateWithoutTestsInput'] | null; // TranslatorCreateWithoutTestsInput
+  }
+  TranslatorCreateWithoutEndpointsInput: { // input type
+    id?: string | null; // ID
+    requestFunction?: string | null; // String
+    responseFunction?: string | null; // String
+    tests?: NexusGenInputs['TestCreateManyWithoutTranslatorInput'] | null; // TestCreateManyWithoutTranslatorInput
+    type: NexusGenEnums['TranslatorType']; // TranslatorType!
+  }
+  TranslatorCreateWithoutTestsInput: { // input type
+    endpoints?: NexusGenInputs['EndpointCreateManyWithoutTranslatorInput'] | null; // EndpointCreateManyWithoutTranslatorInput
+    id?: string | null; // ID
+    requestFunction?: string | null; // String
+    responseFunction?: string | null; // String
+    type: NexusGenEnums['TranslatorType']; // TranslatorType!
+  }
+  TranslatorUpdateInput: { // input type
+    endpoints?: NexusGenInputs['EndpointUpdateManyWithoutTranslatorInput'] | null; // EndpointUpdateManyWithoutTranslatorInput
+    requestFunction?: string | null; // String
+    responseFunction?: string | null; // String
+    tests?: NexusGenInputs['TestUpdateManyWithoutTranslatorInput'] | null; // TestUpdateManyWithoutTranslatorInput
+    type?: NexusGenEnums['TranslatorType'] | null; // TranslatorType
+  }
+  TranslatorUpdateManyMutationInput: { // input type
+    requestFunction?: string | null; // String
+    responseFunction?: string | null; // String
+    type?: NexusGenEnums['TranslatorType'] | null; // TranslatorType
+  }
+  TranslatorUpdateOneRequiredWithoutEndpointsInput: { // input type
+    connect?: NexusGenInputs['TranslatorWhereUniqueInput'] | null; // TranslatorWhereUniqueInput
+    create?: NexusGenInputs['TranslatorCreateWithoutEndpointsInput'] | null; // TranslatorCreateWithoutEndpointsInput
+    update?: NexusGenInputs['TranslatorUpdateWithoutEndpointsDataInput'] | null; // TranslatorUpdateWithoutEndpointsDataInput
+    upsert?: NexusGenInputs['TranslatorUpsertWithoutEndpointsInput'] | null; // TranslatorUpsertWithoutEndpointsInput
+  }
+  TranslatorUpdateOneRequiredWithoutTestsInput: { // input type
+    connect?: NexusGenInputs['TranslatorWhereUniqueInput'] | null; // TranslatorWhereUniqueInput
+    create?: NexusGenInputs['TranslatorCreateWithoutTestsInput'] | null; // TranslatorCreateWithoutTestsInput
+    update?: NexusGenInputs['TranslatorUpdateWithoutTestsDataInput'] | null; // TranslatorUpdateWithoutTestsDataInput
+    upsert?: NexusGenInputs['TranslatorUpsertWithoutTestsInput'] | null; // TranslatorUpsertWithoutTestsInput
+  }
+  TranslatorUpdateWithoutEndpointsDataInput: { // input type
+    requestFunction?: string | null; // String
+    responseFunction?: string | null; // String
+    tests?: NexusGenInputs['TestUpdateManyWithoutTranslatorInput'] | null; // TestUpdateManyWithoutTranslatorInput
+    type?: NexusGenEnums['TranslatorType'] | null; // TranslatorType
+  }
+  TranslatorUpdateWithoutTestsDataInput: { // input type
+    endpoints?: NexusGenInputs['EndpointUpdateManyWithoutTranslatorInput'] | null; // EndpointUpdateManyWithoutTranslatorInput
+    requestFunction?: string | null; // String
+    responseFunction?: string | null; // String
+    type?: NexusGenEnums['TranslatorType'] | null; // TranslatorType
+  }
+  TranslatorUpsertWithoutEndpointsInput: { // input type
+    create: NexusGenInputs['TranslatorCreateWithoutEndpointsInput']; // TranslatorCreateWithoutEndpointsInput!
+    update: NexusGenInputs['TranslatorUpdateWithoutEndpointsDataInput']; // TranslatorUpdateWithoutEndpointsDataInput!
+  }
+  TranslatorUpsertWithoutTestsInput: { // input type
+    create: NexusGenInputs['TranslatorCreateWithoutTestsInput']; // TranslatorCreateWithoutTestsInput!
+    update: NexusGenInputs['TranslatorUpdateWithoutTestsDataInput']; // TranslatorUpdateWithoutTestsDataInput!
+  }
+  TranslatorWhereInput: { // input type
+    AND?: NexusGenInputs['TranslatorWhereInput'][] | null; // [TranslatorWhereInput!]
+    endpoints_every?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    endpoints_none?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    endpoints_some?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['TranslatorWhereInput'][] | null; // [TranslatorWhereInput!]
+    OR?: NexusGenInputs['TranslatorWhereInput'][] | null; // [TranslatorWhereInput!]
+    requestFunction?: string | null; // String
+    requestFunction_contains?: string | null; // String
+    requestFunction_ends_with?: string | null; // String
+    requestFunction_gt?: string | null; // String
+    requestFunction_gte?: string | null; // String
+    requestFunction_in?: string[] | null; // [String!]
+    requestFunction_lt?: string | null; // String
+    requestFunction_lte?: string | null; // String
+    requestFunction_not?: string | null; // String
+    requestFunction_not_contains?: string | null; // String
+    requestFunction_not_ends_with?: string | null; // String
+    requestFunction_not_in?: string[] | null; // [String!]
+    requestFunction_not_starts_with?: string | null; // String
+    requestFunction_starts_with?: string | null; // String
+    responseFunction?: string | null; // String
+    responseFunction_contains?: string | null; // String
+    responseFunction_ends_with?: string | null; // String
+    responseFunction_gt?: string | null; // String
+    responseFunction_gte?: string | null; // String
+    responseFunction_in?: string[] | null; // [String!]
+    responseFunction_lt?: string | null; // String
+    responseFunction_lte?: string | null; // String
+    responseFunction_not?: string | null; // String
+    responseFunction_not_contains?: string | null; // String
+    responseFunction_not_ends_with?: string | null; // String
+    responseFunction_not_in?: string[] | null; // [String!]
+    responseFunction_not_starts_with?: string | null; // String
+    responseFunction_starts_with?: string | null; // String
+    tests_every?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
+    tests_none?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
+    tests_some?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
+    type?: NexusGenEnums['TranslatorType'] | null; // TranslatorType
+    type_in?: NexusGenEnums['TranslatorType'][] | null; // [TranslatorType!]
+    type_not?: NexusGenEnums['TranslatorType'] | null; // TranslatorType
+    type_not_in?: NexusGenEnums['TranslatorType'][] | null; // [TranslatorType!]
+  }
+  TranslatorWhereUniqueInput: { // input type
     id?: string | null; // ID
   }
 }
 
 export interface NexusGenEnums {
-  UserOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  EndpointOrderByInput: "apiKey_ASC" | "apiKey_DESC" | "body_ASC" | "body_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "type_ASC" | "type_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "url_ASC" | "url_DESC"
+  HeaderOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "value_ASC" | "value_DESC"
+  ParamOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "value_ASC" | "value_DESC"
+  RequestType: "DELETE" | "GET" | "POST" | "PUT"
+  ResultType: "Fail" | "Pass"
+  RunOrderByInput: "actual_ASC" | "actual_DESC" | "createdAt_ASC" | "createdAt_DESC" | "expected_ASC" | "expected_DESC" | "id_ASC" | "id_DESC" | "result_ASC" | "result_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  TestOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "expected_ASC" | "expected_DESC" | "id_ASC" | "id_DESC" | "request_ASC" | "request_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  TranslatorOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "requestFunction_ASC" | "requestFunction_DESC" | "responseFunction_ASC" | "responseFunction_DESC" | "type_ASC" | "type_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  TranslatorType: "Request" | "Response"
 }
 
 export interface NexusGenRootTypes {
-  AggregateUser: { // root type
+  AggregateEndpoint: { // root type
+    count: number; // Int!
+  }
+  AggregateHeader: { // root type
+    count: number; // Int!
+  }
+  AggregateParam: { // root type
+    count: number; // Int!
+  }
+  AggregateRun: { // root type
+    count: number; // Int!
+  }
+  AggregateTest: { // root type
+    count: number; // Int!
+  }
+  AggregateTranslator: { // root type
     count: number; // Int!
   }
   BatchPayload: { // root type
     count: any; // Long!
+  }
+  Endpoint: { // root type
+    apiKey?: string | null; // String
+    body?: string | null; // String
+    id: string; // ID!
+    type: NexusGenEnums['RequestType']; // RequestType!
+    url: string; // String!
+  }
+  EndpointConnection: { // root type
+    edges: NexusGenRootTypes['EndpointEdge'][]; // [EndpointEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  EndpointEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Endpoint']; // Endpoint!
+  }
+  Header: { // root type
+    id: string; // ID!
+    key: string; // String!
+    value: string; // String!
+  }
+  HeaderConnection: { // root type
+    edges: NexusGenRootTypes['HeaderEdge'][]; // [HeaderEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  HeaderEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Header']; // Header!
   }
   Mutation: {};
   PageInfo: { // root type
@@ -94,19 +1156,60 @@ export interface NexusGenRootTypes {
     hasPreviousPage: boolean; // Boolean!
     startCursor?: string | null; // String
   }
-  Query: {};
-  User: { // root type
-    email?: string | null; // String
+  Param: { // root type
     id: string; // ID!
-    name: string; // String!
+    key: string; // String!
+    value: string; // String!
   }
-  UserConnection: { // root type
-    edges: NexusGenRootTypes['UserEdge'][]; // [UserEdge!]!
+  ParamConnection: { // root type
+    edges: NexusGenRootTypes['ParamEdge'][]; // [ParamEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
-  UserEdge: { // root type
+  ParamEdge: { // root type
     cursor: string; // String!
-    node: NexusGenRootTypes['User']; // User!
+    node: NexusGenRootTypes['Param']; // Param!
+  }
+  Query: {};
+  Run: { // root type
+    actual: string; // String!
+    expected: string; // String!
+    id: string; // ID!
+    result: NexusGenEnums['ResultType']; // ResultType!
+  }
+  RunConnection: { // root type
+    edges: NexusGenRootTypes['RunEdge'][]; // [RunEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  RunEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Run']; // Run!
+  }
+  Test: { // root type
+    expected: string; // String!
+    id: string; // ID!
+    request: string; // String!
+  }
+  TestConnection: { // root type
+    edges: NexusGenRootTypes['TestEdge'][]; // [TestEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  TestEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Test']; // Test!
+  }
+  Translator: { // root type
+    id: string; // ID!
+    requestFunction?: string | null; // String
+    responseFunction?: string | null; // String
+    type: NexusGenEnums['TranslatorType']; // TranslatorType!
+  }
+  TranslatorConnection: { // root type
+    edges: NexusGenRootTypes['TranslatorEdge'][]; // [TranslatorEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  TranslatorEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Translator']; // Translator!
   }
   String: string;
   Int: number;
@@ -117,28 +1220,210 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  UserCreateInput: NexusGenInputs['UserCreateInput'];
-  UserUpdateInput: NexusGenInputs['UserUpdateInput'];
-  UserUpdateManyMutationInput: NexusGenInputs['UserUpdateManyMutationInput'];
-  UserWhereInput: NexusGenInputs['UserWhereInput'];
-  UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
-  UserOrderByInput: NexusGenEnums['UserOrderByInput'];
+  EndpointCreateInput: NexusGenInputs['EndpointCreateInput'];
+  EndpointCreateManyWithoutTranslatorInput: NexusGenInputs['EndpointCreateManyWithoutTranslatorInput'];
+  EndpointCreateOneWithoutHeadersInput: NexusGenInputs['EndpointCreateOneWithoutHeadersInput'];
+  EndpointCreateOneWithoutParamsInput: NexusGenInputs['EndpointCreateOneWithoutParamsInput'];
+  EndpointCreateWithoutHeadersInput: NexusGenInputs['EndpointCreateWithoutHeadersInput'];
+  EndpointCreateWithoutParamsInput: NexusGenInputs['EndpointCreateWithoutParamsInput'];
+  EndpointCreateWithoutTranslatorInput: NexusGenInputs['EndpointCreateWithoutTranslatorInput'];
+  EndpointScalarWhereInput: NexusGenInputs['EndpointScalarWhereInput'];
+  EndpointUpdateInput: NexusGenInputs['EndpointUpdateInput'];
+  EndpointUpdateManyDataInput: NexusGenInputs['EndpointUpdateManyDataInput'];
+  EndpointUpdateManyMutationInput: NexusGenInputs['EndpointUpdateManyMutationInput'];
+  EndpointUpdateManyWithWhereNestedInput: NexusGenInputs['EndpointUpdateManyWithWhereNestedInput'];
+  EndpointUpdateManyWithoutTranslatorInput: NexusGenInputs['EndpointUpdateManyWithoutTranslatorInput'];
+  EndpointUpdateOneRequiredWithoutHeadersInput: NexusGenInputs['EndpointUpdateOneRequiredWithoutHeadersInput'];
+  EndpointUpdateOneRequiredWithoutParamsInput: NexusGenInputs['EndpointUpdateOneRequiredWithoutParamsInput'];
+  EndpointUpdateWithWhereUniqueWithoutTranslatorInput: NexusGenInputs['EndpointUpdateWithWhereUniqueWithoutTranslatorInput'];
+  EndpointUpdateWithoutHeadersDataInput: NexusGenInputs['EndpointUpdateWithoutHeadersDataInput'];
+  EndpointUpdateWithoutParamsDataInput: NexusGenInputs['EndpointUpdateWithoutParamsDataInput'];
+  EndpointUpdateWithoutTranslatorDataInput: NexusGenInputs['EndpointUpdateWithoutTranslatorDataInput'];
+  EndpointUpsertWithWhereUniqueWithoutTranslatorInput: NexusGenInputs['EndpointUpsertWithWhereUniqueWithoutTranslatorInput'];
+  EndpointUpsertWithoutHeadersInput: NexusGenInputs['EndpointUpsertWithoutHeadersInput'];
+  EndpointUpsertWithoutParamsInput: NexusGenInputs['EndpointUpsertWithoutParamsInput'];
+  EndpointWhereInput: NexusGenInputs['EndpointWhereInput'];
+  EndpointWhereUniqueInput: NexusGenInputs['EndpointWhereUniqueInput'];
+  HeaderCreateInput: NexusGenInputs['HeaderCreateInput'];
+  HeaderCreateManyWithoutEndpointInput: NexusGenInputs['HeaderCreateManyWithoutEndpointInput'];
+  HeaderCreateWithoutEndpointInput: NexusGenInputs['HeaderCreateWithoutEndpointInput'];
+  HeaderScalarWhereInput: NexusGenInputs['HeaderScalarWhereInput'];
+  HeaderUpdateInput: NexusGenInputs['HeaderUpdateInput'];
+  HeaderUpdateManyDataInput: NexusGenInputs['HeaderUpdateManyDataInput'];
+  HeaderUpdateManyMutationInput: NexusGenInputs['HeaderUpdateManyMutationInput'];
+  HeaderUpdateManyWithWhereNestedInput: NexusGenInputs['HeaderUpdateManyWithWhereNestedInput'];
+  HeaderUpdateManyWithoutEndpointInput: NexusGenInputs['HeaderUpdateManyWithoutEndpointInput'];
+  HeaderUpdateWithWhereUniqueWithoutEndpointInput: NexusGenInputs['HeaderUpdateWithWhereUniqueWithoutEndpointInput'];
+  HeaderUpdateWithoutEndpointDataInput: NexusGenInputs['HeaderUpdateWithoutEndpointDataInput'];
+  HeaderUpsertWithWhereUniqueWithoutEndpointInput: NexusGenInputs['HeaderUpsertWithWhereUniqueWithoutEndpointInput'];
+  HeaderWhereInput: NexusGenInputs['HeaderWhereInput'];
+  HeaderWhereUniqueInput: NexusGenInputs['HeaderWhereUniqueInput'];
+  ParamCreateInput: NexusGenInputs['ParamCreateInput'];
+  ParamCreateManyWithoutEndpointInput: NexusGenInputs['ParamCreateManyWithoutEndpointInput'];
+  ParamCreateWithoutEndpointInput: NexusGenInputs['ParamCreateWithoutEndpointInput'];
+  ParamScalarWhereInput: NexusGenInputs['ParamScalarWhereInput'];
+  ParamUpdateInput: NexusGenInputs['ParamUpdateInput'];
+  ParamUpdateManyDataInput: NexusGenInputs['ParamUpdateManyDataInput'];
+  ParamUpdateManyMutationInput: NexusGenInputs['ParamUpdateManyMutationInput'];
+  ParamUpdateManyWithWhereNestedInput: NexusGenInputs['ParamUpdateManyWithWhereNestedInput'];
+  ParamUpdateManyWithoutEndpointInput: NexusGenInputs['ParamUpdateManyWithoutEndpointInput'];
+  ParamUpdateWithWhereUniqueWithoutEndpointInput: NexusGenInputs['ParamUpdateWithWhereUniqueWithoutEndpointInput'];
+  ParamUpdateWithoutEndpointDataInput: NexusGenInputs['ParamUpdateWithoutEndpointDataInput'];
+  ParamUpsertWithWhereUniqueWithoutEndpointInput: NexusGenInputs['ParamUpsertWithWhereUniqueWithoutEndpointInput'];
+  ParamWhereInput: NexusGenInputs['ParamWhereInput'];
+  ParamWhereUniqueInput: NexusGenInputs['ParamWhereUniqueInput'];
+  RunCreateInput: NexusGenInputs['RunCreateInput'];
+  RunCreateManyWithoutTestInput: NexusGenInputs['RunCreateManyWithoutTestInput'];
+  RunCreateWithoutTestInput: NexusGenInputs['RunCreateWithoutTestInput'];
+  RunScalarWhereInput: NexusGenInputs['RunScalarWhereInput'];
+  RunUpdateInput: NexusGenInputs['RunUpdateInput'];
+  RunUpdateManyDataInput: NexusGenInputs['RunUpdateManyDataInput'];
+  RunUpdateManyMutationInput: NexusGenInputs['RunUpdateManyMutationInput'];
+  RunUpdateManyWithWhereNestedInput: NexusGenInputs['RunUpdateManyWithWhereNestedInput'];
+  RunUpdateManyWithoutTestInput: NexusGenInputs['RunUpdateManyWithoutTestInput'];
+  RunUpdateWithWhereUniqueWithoutTestInput: NexusGenInputs['RunUpdateWithWhereUniqueWithoutTestInput'];
+  RunUpdateWithoutTestDataInput: NexusGenInputs['RunUpdateWithoutTestDataInput'];
+  RunUpsertWithWhereUniqueWithoutTestInput: NexusGenInputs['RunUpsertWithWhereUniqueWithoutTestInput'];
+  RunWhereInput: NexusGenInputs['RunWhereInput'];
+  RunWhereUniqueInput: NexusGenInputs['RunWhereUniqueInput'];
+  TestCreateInput: NexusGenInputs['TestCreateInput'];
+  TestCreateManyWithoutTranslatorInput: NexusGenInputs['TestCreateManyWithoutTranslatorInput'];
+  TestCreateOneWithoutRunsInput: NexusGenInputs['TestCreateOneWithoutRunsInput'];
+  TestCreateWithoutRunsInput: NexusGenInputs['TestCreateWithoutRunsInput'];
+  TestCreateWithoutTranslatorInput: NexusGenInputs['TestCreateWithoutTranslatorInput'];
+  TestScalarWhereInput: NexusGenInputs['TestScalarWhereInput'];
+  TestUpdateInput: NexusGenInputs['TestUpdateInput'];
+  TestUpdateManyDataInput: NexusGenInputs['TestUpdateManyDataInput'];
+  TestUpdateManyMutationInput: NexusGenInputs['TestUpdateManyMutationInput'];
+  TestUpdateManyWithWhereNestedInput: NexusGenInputs['TestUpdateManyWithWhereNestedInput'];
+  TestUpdateManyWithoutTranslatorInput: NexusGenInputs['TestUpdateManyWithoutTranslatorInput'];
+  TestUpdateOneRequiredWithoutRunsInput: NexusGenInputs['TestUpdateOneRequiredWithoutRunsInput'];
+  TestUpdateWithWhereUniqueWithoutTranslatorInput: NexusGenInputs['TestUpdateWithWhereUniqueWithoutTranslatorInput'];
+  TestUpdateWithoutRunsDataInput: NexusGenInputs['TestUpdateWithoutRunsDataInput'];
+  TestUpdateWithoutTranslatorDataInput: NexusGenInputs['TestUpdateWithoutTranslatorDataInput'];
+  TestUpsertWithWhereUniqueWithoutTranslatorInput: NexusGenInputs['TestUpsertWithWhereUniqueWithoutTranslatorInput'];
+  TestUpsertWithoutRunsInput: NexusGenInputs['TestUpsertWithoutRunsInput'];
+  TestWhereInput: NexusGenInputs['TestWhereInput'];
+  TestWhereUniqueInput: NexusGenInputs['TestWhereUniqueInput'];
+  TranslatorCreateInput: NexusGenInputs['TranslatorCreateInput'];
+  TranslatorCreateOneWithoutEndpointsInput: NexusGenInputs['TranslatorCreateOneWithoutEndpointsInput'];
+  TranslatorCreateOneWithoutTestsInput: NexusGenInputs['TranslatorCreateOneWithoutTestsInput'];
+  TranslatorCreateWithoutEndpointsInput: NexusGenInputs['TranslatorCreateWithoutEndpointsInput'];
+  TranslatorCreateWithoutTestsInput: NexusGenInputs['TranslatorCreateWithoutTestsInput'];
+  TranslatorUpdateInput: NexusGenInputs['TranslatorUpdateInput'];
+  TranslatorUpdateManyMutationInput: NexusGenInputs['TranslatorUpdateManyMutationInput'];
+  TranslatorUpdateOneRequiredWithoutEndpointsInput: NexusGenInputs['TranslatorUpdateOneRequiredWithoutEndpointsInput'];
+  TranslatorUpdateOneRequiredWithoutTestsInput: NexusGenInputs['TranslatorUpdateOneRequiredWithoutTestsInput'];
+  TranslatorUpdateWithoutEndpointsDataInput: NexusGenInputs['TranslatorUpdateWithoutEndpointsDataInput'];
+  TranslatorUpdateWithoutTestsDataInput: NexusGenInputs['TranslatorUpdateWithoutTestsDataInput'];
+  TranslatorUpsertWithoutEndpointsInput: NexusGenInputs['TranslatorUpsertWithoutEndpointsInput'];
+  TranslatorUpsertWithoutTestsInput: NexusGenInputs['TranslatorUpsertWithoutTestsInput'];
+  TranslatorWhereInput: NexusGenInputs['TranslatorWhereInput'];
+  TranslatorWhereUniqueInput: NexusGenInputs['TranslatorWhereUniqueInput'];
+  EndpointOrderByInput: NexusGenEnums['EndpointOrderByInput'];
+  HeaderOrderByInput: NexusGenEnums['HeaderOrderByInput'];
+  ParamOrderByInput: NexusGenEnums['ParamOrderByInput'];
+  RequestType: NexusGenEnums['RequestType'];
+  ResultType: NexusGenEnums['ResultType'];
+  RunOrderByInput: NexusGenEnums['RunOrderByInput'];
+  TestOrderByInput: NexusGenEnums['TestOrderByInput'];
+  TranslatorOrderByInput: NexusGenEnums['TranslatorOrderByInput'];
+  TranslatorType: NexusGenEnums['TranslatorType'];
 }
 
 export interface NexusGenFieldTypes {
-  AggregateUser: { // field return type
+  AggregateEndpoint: { // field return type
+    count: number; // Int!
+  }
+  AggregateHeader: { // field return type
+    count: number; // Int!
+  }
+  AggregateParam: { // field return type
+    count: number; // Int!
+  }
+  AggregateRun: { // field return type
+    count: number; // Int!
+  }
+  AggregateTest: { // field return type
+    count: number; // Int!
+  }
+  AggregateTranslator: { // field return type
     count: number; // Int!
   }
   BatchPayload: { // field return type
     count: any; // Long!
   }
+  Endpoint: { // field return type
+    apiKey: string | null; // String
+    body: string | null; // String
+    headers: NexusGenRootTypes['Header'][] | null; // [Header!]
+    id: string; // ID!
+    params: NexusGenRootTypes['Param'][] | null; // [Param!]
+    translator: NexusGenRootTypes['Translator']; // Translator!
+    type: NexusGenEnums['RequestType']; // RequestType!
+    url: string; // String!
+  }
+  EndpointConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateEndpoint']; // AggregateEndpoint!
+    edges: NexusGenRootTypes['EndpointEdge'][]; // [EndpointEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  EndpointEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Endpoint']; // Endpoint!
+  }
+  Header: { // field return type
+    endpoint: NexusGenRootTypes['Endpoint']; // Endpoint!
+    id: string; // ID!
+    key: string; // String!
+    value: string; // String!
+  }
+  HeaderConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateHeader']; // AggregateHeader!
+    edges: NexusGenRootTypes['HeaderEdge'][]; // [HeaderEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  HeaderEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Header']; // Header!
+  }
   Mutation: { // field return type
-    createUser: NexusGenRootTypes['User']; // User!
-    deleteManyUsers: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    deleteUser: NexusGenRootTypes['User'] | null; // User
-    updateManyUsers: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    updateUser: NexusGenRootTypes['User'] | null; // User
-    upsertUser: NexusGenRootTypes['User']; // User!
+    createEndpoint: NexusGenRootTypes['Endpoint']; // Endpoint!
+    createHeader: NexusGenRootTypes['Header']; // Header!
+    createParam: NexusGenRootTypes['Param']; // Param!
+    createRun: NexusGenRootTypes['Run']; // Run!
+    createTest: NexusGenRootTypes['Test']; // Test!
+    createTranslator: NexusGenRootTypes['Translator']; // Translator!
+    deleteEndpoint: NexusGenRootTypes['Endpoint'] | null; // Endpoint
+    deleteHeader: NexusGenRootTypes['Header'] | null; // Header
+    deleteManyEndpoints: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyHeaders: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyParams: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyRuns: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyTests: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyTranslators: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteParam: NexusGenRootTypes['Param'] | null; // Param
+    deleteRun: NexusGenRootTypes['Run'] | null; // Run
+    deleteTest: NexusGenRootTypes['Test'] | null; // Test
+    deleteTranslator: NexusGenRootTypes['Translator'] | null; // Translator
+    updateEndpoint: NexusGenRootTypes['Endpoint'] | null; // Endpoint
+    updateHeader: NexusGenRootTypes['Header'] | null; // Header
+    updateManyEndpoints: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyHeaders: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyParams: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyRuns: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyTests: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyTranslators: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateParam: NexusGenRootTypes['Param'] | null; // Param
+    updateRun: NexusGenRootTypes['Run'] | null; // Run
+    updateTest: NexusGenRootTypes['Test'] | null; // Test
+    updateTranslator: NexusGenRootTypes['Translator'] | null; // Translator
+    upsertEndpoint: NexusGenRootTypes['Endpoint']; // Endpoint!
+    upsertHeader: NexusGenRootTypes['Header']; // Header!
+    upsertParam: NexusGenRootTypes['Param']; // Param!
+    upsertRun: NexusGenRootTypes['Run']; // Run!
+    upsertTest: NexusGenRootTypes['Test']; // Test!
+    upsertTranslator: NexusGenRootTypes['Translator']; // Translator!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -146,73 +1431,404 @@ export interface NexusGenFieldTypes {
     hasPreviousPage: boolean; // Boolean!
     startCursor: string | null; // String
   }
-  Query: { // field return type
-    user: NexusGenRootTypes['User'] | null; // User
-    users: NexusGenRootTypes['User'][]; // [User!]!
-    usersConnection: NexusGenRootTypes['UserConnection']; // UserConnection!
-  }
-  User: { // field return type
-    email: string | null; // String
+  Param: { // field return type
+    endpoint: NexusGenRootTypes['Endpoint']; // Endpoint!
     id: string; // ID!
-    name: string; // String!
+    key: string; // String!
+    value: string; // String!
   }
-  UserConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateUser']; // AggregateUser!
-    edges: NexusGenRootTypes['UserEdge'][]; // [UserEdge!]!
+  ParamConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateParam']; // AggregateParam!
+    edges: NexusGenRootTypes['ParamEdge'][]; // [ParamEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
-  UserEdge: { // field return type
+  ParamEdge: { // field return type
     cursor: string; // String!
-    node: NexusGenRootTypes['User']; // User!
+    node: NexusGenRootTypes['Param']; // Param!
+  }
+  Query: { // field return type
+    endpoint: NexusGenRootTypes['Endpoint'] | null; // Endpoint
+    endpoints: NexusGenRootTypes['Endpoint'][]; // [Endpoint!]!
+    endpointsConnection: NexusGenRootTypes['EndpointConnection']; // EndpointConnection!
+    header: NexusGenRootTypes['Header'] | null; // Header
+    headers: NexusGenRootTypes['Header'][]; // [Header!]!
+    headersConnection: NexusGenRootTypes['HeaderConnection']; // HeaderConnection!
+    param: NexusGenRootTypes['Param'] | null; // Param
+    params: NexusGenRootTypes['Param'][]; // [Param!]!
+    paramsConnection: NexusGenRootTypes['ParamConnection']; // ParamConnection!
+    run: NexusGenRootTypes['Run'] | null; // Run
+    runs: NexusGenRootTypes['Run'][]; // [Run!]!
+    runsConnection: NexusGenRootTypes['RunConnection']; // RunConnection!
+    test: NexusGenRootTypes['Test'] | null; // Test
+    tests: NexusGenRootTypes['Test'][]; // [Test!]!
+    testsConnection: NexusGenRootTypes['TestConnection']; // TestConnection!
+    translator: NexusGenRootTypes['Translator'] | null; // Translator
+    translators: NexusGenRootTypes['Translator'][]; // [Translator!]!
+    translatorsConnection: NexusGenRootTypes['TranslatorConnection']; // TranslatorConnection!
+  }
+  Run: { // field return type
+    actual: string; // String!
+    expected: string; // String!
+    id: string; // ID!
+    result: NexusGenEnums['ResultType']; // ResultType!
+    test: NexusGenRootTypes['Test']; // Test!
+  }
+  RunConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateRun']; // AggregateRun!
+    edges: NexusGenRootTypes['RunEdge'][]; // [RunEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  RunEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Run']; // Run!
+  }
+  Test: { // field return type
+    expected: string; // String!
+    id: string; // ID!
+    request: string; // String!
+    runs: NexusGenRootTypes['Run'][] | null; // [Run!]
+    translator: NexusGenRootTypes['Translator']; // Translator!
+  }
+  TestConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateTest']; // AggregateTest!
+    edges: NexusGenRootTypes['TestEdge'][]; // [TestEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  TestEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Test']; // Test!
+  }
+  Translator: { // field return type
+    endpoints: NexusGenRootTypes['Endpoint'][] | null; // [Endpoint!]
+    id: string; // ID!
+    requestFunction: string | null; // String
+    responseFunction: string | null; // String
+    tests: NexusGenRootTypes['Test'][] | null; // [Test!]
+    type: NexusGenEnums['TranslatorType']; // TranslatorType!
+  }
+  TranslatorConnection: { // field return type
+    aggregate: NexusGenRootTypes['AggregateTranslator']; // AggregateTranslator!
+    edges: NexusGenRootTypes['TranslatorEdge'][]; // [TranslatorEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  TranslatorEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Translator']; // Translator!
   }
 }
 
 export interface NexusGenArgTypes {
+  Endpoint: {
+    headers: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['HeaderOrderByInput'] | null; // HeaderOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
+    }
+    params: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['ParamOrderByInput'] | null; // ParamOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
+    }
+  }
   Mutation: {
-    createUser: { // args
-      data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
+    createEndpoint: { // args
+      data: NexusGenInputs['EndpointCreateInput']; // EndpointCreateInput!
     }
-    deleteManyUsers: { // args
-      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    createHeader: { // args
+      data: NexusGenInputs['HeaderCreateInput']; // HeaderCreateInput!
     }
-    deleteUser: { // args
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    createParam: { // args
+      data: NexusGenInputs['ParamCreateInput']; // ParamCreateInput!
     }
-    updateManyUsers: { // args
-      data: NexusGenInputs['UserUpdateManyMutationInput']; // UserUpdateManyMutationInput!
-      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    createRun: { // args
+      data: NexusGenInputs['RunCreateInput']; // RunCreateInput!
     }
-    updateUser: { // args
-      data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    createTest: { // args
+      data: NexusGenInputs['TestCreateInput']; // TestCreateInput!
     }
-    upsertUser: { // args
-      create: NexusGenInputs['UserCreateInput']; // UserCreateInput!
-      update: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    createTranslator: { // args
+      data: NexusGenInputs['TranslatorCreateInput']; // TranslatorCreateInput!
+    }
+    deleteEndpoint: { // args
+      where: NexusGenInputs['EndpointWhereUniqueInput']; // EndpointWhereUniqueInput!
+    }
+    deleteHeader: { // args
+      where: NexusGenInputs['HeaderWhereUniqueInput']; // HeaderWhereUniqueInput!
+    }
+    deleteManyEndpoints: { // args
+      where?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    }
+    deleteManyHeaders: { // args
+      where?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
+    }
+    deleteManyParams: { // args
+      where?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
+    }
+    deleteManyRuns: { // args
+      where?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
+    }
+    deleteManyTests: { // args
+      where?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
+    }
+    deleteManyTranslators: { // args
+      where?: NexusGenInputs['TranslatorWhereInput'] | null; // TranslatorWhereInput
+    }
+    deleteParam: { // args
+      where: NexusGenInputs['ParamWhereUniqueInput']; // ParamWhereUniqueInput!
+    }
+    deleteRun: { // args
+      where: NexusGenInputs['RunWhereUniqueInput']; // RunWhereUniqueInput!
+    }
+    deleteTest: { // args
+      where: NexusGenInputs['TestWhereUniqueInput']; // TestWhereUniqueInput!
+    }
+    deleteTranslator: { // args
+      where: NexusGenInputs['TranslatorWhereUniqueInput']; // TranslatorWhereUniqueInput!
+    }
+    updateEndpoint: { // args
+      data: NexusGenInputs['EndpointUpdateInput']; // EndpointUpdateInput!
+      where: NexusGenInputs['EndpointWhereUniqueInput']; // EndpointWhereUniqueInput!
+    }
+    updateHeader: { // args
+      data: NexusGenInputs['HeaderUpdateInput']; // HeaderUpdateInput!
+      where: NexusGenInputs['HeaderWhereUniqueInput']; // HeaderWhereUniqueInput!
+    }
+    updateManyEndpoints: { // args
+      data: NexusGenInputs['EndpointUpdateManyMutationInput']; // EndpointUpdateManyMutationInput!
+      where?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    }
+    updateManyHeaders: { // args
+      data: NexusGenInputs['HeaderUpdateManyMutationInput']; // HeaderUpdateManyMutationInput!
+      where?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
+    }
+    updateManyParams: { // args
+      data: NexusGenInputs['ParamUpdateManyMutationInput']; // ParamUpdateManyMutationInput!
+      where?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
+    }
+    updateManyRuns: { // args
+      data: NexusGenInputs['RunUpdateManyMutationInput']; // RunUpdateManyMutationInput!
+      where?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
+    }
+    updateManyTests: { // args
+      data: NexusGenInputs['TestUpdateManyMutationInput']; // TestUpdateManyMutationInput!
+      where?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
+    }
+    updateManyTranslators: { // args
+      data: NexusGenInputs['TranslatorUpdateManyMutationInput']; // TranslatorUpdateManyMutationInput!
+      where?: NexusGenInputs['TranslatorWhereInput'] | null; // TranslatorWhereInput
+    }
+    updateParam: { // args
+      data: NexusGenInputs['ParamUpdateInput']; // ParamUpdateInput!
+      where: NexusGenInputs['ParamWhereUniqueInput']; // ParamWhereUniqueInput!
+    }
+    updateRun: { // args
+      data: NexusGenInputs['RunUpdateInput']; // RunUpdateInput!
+      where: NexusGenInputs['RunWhereUniqueInput']; // RunWhereUniqueInput!
+    }
+    updateTest: { // args
+      data: NexusGenInputs['TestUpdateInput']; // TestUpdateInput!
+      where: NexusGenInputs['TestWhereUniqueInput']; // TestWhereUniqueInput!
+    }
+    updateTranslator: { // args
+      data: NexusGenInputs['TranslatorUpdateInput']; // TranslatorUpdateInput!
+      where: NexusGenInputs['TranslatorWhereUniqueInput']; // TranslatorWhereUniqueInput!
+    }
+    upsertEndpoint: { // args
+      create: NexusGenInputs['EndpointCreateInput']; // EndpointCreateInput!
+      update: NexusGenInputs['EndpointUpdateInput']; // EndpointUpdateInput!
+      where: NexusGenInputs['EndpointWhereUniqueInput']; // EndpointWhereUniqueInput!
+    }
+    upsertHeader: { // args
+      create: NexusGenInputs['HeaderCreateInput']; // HeaderCreateInput!
+      update: NexusGenInputs['HeaderUpdateInput']; // HeaderUpdateInput!
+      where: NexusGenInputs['HeaderWhereUniqueInput']; // HeaderWhereUniqueInput!
+    }
+    upsertParam: { // args
+      create: NexusGenInputs['ParamCreateInput']; // ParamCreateInput!
+      update: NexusGenInputs['ParamUpdateInput']; // ParamUpdateInput!
+      where: NexusGenInputs['ParamWhereUniqueInput']; // ParamWhereUniqueInput!
+    }
+    upsertRun: { // args
+      create: NexusGenInputs['RunCreateInput']; // RunCreateInput!
+      update: NexusGenInputs['RunUpdateInput']; // RunUpdateInput!
+      where: NexusGenInputs['RunWhereUniqueInput']; // RunWhereUniqueInput!
+    }
+    upsertTest: { // args
+      create: NexusGenInputs['TestCreateInput']; // TestCreateInput!
+      update: NexusGenInputs['TestUpdateInput']; // TestUpdateInput!
+      where: NexusGenInputs['TestWhereUniqueInput']; // TestWhereUniqueInput!
+    }
+    upsertTranslator: { // args
+      create: NexusGenInputs['TranslatorCreateInput']; // TranslatorCreateInput!
+      update: NexusGenInputs['TranslatorUpdateInput']; // TranslatorUpdateInput!
+      where: NexusGenInputs['TranslatorWhereUniqueInput']; // TranslatorWhereUniqueInput!
     }
   }
   Query: {
-    user: { // args
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    endpoint: { // args
+      where: NexusGenInputs['EndpointWhereUniqueInput']; // EndpointWhereUniqueInput!
     }
-    users: { // args
+    endpoints: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['UserOrderByInput'] | null; // UserOrderByInput
+      orderBy?: NexusGenEnums['EndpointOrderByInput'] | null; // EndpointOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+      where?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
     }
-    usersConnection: { // args
+    endpointsConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['UserOrderByInput'] | null; // UserOrderByInput
+      orderBy?: NexusGenEnums['EndpointOrderByInput'] | null; // EndpointOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+      where?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    }
+    header: { // args
+      where: NexusGenInputs['HeaderWhereUniqueInput']; // HeaderWhereUniqueInput!
+    }
+    headers: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['HeaderOrderByInput'] | null; // HeaderOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
+    }
+    headersConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['HeaderOrderByInput'] | null; // HeaderOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
+    }
+    param: { // args
+      where: NexusGenInputs['ParamWhereUniqueInput']; // ParamWhereUniqueInput!
+    }
+    params: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['ParamOrderByInput'] | null; // ParamOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
+    }
+    paramsConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['ParamOrderByInput'] | null; // ParamOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
+    }
+    run: { // args
+      where: NexusGenInputs['RunWhereUniqueInput']; // RunWhereUniqueInput!
+    }
+    runs: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['RunOrderByInput'] | null; // RunOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
+    }
+    runsConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['RunOrderByInput'] | null; // RunOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
+    }
+    test: { // args
+      where: NexusGenInputs['TestWhereUniqueInput']; // TestWhereUniqueInput!
+    }
+    tests: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['TestOrderByInput'] | null; // TestOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
+    }
+    testsConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['TestOrderByInput'] | null; // TestOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
+    }
+    translator: { // args
+      where: NexusGenInputs['TranslatorWhereUniqueInput']; // TranslatorWhereUniqueInput!
+    }
+    translators: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['TranslatorOrderByInput'] | null; // TranslatorOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['TranslatorWhereInput'] | null; // TranslatorWhereInput
+    }
+    translatorsConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['TranslatorOrderByInput'] | null; // TranslatorOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['TranslatorWhereInput'] | null; // TranslatorWhereInput
+    }
+  }
+  Test: {
+    runs: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['RunOrderByInput'] | null; // RunOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
+    }
+  }
+  Translator: {
+    endpoints: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['EndpointOrderByInput'] | null; // EndpointOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
+    }
+    tests: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['TestOrderByInput'] | null; // TestOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
     }
   }
 }
@@ -222,11 +1838,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AggregateUser" | "BatchPayload" | "Mutation" | "PageInfo" | "Query" | "User" | "UserConnection" | "UserEdge";
+export type NexusGenObjectNames = "AggregateEndpoint" | "AggregateHeader" | "AggregateParam" | "AggregateRun" | "AggregateTest" | "AggregateTranslator" | "BatchPayload" | "Endpoint" | "EndpointConnection" | "EndpointEdge" | "Header" | "HeaderConnection" | "HeaderEdge" | "Mutation" | "PageInfo" | "Param" | "ParamConnection" | "ParamEdge" | "Query" | "Run" | "RunConnection" | "RunEdge" | "Test" | "TestConnection" | "TestEdge" | "Translator" | "TranslatorConnection" | "TranslatorEdge";
 
-export type NexusGenInputNames = "UserCreateInput" | "UserUpdateInput" | "UserUpdateManyMutationInput" | "UserWhereInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "EndpointCreateInput" | "EndpointCreateManyWithoutTranslatorInput" | "EndpointCreateOneWithoutHeadersInput" | "EndpointCreateOneWithoutParamsInput" | "EndpointCreateWithoutHeadersInput" | "EndpointCreateWithoutParamsInput" | "EndpointCreateWithoutTranslatorInput" | "EndpointScalarWhereInput" | "EndpointUpdateInput" | "EndpointUpdateManyDataInput" | "EndpointUpdateManyMutationInput" | "EndpointUpdateManyWithWhereNestedInput" | "EndpointUpdateManyWithoutTranslatorInput" | "EndpointUpdateOneRequiredWithoutHeadersInput" | "EndpointUpdateOneRequiredWithoutParamsInput" | "EndpointUpdateWithWhereUniqueWithoutTranslatorInput" | "EndpointUpdateWithoutHeadersDataInput" | "EndpointUpdateWithoutParamsDataInput" | "EndpointUpdateWithoutTranslatorDataInput" | "EndpointUpsertWithWhereUniqueWithoutTranslatorInput" | "EndpointUpsertWithoutHeadersInput" | "EndpointUpsertWithoutParamsInput" | "EndpointWhereInput" | "EndpointWhereUniqueInput" | "HeaderCreateInput" | "HeaderCreateManyWithoutEndpointInput" | "HeaderCreateWithoutEndpointInput" | "HeaderScalarWhereInput" | "HeaderUpdateInput" | "HeaderUpdateManyDataInput" | "HeaderUpdateManyMutationInput" | "HeaderUpdateManyWithWhereNestedInput" | "HeaderUpdateManyWithoutEndpointInput" | "HeaderUpdateWithWhereUniqueWithoutEndpointInput" | "HeaderUpdateWithoutEndpointDataInput" | "HeaderUpsertWithWhereUniqueWithoutEndpointInput" | "HeaderWhereInput" | "HeaderWhereUniqueInput" | "ParamCreateInput" | "ParamCreateManyWithoutEndpointInput" | "ParamCreateWithoutEndpointInput" | "ParamScalarWhereInput" | "ParamUpdateInput" | "ParamUpdateManyDataInput" | "ParamUpdateManyMutationInput" | "ParamUpdateManyWithWhereNestedInput" | "ParamUpdateManyWithoutEndpointInput" | "ParamUpdateWithWhereUniqueWithoutEndpointInput" | "ParamUpdateWithoutEndpointDataInput" | "ParamUpsertWithWhereUniqueWithoutEndpointInput" | "ParamWhereInput" | "ParamWhereUniqueInput" | "RunCreateInput" | "RunCreateManyWithoutTestInput" | "RunCreateWithoutTestInput" | "RunScalarWhereInput" | "RunUpdateInput" | "RunUpdateManyDataInput" | "RunUpdateManyMutationInput" | "RunUpdateManyWithWhereNestedInput" | "RunUpdateManyWithoutTestInput" | "RunUpdateWithWhereUniqueWithoutTestInput" | "RunUpdateWithoutTestDataInput" | "RunUpsertWithWhereUniqueWithoutTestInput" | "RunWhereInput" | "RunWhereUniqueInput" | "TestCreateInput" | "TestCreateManyWithoutTranslatorInput" | "TestCreateOneWithoutRunsInput" | "TestCreateWithoutRunsInput" | "TestCreateWithoutTranslatorInput" | "TestScalarWhereInput" | "TestUpdateInput" | "TestUpdateManyDataInput" | "TestUpdateManyMutationInput" | "TestUpdateManyWithWhereNestedInput" | "TestUpdateManyWithoutTranslatorInput" | "TestUpdateOneRequiredWithoutRunsInput" | "TestUpdateWithWhereUniqueWithoutTranslatorInput" | "TestUpdateWithoutRunsDataInput" | "TestUpdateWithoutTranslatorDataInput" | "TestUpsertWithWhereUniqueWithoutTranslatorInput" | "TestUpsertWithoutRunsInput" | "TestWhereInput" | "TestWhereUniqueInput" | "TranslatorCreateInput" | "TranslatorCreateOneWithoutEndpointsInput" | "TranslatorCreateOneWithoutTestsInput" | "TranslatorCreateWithoutEndpointsInput" | "TranslatorCreateWithoutTestsInput" | "TranslatorUpdateInput" | "TranslatorUpdateManyMutationInput" | "TranslatorUpdateOneRequiredWithoutEndpointsInput" | "TranslatorUpdateOneRequiredWithoutTestsInput" | "TranslatorUpdateWithoutEndpointsDataInput" | "TranslatorUpdateWithoutTestsDataInput" | "TranslatorUpsertWithoutEndpointsInput" | "TranslatorUpsertWithoutTestsInput" | "TranslatorWhereInput" | "TranslatorWhereUniqueInput";
 
-export type NexusGenEnumNames = "UserOrderByInput";
+export type NexusGenEnumNames = "EndpointOrderByInput" | "HeaderOrderByInput" | "ParamOrderByInput" | "RequestType" | "ResultType" | "RunOrderByInput" | "TestOrderByInput" | "TranslatorOrderByInput" | "TranslatorType";
 
 export type NexusGenInterfaceNames = never;
 

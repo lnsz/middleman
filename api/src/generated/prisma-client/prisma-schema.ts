@@ -2,7 +2,27 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateUser {
+export const typeDefs = /* GraphQL */ `type AggregateEndpoint {
+  count: Int!
+}
+
+type AggregateHeader {
+  count: Int!
+}
+
+type AggregateParam {
+  count: Int!
+}
+
+type AggregateRun {
+  count: Int!
+}
+
+type AggregateTest {
+  count: Int!
+}
+
+type AggregateTranslator {
   count: Int!
 }
 
@@ -10,15 +30,627 @@ type BatchPayload {
   count: Long!
 }
 
+type Endpoint {
+  id: ID!
+  translator: Translator!
+  type: RequestType!
+  url: String!
+  headers(where: HeaderWhereInput, orderBy: HeaderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Header!]
+  params(where: ParamWhereInput, orderBy: ParamOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Param!]
+  body: String
+  apiKey: String
+}
+
+type EndpointConnection {
+  pageInfo: PageInfo!
+  edges: [EndpointEdge]!
+  aggregate: AggregateEndpoint!
+}
+
+input EndpointCreateInput {
+  id: ID
+  translator: TranslatorCreateOneWithoutEndpointsInput!
+  type: RequestType!
+  url: String!
+  headers: HeaderCreateManyWithoutEndpointInput
+  params: ParamCreateManyWithoutEndpointInput
+  body: String
+  apiKey: String
+}
+
+input EndpointCreateManyWithoutTranslatorInput {
+  create: [EndpointCreateWithoutTranslatorInput!]
+  connect: [EndpointWhereUniqueInput!]
+}
+
+input EndpointCreateOneWithoutHeadersInput {
+  create: EndpointCreateWithoutHeadersInput
+  connect: EndpointWhereUniqueInput
+}
+
+input EndpointCreateOneWithoutParamsInput {
+  create: EndpointCreateWithoutParamsInput
+  connect: EndpointWhereUniqueInput
+}
+
+input EndpointCreateWithoutHeadersInput {
+  id: ID
+  translator: TranslatorCreateOneWithoutEndpointsInput!
+  type: RequestType!
+  url: String!
+  params: ParamCreateManyWithoutEndpointInput
+  body: String
+  apiKey: String
+}
+
+input EndpointCreateWithoutParamsInput {
+  id: ID
+  translator: TranslatorCreateOneWithoutEndpointsInput!
+  type: RequestType!
+  url: String!
+  headers: HeaderCreateManyWithoutEndpointInput
+  body: String
+  apiKey: String
+}
+
+input EndpointCreateWithoutTranslatorInput {
+  id: ID
+  type: RequestType!
+  url: String!
+  headers: HeaderCreateManyWithoutEndpointInput
+  params: ParamCreateManyWithoutEndpointInput
+  body: String
+  apiKey: String
+}
+
+type EndpointEdge {
+  node: Endpoint!
+  cursor: String!
+}
+
+enum EndpointOrderByInput {
+  id_ASC
+  id_DESC
+  type_ASC
+  type_DESC
+  url_ASC
+  url_DESC
+  body_ASC
+  body_DESC
+  apiKey_ASC
+  apiKey_DESC
+}
+
+type EndpointPreviousValues {
+  id: ID!
+  type: RequestType!
+  url: String!
+  body: String
+  apiKey: String
+}
+
+input EndpointScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  type: RequestType
+  type_not: RequestType
+  type_in: [RequestType!]
+  type_not_in: [RequestType!]
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  body: String
+  body_not: String
+  body_in: [String!]
+  body_not_in: [String!]
+  body_lt: String
+  body_lte: String
+  body_gt: String
+  body_gte: String
+  body_contains: String
+  body_not_contains: String
+  body_starts_with: String
+  body_not_starts_with: String
+  body_ends_with: String
+  body_not_ends_with: String
+  apiKey: String
+  apiKey_not: String
+  apiKey_in: [String!]
+  apiKey_not_in: [String!]
+  apiKey_lt: String
+  apiKey_lte: String
+  apiKey_gt: String
+  apiKey_gte: String
+  apiKey_contains: String
+  apiKey_not_contains: String
+  apiKey_starts_with: String
+  apiKey_not_starts_with: String
+  apiKey_ends_with: String
+  apiKey_not_ends_with: String
+  AND: [EndpointScalarWhereInput!]
+  OR: [EndpointScalarWhereInput!]
+  NOT: [EndpointScalarWhereInput!]
+}
+
+type EndpointSubscriptionPayload {
+  mutation: MutationType!
+  node: Endpoint
+  updatedFields: [String!]
+  previousValues: EndpointPreviousValues
+}
+
+input EndpointSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: EndpointWhereInput
+  AND: [EndpointSubscriptionWhereInput!]
+  OR: [EndpointSubscriptionWhereInput!]
+  NOT: [EndpointSubscriptionWhereInput!]
+}
+
+input EndpointUpdateInput {
+  translator: TranslatorUpdateOneRequiredWithoutEndpointsInput
+  type: RequestType
+  url: String
+  headers: HeaderUpdateManyWithoutEndpointInput
+  params: ParamUpdateManyWithoutEndpointInput
+  body: String
+  apiKey: String
+}
+
+input EndpointUpdateManyDataInput {
+  type: RequestType
+  url: String
+  body: String
+  apiKey: String
+}
+
+input EndpointUpdateManyMutationInput {
+  type: RequestType
+  url: String
+  body: String
+  apiKey: String
+}
+
+input EndpointUpdateManyWithoutTranslatorInput {
+  create: [EndpointCreateWithoutTranslatorInput!]
+  delete: [EndpointWhereUniqueInput!]
+  connect: [EndpointWhereUniqueInput!]
+  set: [EndpointWhereUniqueInput!]
+  disconnect: [EndpointWhereUniqueInput!]
+  update: [EndpointUpdateWithWhereUniqueWithoutTranslatorInput!]
+  upsert: [EndpointUpsertWithWhereUniqueWithoutTranslatorInput!]
+  deleteMany: [EndpointScalarWhereInput!]
+  updateMany: [EndpointUpdateManyWithWhereNestedInput!]
+}
+
+input EndpointUpdateManyWithWhereNestedInput {
+  where: EndpointScalarWhereInput!
+  data: EndpointUpdateManyDataInput!
+}
+
+input EndpointUpdateOneRequiredWithoutHeadersInput {
+  create: EndpointCreateWithoutHeadersInput
+  update: EndpointUpdateWithoutHeadersDataInput
+  upsert: EndpointUpsertWithoutHeadersInput
+  connect: EndpointWhereUniqueInput
+}
+
+input EndpointUpdateOneRequiredWithoutParamsInput {
+  create: EndpointCreateWithoutParamsInput
+  update: EndpointUpdateWithoutParamsDataInput
+  upsert: EndpointUpsertWithoutParamsInput
+  connect: EndpointWhereUniqueInput
+}
+
+input EndpointUpdateWithoutHeadersDataInput {
+  translator: TranslatorUpdateOneRequiredWithoutEndpointsInput
+  type: RequestType
+  url: String
+  params: ParamUpdateManyWithoutEndpointInput
+  body: String
+  apiKey: String
+}
+
+input EndpointUpdateWithoutParamsDataInput {
+  translator: TranslatorUpdateOneRequiredWithoutEndpointsInput
+  type: RequestType
+  url: String
+  headers: HeaderUpdateManyWithoutEndpointInput
+  body: String
+  apiKey: String
+}
+
+input EndpointUpdateWithoutTranslatorDataInput {
+  type: RequestType
+  url: String
+  headers: HeaderUpdateManyWithoutEndpointInput
+  params: ParamUpdateManyWithoutEndpointInput
+  body: String
+  apiKey: String
+}
+
+input EndpointUpdateWithWhereUniqueWithoutTranslatorInput {
+  where: EndpointWhereUniqueInput!
+  data: EndpointUpdateWithoutTranslatorDataInput!
+}
+
+input EndpointUpsertWithoutHeadersInput {
+  update: EndpointUpdateWithoutHeadersDataInput!
+  create: EndpointCreateWithoutHeadersInput!
+}
+
+input EndpointUpsertWithoutParamsInput {
+  update: EndpointUpdateWithoutParamsDataInput!
+  create: EndpointCreateWithoutParamsInput!
+}
+
+input EndpointUpsertWithWhereUniqueWithoutTranslatorInput {
+  where: EndpointWhereUniqueInput!
+  update: EndpointUpdateWithoutTranslatorDataInput!
+  create: EndpointCreateWithoutTranslatorInput!
+}
+
+input EndpointWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  translator: TranslatorWhereInput
+  type: RequestType
+  type_not: RequestType
+  type_in: [RequestType!]
+  type_not_in: [RequestType!]
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  headers_every: HeaderWhereInput
+  headers_some: HeaderWhereInput
+  headers_none: HeaderWhereInput
+  params_every: ParamWhereInput
+  params_some: ParamWhereInput
+  params_none: ParamWhereInput
+  body: String
+  body_not: String
+  body_in: [String!]
+  body_not_in: [String!]
+  body_lt: String
+  body_lte: String
+  body_gt: String
+  body_gte: String
+  body_contains: String
+  body_not_contains: String
+  body_starts_with: String
+  body_not_starts_with: String
+  body_ends_with: String
+  body_not_ends_with: String
+  apiKey: String
+  apiKey_not: String
+  apiKey_in: [String!]
+  apiKey_not_in: [String!]
+  apiKey_lt: String
+  apiKey_lte: String
+  apiKey_gt: String
+  apiKey_gte: String
+  apiKey_contains: String
+  apiKey_not_contains: String
+  apiKey_starts_with: String
+  apiKey_not_starts_with: String
+  apiKey_ends_with: String
+  apiKey_not_ends_with: String
+  AND: [EndpointWhereInput!]
+  OR: [EndpointWhereInput!]
+  NOT: [EndpointWhereInput!]
+}
+
+input EndpointWhereUniqueInput {
+  id: ID
+}
+
+type Header {
+  id: ID!
+  endpoint: Endpoint!
+  key: String!
+  value: String!
+}
+
+type HeaderConnection {
+  pageInfo: PageInfo!
+  edges: [HeaderEdge]!
+  aggregate: AggregateHeader!
+}
+
+input HeaderCreateInput {
+  id: ID
+  endpoint: EndpointCreateOneWithoutHeadersInput!
+  key: String!
+  value: String!
+}
+
+input HeaderCreateManyWithoutEndpointInput {
+  create: [HeaderCreateWithoutEndpointInput!]
+  connect: [HeaderWhereUniqueInput!]
+}
+
+input HeaderCreateWithoutEndpointInput {
+  id: ID
+  key: String!
+  value: String!
+}
+
+type HeaderEdge {
+  node: Header!
+  cursor: String!
+}
+
+enum HeaderOrderByInput {
+  id_ASC
+  id_DESC
+  key_ASC
+  key_DESC
+  value_ASC
+  value_DESC
+}
+
+type HeaderPreviousValues {
+  id: ID!
+  key: String!
+  value: String!
+}
+
+input HeaderScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  key: String
+  key_not: String
+  key_in: [String!]
+  key_not_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_gt: String
+  key_gte: String
+  key_contains: String
+  key_not_contains: String
+  key_starts_with: String
+  key_not_starts_with: String
+  key_ends_with: String
+  key_not_ends_with: String
+  value: String
+  value_not: String
+  value_in: [String!]
+  value_not_in: [String!]
+  value_lt: String
+  value_lte: String
+  value_gt: String
+  value_gte: String
+  value_contains: String
+  value_not_contains: String
+  value_starts_with: String
+  value_not_starts_with: String
+  value_ends_with: String
+  value_not_ends_with: String
+  AND: [HeaderScalarWhereInput!]
+  OR: [HeaderScalarWhereInput!]
+  NOT: [HeaderScalarWhereInput!]
+}
+
+type HeaderSubscriptionPayload {
+  mutation: MutationType!
+  node: Header
+  updatedFields: [String!]
+  previousValues: HeaderPreviousValues
+}
+
+input HeaderSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: HeaderWhereInput
+  AND: [HeaderSubscriptionWhereInput!]
+  OR: [HeaderSubscriptionWhereInput!]
+  NOT: [HeaderSubscriptionWhereInput!]
+}
+
+input HeaderUpdateInput {
+  endpoint: EndpointUpdateOneRequiredWithoutHeadersInput
+  key: String
+  value: String
+}
+
+input HeaderUpdateManyDataInput {
+  key: String
+  value: String
+}
+
+input HeaderUpdateManyMutationInput {
+  key: String
+  value: String
+}
+
+input HeaderUpdateManyWithoutEndpointInput {
+  create: [HeaderCreateWithoutEndpointInput!]
+  delete: [HeaderWhereUniqueInput!]
+  connect: [HeaderWhereUniqueInput!]
+  set: [HeaderWhereUniqueInput!]
+  disconnect: [HeaderWhereUniqueInput!]
+  update: [HeaderUpdateWithWhereUniqueWithoutEndpointInput!]
+  upsert: [HeaderUpsertWithWhereUniqueWithoutEndpointInput!]
+  deleteMany: [HeaderScalarWhereInput!]
+  updateMany: [HeaderUpdateManyWithWhereNestedInput!]
+}
+
+input HeaderUpdateManyWithWhereNestedInput {
+  where: HeaderScalarWhereInput!
+  data: HeaderUpdateManyDataInput!
+}
+
+input HeaderUpdateWithoutEndpointDataInput {
+  key: String
+  value: String
+}
+
+input HeaderUpdateWithWhereUniqueWithoutEndpointInput {
+  where: HeaderWhereUniqueInput!
+  data: HeaderUpdateWithoutEndpointDataInput!
+}
+
+input HeaderUpsertWithWhereUniqueWithoutEndpointInput {
+  where: HeaderWhereUniqueInput!
+  update: HeaderUpdateWithoutEndpointDataInput!
+  create: HeaderCreateWithoutEndpointInput!
+}
+
+input HeaderWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  endpoint: EndpointWhereInput
+  key: String
+  key_not: String
+  key_in: [String!]
+  key_not_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_gt: String
+  key_gte: String
+  key_contains: String
+  key_not_contains: String
+  key_starts_with: String
+  key_not_starts_with: String
+  key_ends_with: String
+  key_not_ends_with: String
+  value: String
+  value_not: String
+  value_in: [String!]
+  value_not_in: [String!]
+  value_lt: String
+  value_lte: String
+  value_gt: String
+  value_gte: String
+  value_contains: String
+  value_not_contains: String
+  value_starts_with: String
+  value_not_starts_with: String
+  value_ends_with: String
+  value_not_ends_with: String
+  AND: [HeaderWhereInput!]
+  OR: [HeaderWhereInput!]
+  NOT: [HeaderWhereInput!]
+}
+
+input HeaderWhereUniqueInput {
+  id: ID
+}
+
 scalar Long
 
 type Mutation {
-  createUser(data: UserCreateInput!): User!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  createEndpoint(data: EndpointCreateInput!): Endpoint!
+  updateEndpoint(data: EndpointUpdateInput!, where: EndpointWhereUniqueInput!): Endpoint
+  updateManyEndpoints(data: EndpointUpdateManyMutationInput!, where: EndpointWhereInput): BatchPayload!
+  upsertEndpoint(where: EndpointWhereUniqueInput!, create: EndpointCreateInput!, update: EndpointUpdateInput!): Endpoint!
+  deleteEndpoint(where: EndpointWhereUniqueInput!): Endpoint
+  deleteManyEndpoints(where: EndpointWhereInput): BatchPayload!
+  createHeader(data: HeaderCreateInput!): Header!
+  updateHeader(data: HeaderUpdateInput!, where: HeaderWhereUniqueInput!): Header
+  updateManyHeaders(data: HeaderUpdateManyMutationInput!, where: HeaderWhereInput): BatchPayload!
+  upsertHeader(where: HeaderWhereUniqueInput!, create: HeaderCreateInput!, update: HeaderUpdateInput!): Header!
+  deleteHeader(where: HeaderWhereUniqueInput!): Header
+  deleteManyHeaders(where: HeaderWhereInput): BatchPayload!
+  createParam(data: ParamCreateInput!): Param!
+  updateParam(data: ParamUpdateInput!, where: ParamWhereUniqueInput!): Param
+  updateManyParams(data: ParamUpdateManyMutationInput!, where: ParamWhereInput): BatchPayload!
+  upsertParam(where: ParamWhereUniqueInput!, create: ParamCreateInput!, update: ParamUpdateInput!): Param!
+  deleteParam(where: ParamWhereUniqueInput!): Param
+  deleteManyParams(where: ParamWhereInput): BatchPayload!
+  createRun(data: RunCreateInput!): Run!
+  updateRun(data: RunUpdateInput!, where: RunWhereUniqueInput!): Run
+  updateManyRuns(data: RunUpdateManyMutationInput!, where: RunWhereInput): BatchPayload!
+  upsertRun(where: RunWhereUniqueInput!, create: RunCreateInput!, update: RunUpdateInput!): Run!
+  deleteRun(where: RunWhereUniqueInput!): Run
+  deleteManyRuns(where: RunWhereInput): BatchPayload!
+  createTest(data: TestCreateInput!): Test!
+  updateTest(data: TestUpdateInput!, where: TestWhereUniqueInput!): Test
+  updateManyTests(data: TestUpdateManyMutationInput!, where: TestWhereInput): BatchPayload!
+  upsertTest(where: TestWhereUniqueInput!, create: TestCreateInput!, update: TestUpdateInput!): Test!
+  deleteTest(where: TestWhereUniqueInput!): Test
+  deleteManyTests(where: TestWhereInput): BatchPayload!
+  createTranslator(data: TranslatorCreateInput!): Translator!
+  updateTranslator(data: TranslatorUpdateInput!, where: TranslatorWhereUniqueInput!): Translator
+  updateManyTranslators(data: TranslatorUpdateManyMutationInput!, where: TranslatorWhereInput): BatchPayload!
+  upsertTranslator(where: TranslatorWhereUniqueInput!, create: TranslatorCreateInput!, update: TranslatorUpdateInput!): Translator!
+  deleteTranslator(where: TranslatorWhereUniqueInput!): Translator
+  deleteManyTranslators(where: TranslatorWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -38,84 +670,58 @@ type PageInfo {
   endCursor: String
 }
 
-type Query {
-  user(where: UserWhereUniqueInput!): User
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  node(id: ID!): Node
-}
-
-type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-}
-
-type User {
+type Param {
   id: ID!
-  name: String!
-  email: String
+  endpoint: Endpoint!
+  key: String!
+  value: String!
 }
 
-type UserConnection {
+type ParamConnection {
   pageInfo: PageInfo!
-  edges: [UserEdge]!
-  aggregate: AggregateUser!
+  edges: [ParamEdge]!
+  aggregate: AggregateParam!
 }
 
-input UserCreateInput {
+input ParamCreateInput {
   id: ID
-  name: String!
-  email: String
+  endpoint: EndpointCreateOneWithoutParamsInput!
+  key: String!
+  value: String!
 }
 
-type UserEdge {
-  node: User!
+input ParamCreateManyWithoutEndpointInput {
+  create: [ParamCreateWithoutEndpointInput!]
+  connect: [ParamWhereUniqueInput!]
+}
+
+input ParamCreateWithoutEndpointInput {
+  id: ID
+  key: String!
+  value: String!
+}
+
+type ParamEdge {
+  node: Param!
   cursor: String!
 }
 
-enum UserOrderByInput {
+enum ParamOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
-  email_ASC
-  email_DESC
+  key_ASC
+  key_DESC
+  value_ASC
+  value_DESC
 }
 
-type UserPreviousValues {
+type ParamPreviousValues {
   id: ID!
-  name: String!
-  email: String
+  key: String!
+  value: String!
 }
 
-type UserSubscriptionPayload {
-  mutation: MutationType!
-  node: User
-  updatedFields: [String!]
-  previousValues: UserPreviousValues
-}
-
-input UserSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: UserWhereInput
-  AND: [UserSubscriptionWhereInput!]
-  OR: [UserSubscriptionWhereInput!]
-  NOT: [UserSubscriptionWhereInput!]
-}
-
-input UserUpdateInput {
-  name: String
-  email: String
-}
-
-input UserUpdateManyMutationInput {
-  name: String
-  email: String
-}
-
-input UserWhereInput {
+input ParamScalarWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -130,40 +736,903 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  AND: [UserWhereInput!]
-  OR: [UserWhereInput!]
-  NOT: [UserWhereInput!]
+  key: String
+  key_not: String
+  key_in: [String!]
+  key_not_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_gt: String
+  key_gte: String
+  key_contains: String
+  key_not_contains: String
+  key_starts_with: String
+  key_not_starts_with: String
+  key_ends_with: String
+  key_not_ends_with: String
+  value: String
+  value_not: String
+  value_in: [String!]
+  value_not_in: [String!]
+  value_lt: String
+  value_lte: String
+  value_gt: String
+  value_gte: String
+  value_contains: String
+  value_not_contains: String
+  value_starts_with: String
+  value_not_starts_with: String
+  value_ends_with: String
+  value_not_ends_with: String
+  AND: [ParamScalarWhereInput!]
+  OR: [ParamScalarWhereInput!]
+  NOT: [ParamScalarWhereInput!]
 }
 
-input UserWhereUniqueInput {
+type ParamSubscriptionPayload {
+  mutation: MutationType!
+  node: Param
+  updatedFields: [String!]
+  previousValues: ParamPreviousValues
+}
+
+input ParamSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ParamWhereInput
+  AND: [ParamSubscriptionWhereInput!]
+  OR: [ParamSubscriptionWhereInput!]
+  NOT: [ParamSubscriptionWhereInput!]
+}
+
+input ParamUpdateInput {
+  endpoint: EndpointUpdateOneRequiredWithoutParamsInput
+  key: String
+  value: String
+}
+
+input ParamUpdateManyDataInput {
+  key: String
+  value: String
+}
+
+input ParamUpdateManyMutationInput {
+  key: String
+  value: String
+}
+
+input ParamUpdateManyWithoutEndpointInput {
+  create: [ParamCreateWithoutEndpointInput!]
+  delete: [ParamWhereUniqueInput!]
+  connect: [ParamWhereUniqueInput!]
+  set: [ParamWhereUniqueInput!]
+  disconnect: [ParamWhereUniqueInput!]
+  update: [ParamUpdateWithWhereUniqueWithoutEndpointInput!]
+  upsert: [ParamUpsertWithWhereUniqueWithoutEndpointInput!]
+  deleteMany: [ParamScalarWhereInput!]
+  updateMany: [ParamUpdateManyWithWhereNestedInput!]
+}
+
+input ParamUpdateManyWithWhereNestedInput {
+  where: ParamScalarWhereInput!
+  data: ParamUpdateManyDataInput!
+}
+
+input ParamUpdateWithoutEndpointDataInput {
+  key: String
+  value: String
+}
+
+input ParamUpdateWithWhereUniqueWithoutEndpointInput {
+  where: ParamWhereUniqueInput!
+  data: ParamUpdateWithoutEndpointDataInput!
+}
+
+input ParamUpsertWithWhereUniqueWithoutEndpointInput {
+  where: ParamWhereUniqueInput!
+  update: ParamUpdateWithoutEndpointDataInput!
+  create: ParamCreateWithoutEndpointInput!
+}
+
+input ParamWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  endpoint: EndpointWhereInput
+  key: String
+  key_not: String
+  key_in: [String!]
+  key_not_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_gt: String
+  key_gte: String
+  key_contains: String
+  key_not_contains: String
+  key_starts_with: String
+  key_not_starts_with: String
+  key_ends_with: String
+  key_not_ends_with: String
+  value: String
+  value_not: String
+  value_in: [String!]
+  value_not_in: [String!]
+  value_lt: String
+  value_lte: String
+  value_gt: String
+  value_gte: String
+  value_contains: String
+  value_not_contains: String
+  value_starts_with: String
+  value_not_starts_with: String
+  value_ends_with: String
+  value_not_ends_with: String
+  AND: [ParamWhereInput!]
+  OR: [ParamWhereInput!]
+  NOT: [ParamWhereInput!]
+}
+
+input ParamWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  endpoint(where: EndpointWhereUniqueInput!): Endpoint
+  endpoints(where: EndpointWhereInput, orderBy: EndpointOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Endpoint]!
+  endpointsConnection(where: EndpointWhereInput, orderBy: EndpointOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EndpointConnection!
+  header(where: HeaderWhereUniqueInput!): Header
+  headers(where: HeaderWhereInput, orderBy: HeaderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Header]!
+  headersConnection(where: HeaderWhereInput, orderBy: HeaderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HeaderConnection!
+  param(where: ParamWhereUniqueInput!): Param
+  params(where: ParamWhereInput, orderBy: ParamOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Param]!
+  paramsConnection(where: ParamWhereInput, orderBy: ParamOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ParamConnection!
+  run(where: RunWhereUniqueInput!): Run
+  runs(where: RunWhereInput, orderBy: RunOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Run]!
+  runsConnection(where: RunWhereInput, orderBy: RunOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RunConnection!
+  test(where: TestWhereUniqueInput!): Test
+  tests(where: TestWhereInput, orderBy: TestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Test]!
+  testsConnection(where: TestWhereInput, orderBy: TestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TestConnection!
+  translator(where: TranslatorWhereUniqueInput!): Translator
+  translators(where: TranslatorWhereInput, orderBy: TranslatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Translator]!
+  translatorsConnection(where: TranslatorWhereInput, orderBy: TranslatorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TranslatorConnection!
+  node(id: ID!): Node
+}
+
+enum RequestType {
+  GET
+  POST
+  PUT
+  DELETE
+}
+
+enum ResultType {
+  Pass
+  Fail
+}
+
+type Run {
+  id: ID!
+  test: Test!
+  expected: String!
+  actual: String!
+  result: ResultType!
+}
+
+type RunConnection {
+  pageInfo: PageInfo!
+  edges: [RunEdge]!
+  aggregate: AggregateRun!
+}
+
+input RunCreateInput {
+  id: ID
+  test: TestCreateOneWithoutRunsInput!
+  expected: String!
+  actual: String!
+  result: ResultType!
+}
+
+input RunCreateManyWithoutTestInput {
+  create: [RunCreateWithoutTestInput!]
+  connect: [RunWhereUniqueInput!]
+}
+
+input RunCreateWithoutTestInput {
+  id: ID
+  expected: String!
+  actual: String!
+  result: ResultType!
+}
+
+type RunEdge {
+  node: Run!
+  cursor: String!
+}
+
+enum RunOrderByInput {
+  id_ASC
+  id_DESC
+  expected_ASC
+  expected_DESC
+  actual_ASC
+  actual_DESC
+  result_ASC
+  result_DESC
+}
+
+type RunPreviousValues {
+  id: ID!
+  expected: String!
+  actual: String!
+  result: ResultType!
+}
+
+input RunScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  expected: String
+  expected_not: String
+  expected_in: [String!]
+  expected_not_in: [String!]
+  expected_lt: String
+  expected_lte: String
+  expected_gt: String
+  expected_gte: String
+  expected_contains: String
+  expected_not_contains: String
+  expected_starts_with: String
+  expected_not_starts_with: String
+  expected_ends_with: String
+  expected_not_ends_with: String
+  actual: String
+  actual_not: String
+  actual_in: [String!]
+  actual_not_in: [String!]
+  actual_lt: String
+  actual_lte: String
+  actual_gt: String
+  actual_gte: String
+  actual_contains: String
+  actual_not_contains: String
+  actual_starts_with: String
+  actual_not_starts_with: String
+  actual_ends_with: String
+  actual_not_ends_with: String
+  result: ResultType
+  result_not: ResultType
+  result_in: [ResultType!]
+  result_not_in: [ResultType!]
+  AND: [RunScalarWhereInput!]
+  OR: [RunScalarWhereInput!]
+  NOT: [RunScalarWhereInput!]
+}
+
+type RunSubscriptionPayload {
+  mutation: MutationType!
+  node: Run
+  updatedFields: [String!]
+  previousValues: RunPreviousValues
+}
+
+input RunSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: RunWhereInput
+  AND: [RunSubscriptionWhereInput!]
+  OR: [RunSubscriptionWhereInput!]
+  NOT: [RunSubscriptionWhereInput!]
+}
+
+input RunUpdateInput {
+  test: TestUpdateOneRequiredWithoutRunsInput
+  expected: String
+  actual: String
+  result: ResultType
+}
+
+input RunUpdateManyDataInput {
+  expected: String
+  actual: String
+  result: ResultType
+}
+
+input RunUpdateManyMutationInput {
+  expected: String
+  actual: String
+  result: ResultType
+}
+
+input RunUpdateManyWithoutTestInput {
+  create: [RunCreateWithoutTestInput!]
+  delete: [RunWhereUniqueInput!]
+  connect: [RunWhereUniqueInput!]
+  set: [RunWhereUniqueInput!]
+  disconnect: [RunWhereUniqueInput!]
+  update: [RunUpdateWithWhereUniqueWithoutTestInput!]
+  upsert: [RunUpsertWithWhereUniqueWithoutTestInput!]
+  deleteMany: [RunScalarWhereInput!]
+  updateMany: [RunUpdateManyWithWhereNestedInput!]
+}
+
+input RunUpdateManyWithWhereNestedInput {
+  where: RunScalarWhereInput!
+  data: RunUpdateManyDataInput!
+}
+
+input RunUpdateWithoutTestDataInput {
+  expected: String
+  actual: String
+  result: ResultType
+}
+
+input RunUpdateWithWhereUniqueWithoutTestInput {
+  where: RunWhereUniqueInput!
+  data: RunUpdateWithoutTestDataInput!
+}
+
+input RunUpsertWithWhereUniqueWithoutTestInput {
+  where: RunWhereUniqueInput!
+  update: RunUpdateWithoutTestDataInput!
+  create: RunCreateWithoutTestInput!
+}
+
+input RunWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  test: TestWhereInput
+  expected: String
+  expected_not: String
+  expected_in: [String!]
+  expected_not_in: [String!]
+  expected_lt: String
+  expected_lte: String
+  expected_gt: String
+  expected_gte: String
+  expected_contains: String
+  expected_not_contains: String
+  expected_starts_with: String
+  expected_not_starts_with: String
+  expected_ends_with: String
+  expected_not_ends_with: String
+  actual: String
+  actual_not: String
+  actual_in: [String!]
+  actual_not_in: [String!]
+  actual_lt: String
+  actual_lte: String
+  actual_gt: String
+  actual_gte: String
+  actual_contains: String
+  actual_not_contains: String
+  actual_starts_with: String
+  actual_not_starts_with: String
+  actual_ends_with: String
+  actual_not_ends_with: String
+  result: ResultType
+  result_not: ResultType
+  result_in: [ResultType!]
+  result_not_in: [ResultType!]
+  AND: [RunWhereInput!]
+  OR: [RunWhereInput!]
+  NOT: [RunWhereInput!]
+}
+
+input RunWhereUniqueInput {
+  id: ID
+}
+
+type Subscription {
+  endpoint(where: EndpointSubscriptionWhereInput): EndpointSubscriptionPayload
+  header(where: HeaderSubscriptionWhereInput): HeaderSubscriptionPayload
+  param(where: ParamSubscriptionWhereInput): ParamSubscriptionPayload
+  run(where: RunSubscriptionWhereInput): RunSubscriptionPayload
+  test(where: TestSubscriptionWhereInput): TestSubscriptionPayload
+  translator(where: TranslatorSubscriptionWhereInput): TranslatorSubscriptionPayload
+}
+
+type Test {
+  id: ID!
+  translator: Translator!
+  request: String!
+  expected: String!
+  runs(where: RunWhereInput, orderBy: RunOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Run!]
+}
+
+type TestConnection {
+  pageInfo: PageInfo!
+  edges: [TestEdge]!
+  aggregate: AggregateTest!
+}
+
+input TestCreateInput {
+  id: ID
+  translator: TranslatorCreateOneWithoutTestsInput!
+  request: String!
+  expected: String!
+  runs: RunCreateManyWithoutTestInput
+}
+
+input TestCreateManyWithoutTranslatorInput {
+  create: [TestCreateWithoutTranslatorInput!]
+  connect: [TestWhereUniqueInput!]
+}
+
+input TestCreateOneWithoutRunsInput {
+  create: TestCreateWithoutRunsInput
+  connect: TestWhereUniqueInput
+}
+
+input TestCreateWithoutRunsInput {
+  id: ID
+  translator: TranslatorCreateOneWithoutTestsInput!
+  request: String!
+  expected: String!
+}
+
+input TestCreateWithoutTranslatorInput {
+  id: ID
+  request: String!
+  expected: String!
+  runs: RunCreateManyWithoutTestInput
+}
+
+type TestEdge {
+  node: Test!
+  cursor: String!
+}
+
+enum TestOrderByInput {
+  id_ASC
+  id_DESC
+  request_ASC
+  request_DESC
+  expected_ASC
+  expected_DESC
+}
+
+type TestPreviousValues {
+  id: ID!
+  request: String!
+  expected: String!
+}
+
+input TestScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  request: String
+  request_not: String
+  request_in: [String!]
+  request_not_in: [String!]
+  request_lt: String
+  request_lte: String
+  request_gt: String
+  request_gte: String
+  request_contains: String
+  request_not_contains: String
+  request_starts_with: String
+  request_not_starts_with: String
+  request_ends_with: String
+  request_not_ends_with: String
+  expected: String
+  expected_not: String
+  expected_in: [String!]
+  expected_not_in: [String!]
+  expected_lt: String
+  expected_lte: String
+  expected_gt: String
+  expected_gte: String
+  expected_contains: String
+  expected_not_contains: String
+  expected_starts_with: String
+  expected_not_starts_with: String
+  expected_ends_with: String
+  expected_not_ends_with: String
+  AND: [TestScalarWhereInput!]
+  OR: [TestScalarWhereInput!]
+  NOT: [TestScalarWhereInput!]
+}
+
+type TestSubscriptionPayload {
+  mutation: MutationType!
+  node: Test
+  updatedFields: [String!]
+  previousValues: TestPreviousValues
+}
+
+input TestSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TestWhereInput
+  AND: [TestSubscriptionWhereInput!]
+  OR: [TestSubscriptionWhereInput!]
+  NOT: [TestSubscriptionWhereInput!]
+}
+
+input TestUpdateInput {
+  translator: TranslatorUpdateOneRequiredWithoutTestsInput
+  request: String
+  expected: String
+  runs: RunUpdateManyWithoutTestInput
+}
+
+input TestUpdateManyDataInput {
+  request: String
+  expected: String
+}
+
+input TestUpdateManyMutationInput {
+  request: String
+  expected: String
+}
+
+input TestUpdateManyWithoutTranslatorInput {
+  create: [TestCreateWithoutTranslatorInput!]
+  delete: [TestWhereUniqueInput!]
+  connect: [TestWhereUniqueInput!]
+  set: [TestWhereUniqueInput!]
+  disconnect: [TestWhereUniqueInput!]
+  update: [TestUpdateWithWhereUniqueWithoutTranslatorInput!]
+  upsert: [TestUpsertWithWhereUniqueWithoutTranslatorInput!]
+  deleteMany: [TestScalarWhereInput!]
+  updateMany: [TestUpdateManyWithWhereNestedInput!]
+}
+
+input TestUpdateManyWithWhereNestedInput {
+  where: TestScalarWhereInput!
+  data: TestUpdateManyDataInput!
+}
+
+input TestUpdateOneRequiredWithoutRunsInput {
+  create: TestCreateWithoutRunsInput
+  update: TestUpdateWithoutRunsDataInput
+  upsert: TestUpsertWithoutRunsInput
+  connect: TestWhereUniqueInput
+}
+
+input TestUpdateWithoutRunsDataInput {
+  translator: TranslatorUpdateOneRequiredWithoutTestsInput
+  request: String
+  expected: String
+}
+
+input TestUpdateWithoutTranslatorDataInput {
+  request: String
+  expected: String
+  runs: RunUpdateManyWithoutTestInput
+}
+
+input TestUpdateWithWhereUniqueWithoutTranslatorInput {
+  where: TestWhereUniqueInput!
+  data: TestUpdateWithoutTranslatorDataInput!
+}
+
+input TestUpsertWithoutRunsInput {
+  update: TestUpdateWithoutRunsDataInput!
+  create: TestCreateWithoutRunsInput!
+}
+
+input TestUpsertWithWhereUniqueWithoutTranslatorInput {
+  where: TestWhereUniqueInput!
+  update: TestUpdateWithoutTranslatorDataInput!
+  create: TestCreateWithoutTranslatorInput!
+}
+
+input TestWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  translator: TranslatorWhereInput
+  request: String
+  request_not: String
+  request_in: [String!]
+  request_not_in: [String!]
+  request_lt: String
+  request_lte: String
+  request_gt: String
+  request_gte: String
+  request_contains: String
+  request_not_contains: String
+  request_starts_with: String
+  request_not_starts_with: String
+  request_ends_with: String
+  request_not_ends_with: String
+  expected: String
+  expected_not: String
+  expected_in: [String!]
+  expected_not_in: [String!]
+  expected_lt: String
+  expected_lte: String
+  expected_gt: String
+  expected_gte: String
+  expected_contains: String
+  expected_not_contains: String
+  expected_starts_with: String
+  expected_not_starts_with: String
+  expected_ends_with: String
+  expected_not_ends_with: String
+  runs_every: RunWhereInput
+  runs_some: RunWhereInput
+  runs_none: RunWhereInput
+  AND: [TestWhereInput!]
+  OR: [TestWhereInput!]
+  NOT: [TestWhereInput!]
+}
+
+input TestWhereUniqueInput {
+  id: ID
+}
+
+type Translator {
+  id: ID!
+  type: TranslatorType!
+  endpoints(where: EndpointWhereInput, orderBy: EndpointOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Endpoint!]
+  requestFunction: String
+  responseFunction: String
+  tests(where: TestWhereInput, orderBy: TestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Test!]
+}
+
+type TranslatorConnection {
+  pageInfo: PageInfo!
+  edges: [TranslatorEdge]!
+  aggregate: AggregateTranslator!
+}
+
+input TranslatorCreateInput {
+  id: ID
+  type: TranslatorType!
+  endpoints: EndpointCreateManyWithoutTranslatorInput
+  requestFunction: String
+  responseFunction: String
+  tests: TestCreateManyWithoutTranslatorInput
+}
+
+input TranslatorCreateOneWithoutEndpointsInput {
+  create: TranslatorCreateWithoutEndpointsInput
+  connect: TranslatorWhereUniqueInput
+}
+
+input TranslatorCreateOneWithoutTestsInput {
+  create: TranslatorCreateWithoutTestsInput
+  connect: TranslatorWhereUniqueInput
+}
+
+input TranslatorCreateWithoutEndpointsInput {
+  id: ID
+  type: TranslatorType!
+  requestFunction: String
+  responseFunction: String
+  tests: TestCreateManyWithoutTranslatorInput
+}
+
+input TranslatorCreateWithoutTestsInput {
+  id: ID
+  type: TranslatorType!
+  endpoints: EndpointCreateManyWithoutTranslatorInput
+  requestFunction: String
+  responseFunction: String
+}
+
+type TranslatorEdge {
+  node: Translator!
+  cursor: String!
+}
+
+enum TranslatorOrderByInput {
+  id_ASC
+  id_DESC
+  type_ASC
+  type_DESC
+  requestFunction_ASC
+  requestFunction_DESC
+  responseFunction_ASC
+  responseFunction_DESC
+}
+
+type TranslatorPreviousValues {
+  id: ID!
+  type: TranslatorType!
+  requestFunction: String
+  responseFunction: String
+}
+
+type TranslatorSubscriptionPayload {
+  mutation: MutationType!
+  node: Translator
+  updatedFields: [String!]
+  previousValues: TranslatorPreviousValues
+}
+
+input TranslatorSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TranslatorWhereInput
+  AND: [TranslatorSubscriptionWhereInput!]
+  OR: [TranslatorSubscriptionWhereInput!]
+  NOT: [TranslatorSubscriptionWhereInput!]
+}
+
+enum TranslatorType {
+  Request
+  Response
+}
+
+input TranslatorUpdateInput {
+  type: TranslatorType
+  endpoints: EndpointUpdateManyWithoutTranslatorInput
+  requestFunction: String
+  responseFunction: String
+  tests: TestUpdateManyWithoutTranslatorInput
+}
+
+input TranslatorUpdateManyMutationInput {
+  type: TranslatorType
+  requestFunction: String
+  responseFunction: String
+}
+
+input TranslatorUpdateOneRequiredWithoutEndpointsInput {
+  create: TranslatorCreateWithoutEndpointsInput
+  update: TranslatorUpdateWithoutEndpointsDataInput
+  upsert: TranslatorUpsertWithoutEndpointsInput
+  connect: TranslatorWhereUniqueInput
+}
+
+input TranslatorUpdateOneRequiredWithoutTestsInput {
+  create: TranslatorCreateWithoutTestsInput
+  update: TranslatorUpdateWithoutTestsDataInput
+  upsert: TranslatorUpsertWithoutTestsInput
+  connect: TranslatorWhereUniqueInput
+}
+
+input TranslatorUpdateWithoutEndpointsDataInput {
+  type: TranslatorType
+  requestFunction: String
+  responseFunction: String
+  tests: TestUpdateManyWithoutTranslatorInput
+}
+
+input TranslatorUpdateWithoutTestsDataInput {
+  type: TranslatorType
+  endpoints: EndpointUpdateManyWithoutTranslatorInput
+  requestFunction: String
+  responseFunction: String
+}
+
+input TranslatorUpsertWithoutEndpointsInput {
+  update: TranslatorUpdateWithoutEndpointsDataInput!
+  create: TranslatorCreateWithoutEndpointsInput!
+}
+
+input TranslatorUpsertWithoutTestsInput {
+  update: TranslatorUpdateWithoutTestsDataInput!
+  create: TranslatorCreateWithoutTestsInput!
+}
+
+input TranslatorWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  type: TranslatorType
+  type_not: TranslatorType
+  type_in: [TranslatorType!]
+  type_not_in: [TranslatorType!]
+  endpoints_every: EndpointWhereInput
+  endpoints_some: EndpointWhereInput
+  endpoints_none: EndpointWhereInput
+  requestFunction: String
+  requestFunction_not: String
+  requestFunction_in: [String!]
+  requestFunction_not_in: [String!]
+  requestFunction_lt: String
+  requestFunction_lte: String
+  requestFunction_gt: String
+  requestFunction_gte: String
+  requestFunction_contains: String
+  requestFunction_not_contains: String
+  requestFunction_starts_with: String
+  requestFunction_not_starts_with: String
+  requestFunction_ends_with: String
+  requestFunction_not_ends_with: String
+  responseFunction: String
+  responseFunction_not: String
+  responseFunction_in: [String!]
+  responseFunction_not_in: [String!]
+  responseFunction_lt: String
+  responseFunction_lte: String
+  responseFunction_gt: String
+  responseFunction_gte: String
+  responseFunction_contains: String
+  responseFunction_not_contains: String
+  responseFunction_starts_with: String
+  responseFunction_not_starts_with: String
+  responseFunction_ends_with: String
+  responseFunction_not_ends_with: String
+  tests_every: TestWhereInput
+  tests_some: TestWhereInput
+  tests_none: TestWhereInput
+  AND: [TranslatorWhereInput!]
+  OR: [TranslatorWhereInput!]
+  NOT: [TranslatorWhereInput!]
+}
+
+input TranslatorWhereUniqueInput {
   id: ID
 }
 `

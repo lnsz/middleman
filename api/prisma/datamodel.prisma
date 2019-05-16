@@ -1,5 +1,61 @@
-type User {
-  id: ID! @id
-  name: String!,
-  email: String
+type Translator {
+  id: ID! @id,
+  type: TranslatorType!,
+  endpoints: [Endpoint]!,
+  requestFunction: String,
+  responseFunction: String,
+  tests: [Test]
+}
+
+type Endpoint {
+  id: ID! @id,
+  translator: Translator! @relation(link: INLINE),
+  type: RequestType!,
+  url: String!,
+  headers: [Header],
+  params: [Param],
+  body: String,
+  apiKey: String
+}
+
+type Param {
+  id: ID! @id,
+  endpoint: Endpoint! @relations(link: INLINE),
+  key: String!,
+  value: String!
+}
+
+type Header {
+  id: ID! @id,
+  endpoint: Endpoint! @relation(link: INLINE)
+  key: String!,
+  value: String!
+}
+
+type Test {
+  id: ID! @id,
+  translator: Translator! @relation(link: INLINE),
+  request: String!,
+  expected: String!,
+  runs: [Run]
+}
+
+type Run {
+  id: ID! @id,
+  test: Test! @relation(link: INLINE),
+  expected: String!,
+  actual: String!,
+  result: ResultType!
+}
+
+enum RequestType {
+  GET, POST, PUT, DELETE
+}
+
+enum TranslatorType {
+  Request, Response
+}
+
+enum ResultType {
+  Pass, Fail
 }

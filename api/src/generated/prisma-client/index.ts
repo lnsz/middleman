@@ -16,7 +16,12 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  endpoint: (where?: EndpointWhereInput) => Promise<boolean>;
+  header: (where?: HeaderWhereInput) => Promise<boolean>;
+  param: (where?: ParamWhereInput) => Promise<boolean>;
+  run: (where?: RunWhereInput) => Promise<boolean>;
+  test: (where?: TestWhereInput) => Promise<boolean>;
+  translator: (where?: TranslatorWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -38,47 +43,222 @@ export interface Prisma {
    * Queries
    */
 
-  user: (where: UserWhereUniqueInput) => UserNullablePromise;
-  users: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  endpoint: (where: EndpointWhereUniqueInput) => EndpointNullablePromise;
+  endpoints: (args?: {
+    where?: EndpointWhereInput;
+    orderBy?: EndpointOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<User>;
-  usersConnection: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  }) => FragmentableArray<Endpoint>;
+  endpointsConnection: (args?: {
+    where?: EndpointWhereInput;
+    orderBy?: EndpointOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => UserConnectionPromise;
+  }) => EndpointConnectionPromise;
+  header: (where: HeaderWhereUniqueInput) => HeaderNullablePromise;
+  headers: (args?: {
+    where?: HeaderWhereInput;
+    orderBy?: HeaderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Header>;
+  headersConnection: (args?: {
+    where?: HeaderWhereInput;
+    orderBy?: HeaderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => HeaderConnectionPromise;
+  param: (where: ParamWhereUniqueInput) => ParamNullablePromise;
+  params: (args?: {
+    where?: ParamWhereInput;
+    orderBy?: ParamOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Param>;
+  paramsConnection: (args?: {
+    where?: ParamWhereInput;
+    orderBy?: ParamOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => ParamConnectionPromise;
+  run: (where: RunWhereUniqueInput) => RunNullablePromise;
+  runs: (args?: {
+    where?: RunWhereInput;
+    orderBy?: RunOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Run>;
+  runsConnection: (args?: {
+    where?: RunWhereInput;
+    orderBy?: RunOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => RunConnectionPromise;
+  test: (where: TestWhereUniqueInput) => TestNullablePromise;
+  tests: (args?: {
+    where?: TestWhereInput;
+    orderBy?: TestOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Test>;
+  testsConnection: (args?: {
+    where?: TestWhereInput;
+    orderBy?: TestOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => TestConnectionPromise;
+  translator: (where: TranslatorWhereUniqueInput) => TranslatorNullablePromise;
+  translators: (args?: {
+    where?: TranslatorWhereInput;
+    orderBy?: TranslatorOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Translator>;
+  translatorsConnection: (args?: {
+    where?: TranslatorWhereInput;
+    orderBy?: TranslatorOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => TranslatorConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createUser: (data: UserCreateInput) => UserPromise;
-  updateUser: (args: {
-    data: UserUpdateInput;
-    where: UserWhereUniqueInput;
-  }) => UserPromise;
-  updateManyUsers: (args: {
-    data: UserUpdateManyMutationInput;
-    where?: UserWhereInput;
+  createEndpoint: (data: EndpointCreateInput) => EndpointPromise;
+  updateEndpoint: (args: {
+    data: EndpointUpdateInput;
+    where: EndpointWhereUniqueInput;
+  }) => EndpointPromise;
+  updateManyEndpoints: (args: {
+    data: EndpointUpdateManyMutationInput;
+    where?: EndpointWhereInput;
   }) => BatchPayloadPromise;
-  upsertUser: (args: {
-    where: UserWhereUniqueInput;
-    create: UserCreateInput;
-    update: UserUpdateInput;
-  }) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  upsertEndpoint: (args: {
+    where: EndpointWhereUniqueInput;
+    create: EndpointCreateInput;
+    update: EndpointUpdateInput;
+  }) => EndpointPromise;
+  deleteEndpoint: (where: EndpointWhereUniqueInput) => EndpointPromise;
+  deleteManyEndpoints: (where?: EndpointWhereInput) => BatchPayloadPromise;
+  createHeader: (data: HeaderCreateInput) => HeaderPromise;
+  updateHeader: (args: {
+    data: HeaderUpdateInput;
+    where: HeaderWhereUniqueInput;
+  }) => HeaderPromise;
+  updateManyHeaders: (args: {
+    data: HeaderUpdateManyMutationInput;
+    where?: HeaderWhereInput;
+  }) => BatchPayloadPromise;
+  upsertHeader: (args: {
+    where: HeaderWhereUniqueInput;
+    create: HeaderCreateInput;
+    update: HeaderUpdateInput;
+  }) => HeaderPromise;
+  deleteHeader: (where: HeaderWhereUniqueInput) => HeaderPromise;
+  deleteManyHeaders: (where?: HeaderWhereInput) => BatchPayloadPromise;
+  createParam: (data: ParamCreateInput) => ParamPromise;
+  updateParam: (args: {
+    data: ParamUpdateInput;
+    where: ParamWhereUniqueInput;
+  }) => ParamPromise;
+  updateManyParams: (args: {
+    data: ParamUpdateManyMutationInput;
+    where?: ParamWhereInput;
+  }) => BatchPayloadPromise;
+  upsertParam: (args: {
+    where: ParamWhereUniqueInput;
+    create: ParamCreateInput;
+    update: ParamUpdateInput;
+  }) => ParamPromise;
+  deleteParam: (where: ParamWhereUniqueInput) => ParamPromise;
+  deleteManyParams: (where?: ParamWhereInput) => BatchPayloadPromise;
+  createRun: (data: RunCreateInput) => RunPromise;
+  updateRun: (args: {
+    data: RunUpdateInput;
+    where: RunWhereUniqueInput;
+  }) => RunPromise;
+  updateManyRuns: (args: {
+    data: RunUpdateManyMutationInput;
+    where?: RunWhereInput;
+  }) => BatchPayloadPromise;
+  upsertRun: (args: {
+    where: RunWhereUniqueInput;
+    create: RunCreateInput;
+    update: RunUpdateInput;
+  }) => RunPromise;
+  deleteRun: (where: RunWhereUniqueInput) => RunPromise;
+  deleteManyRuns: (where?: RunWhereInput) => BatchPayloadPromise;
+  createTest: (data: TestCreateInput) => TestPromise;
+  updateTest: (args: {
+    data: TestUpdateInput;
+    where: TestWhereUniqueInput;
+  }) => TestPromise;
+  updateManyTests: (args: {
+    data: TestUpdateManyMutationInput;
+    where?: TestWhereInput;
+  }) => BatchPayloadPromise;
+  upsertTest: (args: {
+    where: TestWhereUniqueInput;
+    create: TestCreateInput;
+    update: TestUpdateInput;
+  }) => TestPromise;
+  deleteTest: (where: TestWhereUniqueInput) => TestPromise;
+  deleteManyTests: (where?: TestWhereInput) => BatchPayloadPromise;
+  createTranslator: (data: TranslatorCreateInput) => TranslatorPromise;
+  updateTranslator: (args: {
+    data: TranslatorUpdateInput;
+    where: TranslatorWhereUniqueInput;
+  }) => TranslatorPromise;
+  updateManyTranslators: (args: {
+    data: TranslatorUpdateManyMutationInput;
+    where?: TranslatorWhereInput;
+  }) => BatchPayloadPromise;
+  upsertTranslator: (args: {
+    where: TranslatorWhereUniqueInput;
+    create: TranslatorCreateInput;
+    update: TranslatorUpdateInput;
+  }) => TranslatorPromise;
+  deleteTranslator: (where: TranslatorWhereUniqueInput) => TranslatorPromise;
+  deleteManyTranslators: (where?: TranslatorWhereInput) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -88,9 +268,24 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  endpoint: (
+    where?: EndpointSubscriptionWhereInput
+  ) => EndpointSubscriptionPayloadSubscription;
+  header: (
+    where?: HeaderSubscriptionWhereInput
+  ) => HeaderSubscriptionPayloadSubscription;
+  param: (
+    where?: ParamSubscriptionWhereInput
+  ) => ParamSubscriptionPayloadSubscription;
+  run: (
+    where?: RunSubscriptionWhereInput
+  ) => RunSubscriptionPayloadSubscription;
+  test: (
+    where?: TestSubscriptionWhereInput
+  ) => TestSubscriptionPayloadSubscription;
+  translator: (
+    where?: TranslatorSubscriptionWhereInput
+  ) => TranslatorSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -101,21 +296,75 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type UserOrderByInput =
+export type TranslatorType = "Request" | "Response";
+
+export type ResultType = "Pass" | "Fail";
+
+export type RequestType = "GET" | "POST" | "PUT" | "DELETE";
+
+export type EndpointOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "email_ASC"
-  | "email_DESC";
+  | "type_ASC"
+  | "type_DESC"
+  | "url_ASC"
+  | "url_DESC"
+  | "body_ASC"
+  | "body_DESC"
+  | "apiKey_ASC"
+  | "apiKey_DESC";
+
+export type TestOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "request_ASC"
+  | "request_DESC"
+  | "expected_ASC"
+  | "expected_DESC";
+
+export type RunOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "expected_ASC"
+  | "expected_DESC"
+  | "actual_ASC"
+  | "actual_DESC"
+  | "result_ASC"
+  | "result_DESC";
+
+export type HeaderOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "key_ASC"
+  | "key_DESC"
+  | "value_ASC"
+  | "value_DESC";
+
+export type ParamOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "key_ASC"
+  | "key_DESC"
+  | "value_ASC"
+  | "value_DESC";
+
+export type TranslatorOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "type_ASC"
+  | "type_DESC"
+  | "requestFunction_ASC"
+  | "requestFunction_DESC"
+  | "responseFunction_ASC"
+  | "responseFunction_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export type UserWhereUniqueInput = AtLeastOne<{
+export type EndpointWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface UserWhereInput {
+export interface EndpointWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -130,117 +379,1652 @@ export interface UserWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
-  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
-  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+  translator?: Maybe<TranslatorWhereInput>;
+  type?: Maybe<RequestType>;
+  type_not?: Maybe<RequestType>;
+  type_in?: Maybe<RequestType[] | RequestType>;
+  type_not_in?: Maybe<RequestType[] | RequestType>;
+  url?: Maybe<String>;
+  url_not?: Maybe<String>;
+  url_in?: Maybe<String[] | String>;
+  url_not_in?: Maybe<String[] | String>;
+  url_lt?: Maybe<String>;
+  url_lte?: Maybe<String>;
+  url_gt?: Maybe<String>;
+  url_gte?: Maybe<String>;
+  url_contains?: Maybe<String>;
+  url_not_contains?: Maybe<String>;
+  url_starts_with?: Maybe<String>;
+  url_not_starts_with?: Maybe<String>;
+  url_ends_with?: Maybe<String>;
+  url_not_ends_with?: Maybe<String>;
+  headers_every?: Maybe<HeaderWhereInput>;
+  headers_some?: Maybe<HeaderWhereInput>;
+  headers_none?: Maybe<HeaderWhereInput>;
+  params_every?: Maybe<ParamWhereInput>;
+  params_some?: Maybe<ParamWhereInput>;
+  params_none?: Maybe<ParamWhereInput>;
+  body?: Maybe<String>;
+  body_not?: Maybe<String>;
+  body_in?: Maybe<String[] | String>;
+  body_not_in?: Maybe<String[] | String>;
+  body_lt?: Maybe<String>;
+  body_lte?: Maybe<String>;
+  body_gt?: Maybe<String>;
+  body_gte?: Maybe<String>;
+  body_contains?: Maybe<String>;
+  body_not_contains?: Maybe<String>;
+  body_starts_with?: Maybe<String>;
+  body_not_starts_with?: Maybe<String>;
+  body_ends_with?: Maybe<String>;
+  body_not_ends_with?: Maybe<String>;
+  apiKey?: Maybe<String>;
+  apiKey_not?: Maybe<String>;
+  apiKey_in?: Maybe<String[] | String>;
+  apiKey_not_in?: Maybe<String[] | String>;
+  apiKey_lt?: Maybe<String>;
+  apiKey_lte?: Maybe<String>;
+  apiKey_gt?: Maybe<String>;
+  apiKey_gte?: Maybe<String>;
+  apiKey_contains?: Maybe<String>;
+  apiKey_not_contains?: Maybe<String>;
+  apiKey_starts_with?: Maybe<String>;
+  apiKey_not_starts_with?: Maybe<String>;
+  apiKey_ends_with?: Maybe<String>;
+  apiKey_not_ends_with?: Maybe<String>;
+  AND?: Maybe<EndpointWhereInput[] | EndpointWhereInput>;
+  OR?: Maybe<EndpointWhereInput[] | EndpointWhereInput>;
+  NOT?: Maybe<EndpointWhereInput[] | EndpointWhereInput>;
 }
 
-export interface UserCreateInput {
+export interface TranslatorWhereInput {
   id?: Maybe<ID_Input>;
-  name: String;
-  email?: Maybe<String>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  type?: Maybe<TranslatorType>;
+  type_not?: Maybe<TranslatorType>;
+  type_in?: Maybe<TranslatorType[] | TranslatorType>;
+  type_not_in?: Maybe<TranslatorType[] | TranslatorType>;
+  endpoints_every?: Maybe<EndpointWhereInput>;
+  endpoints_some?: Maybe<EndpointWhereInput>;
+  endpoints_none?: Maybe<EndpointWhereInput>;
+  requestFunction?: Maybe<String>;
+  requestFunction_not?: Maybe<String>;
+  requestFunction_in?: Maybe<String[] | String>;
+  requestFunction_not_in?: Maybe<String[] | String>;
+  requestFunction_lt?: Maybe<String>;
+  requestFunction_lte?: Maybe<String>;
+  requestFunction_gt?: Maybe<String>;
+  requestFunction_gte?: Maybe<String>;
+  requestFunction_contains?: Maybe<String>;
+  requestFunction_not_contains?: Maybe<String>;
+  requestFunction_starts_with?: Maybe<String>;
+  requestFunction_not_starts_with?: Maybe<String>;
+  requestFunction_ends_with?: Maybe<String>;
+  requestFunction_not_ends_with?: Maybe<String>;
+  responseFunction?: Maybe<String>;
+  responseFunction_not?: Maybe<String>;
+  responseFunction_in?: Maybe<String[] | String>;
+  responseFunction_not_in?: Maybe<String[] | String>;
+  responseFunction_lt?: Maybe<String>;
+  responseFunction_lte?: Maybe<String>;
+  responseFunction_gt?: Maybe<String>;
+  responseFunction_gte?: Maybe<String>;
+  responseFunction_contains?: Maybe<String>;
+  responseFunction_not_contains?: Maybe<String>;
+  responseFunction_starts_with?: Maybe<String>;
+  responseFunction_not_starts_with?: Maybe<String>;
+  responseFunction_ends_with?: Maybe<String>;
+  responseFunction_not_ends_with?: Maybe<String>;
+  tests_every?: Maybe<TestWhereInput>;
+  tests_some?: Maybe<TestWhereInput>;
+  tests_none?: Maybe<TestWhereInput>;
+  AND?: Maybe<TranslatorWhereInput[] | TranslatorWhereInput>;
+  OR?: Maybe<TranslatorWhereInput[] | TranslatorWhereInput>;
+  NOT?: Maybe<TranslatorWhereInput[] | TranslatorWhereInput>;
 }
 
-export interface UserUpdateInput {
-  name?: Maybe<String>;
-  email?: Maybe<String>;
+export interface TestWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  translator?: Maybe<TranslatorWhereInput>;
+  request?: Maybe<String>;
+  request_not?: Maybe<String>;
+  request_in?: Maybe<String[] | String>;
+  request_not_in?: Maybe<String[] | String>;
+  request_lt?: Maybe<String>;
+  request_lte?: Maybe<String>;
+  request_gt?: Maybe<String>;
+  request_gte?: Maybe<String>;
+  request_contains?: Maybe<String>;
+  request_not_contains?: Maybe<String>;
+  request_starts_with?: Maybe<String>;
+  request_not_starts_with?: Maybe<String>;
+  request_ends_with?: Maybe<String>;
+  request_not_ends_with?: Maybe<String>;
+  expected?: Maybe<String>;
+  expected_not?: Maybe<String>;
+  expected_in?: Maybe<String[] | String>;
+  expected_not_in?: Maybe<String[] | String>;
+  expected_lt?: Maybe<String>;
+  expected_lte?: Maybe<String>;
+  expected_gt?: Maybe<String>;
+  expected_gte?: Maybe<String>;
+  expected_contains?: Maybe<String>;
+  expected_not_contains?: Maybe<String>;
+  expected_starts_with?: Maybe<String>;
+  expected_not_starts_with?: Maybe<String>;
+  expected_ends_with?: Maybe<String>;
+  expected_not_ends_with?: Maybe<String>;
+  runs_every?: Maybe<RunWhereInput>;
+  runs_some?: Maybe<RunWhereInput>;
+  runs_none?: Maybe<RunWhereInput>;
+  AND?: Maybe<TestWhereInput[] | TestWhereInput>;
+  OR?: Maybe<TestWhereInput[] | TestWhereInput>;
+  NOT?: Maybe<TestWhereInput[] | TestWhereInput>;
 }
 
-export interface UserUpdateManyMutationInput {
-  name?: Maybe<String>;
-  email?: Maybe<String>;
+export interface RunWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  test?: Maybe<TestWhereInput>;
+  expected?: Maybe<String>;
+  expected_not?: Maybe<String>;
+  expected_in?: Maybe<String[] | String>;
+  expected_not_in?: Maybe<String[] | String>;
+  expected_lt?: Maybe<String>;
+  expected_lte?: Maybe<String>;
+  expected_gt?: Maybe<String>;
+  expected_gte?: Maybe<String>;
+  expected_contains?: Maybe<String>;
+  expected_not_contains?: Maybe<String>;
+  expected_starts_with?: Maybe<String>;
+  expected_not_starts_with?: Maybe<String>;
+  expected_ends_with?: Maybe<String>;
+  expected_not_ends_with?: Maybe<String>;
+  actual?: Maybe<String>;
+  actual_not?: Maybe<String>;
+  actual_in?: Maybe<String[] | String>;
+  actual_not_in?: Maybe<String[] | String>;
+  actual_lt?: Maybe<String>;
+  actual_lte?: Maybe<String>;
+  actual_gt?: Maybe<String>;
+  actual_gte?: Maybe<String>;
+  actual_contains?: Maybe<String>;
+  actual_not_contains?: Maybe<String>;
+  actual_starts_with?: Maybe<String>;
+  actual_not_starts_with?: Maybe<String>;
+  actual_ends_with?: Maybe<String>;
+  actual_not_ends_with?: Maybe<String>;
+  result?: Maybe<ResultType>;
+  result_not?: Maybe<ResultType>;
+  result_in?: Maybe<ResultType[] | ResultType>;
+  result_not_in?: Maybe<ResultType[] | ResultType>;
+  AND?: Maybe<RunWhereInput[] | RunWhereInput>;
+  OR?: Maybe<RunWhereInput[] | RunWhereInput>;
+  NOT?: Maybe<RunWhereInput[] | RunWhereInput>;
 }
 
-export interface UserSubscriptionWhereInput {
+export interface HeaderWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  endpoint?: Maybe<EndpointWhereInput>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
+  value?: Maybe<String>;
+  value_not?: Maybe<String>;
+  value_in?: Maybe<String[] | String>;
+  value_not_in?: Maybe<String[] | String>;
+  value_lt?: Maybe<String>;
+  value_lte?: Maybe<String>;
+  value_gt?: Maybe<String>;
+  value_gte?: Maybe<String>;
+  value_contains?: Maybe<String>;
+  value_not_contains?: Maybe<String>;
+  value_starts_with?: Maybe<String>;
+  value_not_starts_with?: Maybe<String>;
+  value_ends_with?: Maybe<String>;
+  value_not_ends_with?: Maybe<String>;
+  AND?: Maybe<HeaderWhereInput[] | HeaderWhereInput>;
+  OR?: Maybe<HeaderWhereInput[] | HeaderWhereInput>;
+  NOT?: Maybe<HeaderWhereInput[] | HeaderWhereInput>;
+}
+
+export interface ParamWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  endpoint?: Maybe<EndpointWhereInput>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
+  value?: Maybe<String>;
+  value_not?: Maybe<String>;
+  value_in?: Maybe<String[] | String>;
+  value_not_in?: Maybe<String[] | String>;
+  value_lt?: Maybe<String>;
+  value_lte?: Maybe<String>;
+  value_gt?: Maybe<String>;
+  value_gte?: Maybe<String>;
+  value_contains?: Maybe<String>;
+  value_not_contains?: Maybe<String>;
+  value_starts_with?: Maybe<String>;
+  value_not_starts_with?: Maybe<String>;
+  value_ends_with?: Maybe<String>;
+  value_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ParamWhereInput[] | ParamWhereInput>;
+  OR?: Maybe<ParamWhereInput[] | ParamWhereInput>;
+  NOT?: Maybe<ParamWhereInput[] | ParamWhereInput>;
+}
+
+export type HeaderWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type ParamWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type RunWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type TestWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type TranslatorWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface EndpointCreateInput {
+  id?: Maybe<ID_Input>;
+  translator: TranslatorCreateOneWithoutEndpointsInput;
+  type: RequestType;
+  url: String;
+  headers?: Maybe<HeaderCreateManyWithoutEndpointInput>;
+  params?: Maybe<ParamCreateManyWithoutEndpointInput>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface TranslatorCreateOneWithoutEndpointsInput {
+  create?: Maybe<TranslatorCreateWithoutEndpointsInput>;
+  connect?: Maybe<TranslatorWhereUniqueInput>;
+}
+
+export interface TranslatorCreateWithoutEndpointsInput {
+  id?: Maybe<ID_Input>;
+  type: TranslatorType;
+  requestFunction?: Maybe<String>;
+  responseFunction?: Maybe<String>;
+  tests?: Maybe<TestCreateManyWithoutTranslatorInput>;
+}
+
+export interface TestCreateManyWithoutTranslatorInput {
+  create?: Maybe<
+    TestCreateWithoutTranslatorInput[] | TestCreateWithoutTranslatorInput
+  >;
+  connect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>;
+}
+
+export interface TestCreateWithoutTranslatorInput {
+  id?: Maybe<ID_Input>;
+  request: String;
+  expected: String;
+  runs?: Maybe<RunCreateManyWithoutTestInput>;
+}
+
+export interface RunCreateManyWithoutTestInput {
+  create?: Maybe<RunCreateWithoutTestInput[] | RunCreateWithoutTestInput>;
+  connect?: Maybe<RunWhereUniqueInput[] | RunWhereUniqueInput>;
+}
+
+export interface RunCreateWithoutTestInput {
+  id?: Maybe<ID_Input>;
+  expected: String;
+  actual: String;
+  result: ResultType;
+}
+
+export interface HeaderCreateManyWithoutEndpointInput {
+  create?: Maybe<
+    HeaderCreateWithoutEndpointInput[] | HeaderCreateWithoutEndpointInput
+  >;
+  connect?: Maybe<HeaderWhereUniqueInput[] | HeaderWhereUniqueInput>;
+}
+
+export interface HeaderCreateWithoutEndpointInput {
+  id?: Maybe<ID_Input>;
+  key: String;
+  value: String;
+}
+
+export interface ParamCreateManyWithoutEndpointInput {
+  create?: Maybe<
+    ParamCreateWithoutEndpointInput[] | ParamCreateWithoutEndpointInput
+  >;
+  connect?: Maybe<ParamWhereUniqueInput[] | ParamWhereUniqueInput>;
+}
+
+export interface ParamCreateWithoutEndpointInput {
+  id?: Maybe<ID_Input>;
+  key: String;
+  value: String;
+}
+
+export interface EndpointUpdateInput {
+  translator?: Maybe<TranslatorUpdateOneRequiredWithoutEndpointsInput>;
+  type?: Maybe<RequestType>;
+  url?: Maybe<String>;
+  headers?: Maybe<HeaderUpdateManyWithoutEndpointInput>;
+  params?: Maybe<ParamUpdateManyWithoutEndpointInput>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface TranslatorUpdateOneRequiredWithoutEndpointsInput {
+  create?: Maybe<TranslatorCreateWithoutEndpointsInput>;
+  update?: Maybe<TranslatorUpdateWithoutEndpointsDataInput>;
+  upsert?: Maybe<TranslatorUpsertWithoutEndpointsInput>;
+  connect?: Maybe<TranslatorWhereUniqueInput>;
+}
+
+export interface TranslatorUpdateWithoutEndpointsDataInput {
+  type?: Maybe<TranslatorType>;
+  requestFunction?: Maybe<String>;
+  responseFunction?: Maybe<String>;
+  tests?: Maybe<TestUpdateManyWithoutTranslatorInput>;
+}
+
+export interface TestUpdateManyWithoutTranslatorInput {
+  create?: Maybe<
+    TestCreateWithoutTranslatorInput[] | TestCreateWithoutTranslatorInput
+  >;
+  delete?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>;
+  connect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>;
+  set?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>;
+  disconnect?: Maybe<TestWhereUniqueInput[] | TestWhereUniqueInput>;
+  update?: Maybe<
+    | TestUpdateWithWhereUniqueWithoutTranslatorInput[]
+    | TestUpdateWithWhereUniqueWithoutTranslatorInput
+  >;
+  upsert?: Maybe<
+    | TestUpsertWithWhereUniqueWithoutTranslatorInput[]
+    | TestUpsertWithWhereUniqueWithoutTranslatorInput
+  >;
+  deleteMany?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>;
+  updateMany?: Maybe<
+    TestUpdateManyWithWhereNestedInput[] | TestUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface TestUpdateWithWhereUniqueWithoutTranslatorInput {
+  where: TestWhereUniqueInput;
+  data: TestUpdateWithoutTranslatorDataInput;
+}
+
+export interface TestUpdateWithoutTranslatorDataInput {
+  request?: Maybe<String>;
+  expected?: Maybe<String>;
+  runs?: Maybe<RunUpdateManyWithoutTestInput>;
+}
+
+export interface RunUpdateManyWithoutTestInput {
+  create?: Maybe<RunCreateWithoutTestInput[] | RunCreateWithoutTestInput>;
+  delete?: Maybe<RunWhereUniqueInput[] | RunWhereUniqueInput>;
+  connect?: Maybe<RunWhereUniqueInput[] | RunWhereUniqueInput>;
+  set?: Maybe<RunWhereUniqueInput[] | RunWhereUniqueInput>;
+  disconnect?: Maybe<RunWhereUniqueInput[] | RunWhereUniqueInput>;
+  update?: Maybe<
+    | RunUpdateWithWhereUniqueWithoutTestInput[]
+    | RunUpdateWithWhereUniqueWithoutTestInput
+  >;
+  upsert?: Maybe<
+    | RunUpsertWithWhereUniqueWithoutTestInput[]
+    | RunUpsertWithWhereUniqueWithoutTestInput
+  >;
+  deleteMany?: Maybe<RunScalarWhereInput[] | RunScalarWhereInput>;
+  updateMany?: Maybe<
+    RunUpdateManyWithWhereNestedInput[] | RunUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface RunUpdateWithWhereUniqueWithoutTestInput {
+  where: RunWhereUniqueInput;
+  data: RunUpdateWithoutTestDataInput;
+}
+
+export interface RunUpdateWithoutTestDataInput {
+  expected?: Maybe<String>;
+  actual?: Maybe<String>;
+  result?: Maybe<ResultType>;
+}
+
+export interface RunUpsertWithWhereUniqueWithoutTestInput {
+  where: RunWhereUniqueInput;
+  update: RunUpdateWithoutTestDataInput;
+  create: RunCreateWithoutTestInput;
+}
+
+export interface RunScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  expected?: Maybe<String>;
+  expected_not?: Maybe<String>;
+  expected_in?: Maybe<String[] | String>;
+  expected_not_in?: Maybe<String[] | String>;
+  expected_lt?: Maybe<String>;
+  expected_lte?: Maybe<String>;
+  expected_gt?: Maybe<String>;
+  expected_gte?: Maybe<String>;
+  expected_contains?: Maybe<String>;
+  expected_not_contains?: Maybe<String>;
+  expected_starts_with?: Maybe<String>;
+  expected_not_starts_with?: Maybe<String>;
+  expected_ends_with?: Maybe<String>;
+  expected_not_ends_with?: Maybe<String>;
+  actual?: Maybe<String>;
+  actual_not?: Maybe<String>;
+  actual_in?: Maybe<String[] | String>;
+  actual_not_in?: Maybe<String[] | String>;
+  actual_lt?: Maybe<String>;
+  actual_lte?: Maybe<String>;
+  actual_gt?: Maybe<String>;
+  actual_gte?: Maybe<String>;
+  actual_contains?: Maybe<String>;
+  actual_not_contains?: Maybe<String>;
+  actual_starts_with?: Maybe<String>;
+  actual_not_starts_with?: Maybe<String>;
+  actual_ends_with?: Maybe<String>;
+  actual_not_ends_with?: Maybe<String>;
+  result?: Maybe<ResultType>;
+  result_not?: Maybe<ResultType>;
+  result_in?: Maybe<ResultType[] | ResultType>;
+  result_not_in?: Maybe<ResultType[] | ResultType>;
+  AND?: Maybe<RunScalarWhereInput[] | RunScalarWhereInput>;
+  OR?: Maybe<RunScalarWhereInput[] | RunScalarWhereInput>;
+  NOT?: Maybe<RunScalarWhereInput[] | RunScalarWhereInput>;
+}
+
+export interface RunUpdateManyWithWhereNestedInput {
+  where: RunScalarWhereInput;
+  data: RunUpdateManyDataInput;
+}
+
+export interface RunUpdateManyDataInput {
+  expected?: Maybe<String>;
+  actual?: Maybe<String>;
+  result?: Maybe<ResultType>;
+}
+
+export interface TestUpsertWithWhereUniqueWithoutTranslatorInput {
+  where: TestWhereUniqueInput;
+  update: TestUpdateWithoutTranslatorDataInput;
+  create: TestCreateWithoutTranslatorInput;
+}
+
+export interface TestScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  request?: Maybe<String>;
+  request_not?: Maybe<String>;
+  request_in?: Maybe<String[] | String>;
+  request_not_in?: Maybe<String[] | String>;
+  request_lt?: Maybe<String>;
+  request_lte?: Maybe<String>;
+  request_gt?: Maybe<String>;
+  request_gte?: Maybe<String>;
+  request_contains?: Maybe<String>;
+  request_not_contains?: Maybe<String>;
+  request_starts_with?: Maybe<String>;
+  request_not_starts_with?: Maybe<String>;
+  request_ends_with?: Maybe<String>;
+  request_not_ends_with?: Maybe<String>;
+  expected?: Maybe<String>;
+  expected_not?: Maybe<String>;
+  expected_in?: Maybe<String[] | String>;
+  expected_not_in?: Maybe<String[] | String>;
+  expected_lt?: Maybe<String>;
+  expected_lte?: Maybe<String>;
+  expected_gt?: Maybe<String>;
+  expected_gte?: Maybe<String>;
+  expected_contains?: Maybe<String>;
+  expected_not_contains?: Maybe<String>;
+  expected_starts_with?: Maybe<String>;
+  expected_not_starts_with?: Maybe<String>;
+  expected_ends_with?: Maybe<String>;
+  expected_not_ends_with?: Maybe<String>;
+  AND?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>;
+  OR?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>;
+  NOT?: Maybe<TestScalarWhereInput[] | TestScalarWhereInput>;
+}
+
+export interface TestUpdateManyWithWhereNestedInput {
+  where: TestScalarWhereInput;
+  data: TestUpdateManyDataInput;
+}
+
+export interface TestUpdateManyDataInput {
+  request?: Maybe<String>;
+  expected?: Maybe<String>;
+}
+
+export interface TranslatorUpsertWithoutEndpointsInput {
+  update: TranslatorUpdateWithoutEndpointsDataInput;
+  create: TranslatorCreateWithoutEndpointsInput;
+}
+
+export interface HeaderUpdateManyWithoutEndpointInput {
+  create?: Maybe<
+    HeaderCreateWithoutEndpointInput[] | HeaderCreateWithoutEndpointInput
+  >;
+  delete?: Maybe<HeaderWhereUniqueInput[] | HeaderWhereUniqueInput>;
+  connect?: Maybe<HeaderWhereUniqueInput[] | HeaderWhereUniqueInput>;
+  set?: Maybe<HeaderWhereUniqueInput[] | HeaderWhereUniqueInput>;
+  disconnect?: Maybe<HeaderWhereUniqueInput[] | HeaderWhereUniqueInput>;
+  update?: Maybe<
+    | HeaderUpdateWithWhereUniqueWithoutEndpointInput[]
+    | HeaderUpdateWithWhereUniqueWithoutEndpointInput
+  >;
+  upsert?: Maybe<
+    | HeaderUpsertWithWhereUniqueWithoutEndpointInput[]
+    | HeaderUpsertWithWhereUniqueWithoutEndpointInput
+  >;
+  deleteMany?: Maybe<HeaderScalarWhereInput[] | HeaderScalarWhereInput>;
+  updateMany?: Maybe<
+    | HeaderUpdateManyWithWhereNestedInput[]
+    | HeaderUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface HeaderUpdateWithWhereUniqueWithoutEndpointInput {
+  where: HeaderWhereUniqueInput;
+  data: HeaderUpdateWithoutEndpointDataInput;
+}
+
+export interface HeaderUpdateWithoutEndpointDataInput {
+  key?: Maybe<String>;
+  value?: Maybe<String>;
+}
+
+export interface HeaderUpsertWithWhereUniqueWithoutEndpointInput {
+  where: HeaderWhereUniqueInput;
+  update: HeaderUpdateWithoutEndpointDataInput;
+  create: HeaderCreateWithoutEndpointInput;
+}
+
+export interface HeaderScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
+  value?: Maybe<String>;
+  value_not?: Maybe<String>;
+  value_in?: Maybe<String[] | String>;
+  value_not_in?: Maybe<String[] | String>;
+  value_lt?: Maybe<String>;
+  value_lte?: Maybe<String>;
+  value_gt?: Maybe<String>;
+  value_gte?: Maybe<String>;
+  value_contains?: Maybe<String>;
+  value_not_contains?: Maybe<String>;
+  value_starts_with?: Maybe<String>;
+  value_not_starts_with?: Maybe<String>;
+  value_ends_with?: Maybe<String>;
+  value_not_ends_with?: Maybe<String>;
+  AND?: Maybe<HeaderScalarWhereInput[] | HeaderScalarWhereInput>;
+  OR?: Maybe<HeaderScalarWhereInput[] | HeaderScalarWhereInput>;
+  NOT?: Maybe<HeaderScalarWhereInput[] | HeaderScalarWhereInput>;
+}
+
+export interface HeaderUpdateManyWithWhereNestedInput {
+  where: HeaderScalarWhereInput;
+  data: HeaderUpdateManyDataInput;
+}
+
+export interface HeaderUpdateManyDataInput {
+  key?: Maybe<String>;
+  value?: Maybe<String>;
+}
+
+export interface ParamUpdateManyWithoutEndpointInput {
+  create?: Maybe<
+    ParamCreateWithoutEndpointInput[] | ParamCreateWithoutEndpointInput
+  >;
+  delete?: Maybe<ParamWhereUniqueInput[] | ParamWhereUniqueInput>;
+  connect?: Maybe<ParamWhereUniqueInput[] | ParamWhereUniqueInput>;
+  set?: Maybe<ParamWhereUniqueInput[] | ParamWhereUniqueInput>;
+  disconnect?: Maybe<ParamWhereUniqueInput[] | ParamWhereUniqueInput>;
+  update?: Maybe<
+    | ParamUpdateWithWhereUniqueWithoutEndpointInput[]
+    | ParamUpdateWithWhereUniqueWithoutEndpointInput
+  >;
+  upsert?: Maybe<
+    | ParamUpsertWithWhereUniqueWithoutEndpointInput[]
+    | ParamUpsertWithWhereUniqueWithoutEndpointInput
+  >;
+  deleteMany?: Maybe<ParamScalarWhereInput[] | ParamScalarWhereInput>;
+  updateMany?: Maybe<
+    ParamUpdateManyWithWhereNestedInput[] | ParamUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ParamUpdateWithWhereUniqueWithoutEndpointInput {
+  where: ParamWhereUniqueInput;
+  data: ParamUpdateWithoutEndpointDataInput;
+}
+
+export interface ParamUpdateWithoutEndpointDataInput {
+  key?: Maybe<String>;
+  value?: Maybe<String>;
+}
+
+export interface ParamUpsertWithWhereUniqueWithoutEndpointInput {
+  where: ParamWhereUniqueInput;
+  update: ParamUpdateWithoutEndpointDataInput;
+  create: ParamCreateWithoutEndpointInput;
+}
+
+export interface ParamScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
+  value?: Maybe<String>;
+  value_not?: Maybe<String>;
+  value_in?: Maybe<String[] | String>;
+  value_not_in?: Maybe<String[] | String>;
+  value_lt?: Maybe<String>;
+  value_lte?: Maybe<String>;
+  value_gt?: Maybe<String>;
+  value_gte?: Maybe<String>;
+  value_contains?: Maybe<String>;
+  value_not_contains?: Maybe<String>;
+  value_starts_with?: Maybe<String>;
+  value_not_starts_with?: Maybe<String>;
+  value_ends_with?: Maybe<String>;
+  value_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ParamScalarWhereInput[] | ParamScalarWhereInput>;
+  OR?: Maybe<ParamScalarWhereInput[] | ParamScalarWhereInput>;
+  NOT?: Maybe<ParamScalarWhereInput[] | ParamScalarWhereInput>;
+}
+
+export interface ParamUpdateManyWithWhereNestedInput {
+  where: ParamScalarWhereInput;
+  data: ParamUpdateManyDataInput;
+}
+
+export interface ParamUpdateManyDataInput {
+  key?: Maybe<String>;
+  value?: Maybe<String>;
+}
+
+export interface EndpointUpdateManyMutationInput {
+  type?: Maybe<RequestType>;
+  url?: Maybe<String>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface HeaderCreateInput {
+  id?: Maybe<ID_Input>;
+  endpoint: EndpointCreateOneWithoutHeadersInput;
+  key: String;
+  value: String;
+}
+
+export interface EndpointCreateOneWithoutHeadersInput {
+  create?: Maybe<EndpointCreateWithoutHeadersInput>;
+  connect?: Maybe<EndpointWhereUniqueInput>;
+}
+
+export interface EndpointCreateWithoutHeadersInput {
+  id?: Maybe<ID_Input>;
+  translator: TranslatorCreateOneWithoutEndpointsInput;
+  type: RequestType;
+  url: String;
+  params?: Maybe<ParamCreateManyWithoutEndpointInput>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface HeaderUpdateInput {
+  endpoint?: Maybe<EndpointUpdateOneRequiredWithoutHeadersInput>;
+  key?: Maybe<String>;
+  value?: Maybe<String>;
+}
+
+export interface EndpointUpdateOneRequiredWithoutHeadersInput {
+  create?: Maybe<EndpointCreateWithoutHeadersInput>;
+  update?: Maybe<EndpointUpdateWithoutHeadersDataInput>;
+  upsert?: Maybe<EndpointUpsertWithoutHeadersInput>;
+  connect?: Maybe<EndpointWhereUniqueInput>;
+}
+
+export interface EndpointUpdateWithoutHeadersDataInput {
+  translator?: Maybe<TranslatorUpdateOneRequiredWithoutEndpointsInput>;
+  type?: Maybe<RequestType>;
+  url?: Maybe<String>;
+  params?: Maybe<ParamUpdateManyWithoutEndpointInput>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface EndpointUpsertWithoutHeadersInput {
+  update: EndpointUpdateWithoutHeadersDataInput;
+  create: EndpointCreateWithoutHeadersInput;
+}
+
+export interface HeaderUpdateManyMutationInput {
+  key?: Maybe<String>;
+  value?: Maybe<String>;
+}
+
+export interface ParamCreateInput {
+  id?: Maybe<ID_Input>;
+  endpoint: EndpointCreateOneWithoutParamsInput;
+  key: String;
+  value: String;
+}
+
+export interface EndpointCreateOneWithoutParamsInput {
+  create?: Maybe<EndpointCreateWithoutParamsInput>;
+  connect?: Maybe<EndpointWhereUniqueInput>;
+}
+
+export interface EndpointCreateWithoutParamsInput {
+  id?: Maybe<ID_Input>;
+  translator: TranslatorCreateOneWithoutEndpointsInput;
+  type: RequestType;
+  url: String;
+  headers?: Maybe<HeaderCreateManyWithoutEndpointInput>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface ParamUpdateInput {
+  endpoint?: Maybe<EndpointUpdateOneRequiredWithoutParamsInput>;
+  key?: Maybe<String>;
+  value?: Maybe<String>;
+}
+
+export interface EndpointUpdateOneRequiredWithoutParamsInput {
+  create?: Maybe<EndpointCreateWithoutParamsInput>;
+  update?: Maybe<EndpointUpdateWithoutParamsDataInput>;
+  upsert?: Maybe<EndpointUpsertWithoutParamsInput>;
+  connect?: Maybe<EndpointWhereUniqueInput>;
+}
+
+export interface EndpointUpdateWithoutParamsDataInput {
+  translator?: Maybe<TranslatorUpdateOneRequiredWithoutEndpointsInput>;
+  type?: Maybe<RequestType>;
+  url?: Maybe<String>;
+  headers?: Maybe<HeaderUpdateManyWithoutEndpointInput>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface EndpointUpsertWithoutParamsInput {
+  update: EndpointUpdateWithoutParamsDataInput;
+  create: EndpointCreateWithoutParamsInput;
+}
+
+export interface ParamUpdateManyMutationInput {
+  key?: Maybe<String>;
+  value?: Maybe<String>;
+}
+
+export interface RunCreateInput {
+  id?: Maybe<ID_Input>;
+  test: TestCreateOneWithoutRunsInput;
+  expected: String;
+  actual: String;
+  result: ResultType;
+}
+
+export interface TestCreateOneWithoutRunsInput {
+  create?: Maybe<TestCreateWithoutRunsInput>;
+  connect?: Maybe<TestWhereUniqueInput>;
+}
+
+export interface TestCreateWithoutRunsInput {
+  id?: Maybe<ID_Input>;
+  translator: TranslatorCreateOneWithoutTestsInput;
+  request: String;
+  expected: String;
+}
+
+export interface TranslatorCreateOneWithoutTestsInput {
+  create?: Maybe<TranslatorCreateWithoutTestsInput>;
+  connect?: Maybe<TranslatorWhereUniqueInput>;
+}
+
+export interface TranslatorCreateWithoutTestsInput {
+  id?: Maybe<ID_Input>;
+  type: TranslatorType;
+  endpoints?: Maybe<EndpointCreateManyWithoutTranslatorInput>;
+  requestFunction?: Maybe<String>;
+  responseFunction?: Maybe<String>;
+}
+
+export interface EndpointCreateManyWithoutTranslatorInput {
+  create?: Maybe<
+    | EndpointCreateWithoutTranslatorInput[]
+    | EndpointCreateWithoutTranslatorInput
+  >;
+  connect?: Maybe<EndpointWhereUniqueInput[] | EndpointWhereUniqueInput>;
+}
+
+export interface EndpointCreateWithoutTranslatorInput {
+  id?: Maybe<ID_Input>;
+  type: RequestType;
+  url: String;
+  headers?: Maybe<HeaderCreateManyWithoutEndpointInput>;
+  params?: Maybe<ParamCreateManyWithoutEndpointInput>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface RunUpdateInput {
+  test?: Maybe<TestUpdateOneRequiredWithoutRunsInput>;
+  expected?: Maybe<String>;
+  actual?: Maybe<String>;
+  result?: Maybe<ResultType>;
+}
+
+export interface TestUpdateOneRequiredWithoutRunsInput {
+  create?: Maybe<TestCreateWithoutRunsInput>;
+  update?: Maybe<TestUpdateWithoutRunsDataInput>;
+  upsert?: Maybe<TestUpsertWithoutRunsInput>;
+  connect?: Maybe<TestWhereUniqueInput>;
+}
+
+export interface TestUpdateWithoutRunsDataInput {
+  translator?: Maybe<TranslatorUpdateOneRequiredWithoutTestsInput>;
+  request?: Maybe<String>;
+  expected?: Maybe<String>;
+}
+
+export interface TranslatorUpdateOneRequiredWithoutTestsInput {
+  create?: Maybe<TranslatorCreateWithoutTestsInput>;
+  update?: Maybe<TranslatorUpdateWithoutTestsDataInput>;
+  upsert?: Maybe<TranslatorUpsertWithoutTestsInput>;
+  connect?: Maybe<TranslatorWhereUniqueInput>;
+}
+
+export interface TranslatorUpdateWithoutTestsDataInput {
+  type?: Maybe<TranslatorType>;
+  endpoints?: Maybe<EndpointUpdateManyWithoutTranslatorInput>;
+  requestFunction?: Maybe<String>;
+  responseFunction?: Maybe<String>;
+}
+
+export interface EndpointUpdateManyWithoutTranslatorInput {
+  create?: Maybe<
+    | EndpointCreateWithoutTranslatorInput[]
+    | EndpointCreateWithoutTranslatorInput
+  >;
+  delete?: Maybe<EndpointWhereUniqueInput[] | EndpointWhereUniqueInput>;
+  connect?: Maybe<EndpointWhereUniqueInput[] | EndpointWhereUniqueInput>;
+  set?: Maybe<EndpointWhereUniqueInput[] | EndpointWhereUniqueInput>;
+  disconnect?: Maybe<EndpointWhereUniqueInput[] | EndpointWhereUniqueInput>;
+  update?: Maybe<
+    | EndpointUpdateWithWhereUniqueWithoutTranslatorInput[]
+    | EndpointUpdateWithWhereUniqueWithoutTranslatorInput
+  >;
+  upsert?: Maybe<
+    | EndpointUpsertWithWhereUniqueWithoutTranslatorInput[]
+    | EndpointUpsertWithWhereUniqueWithoutTranslatorInput
+  >;
+  deleteMany?: Maybe<EndpointScalarWhereInput[] | EndpointScalarWhereInput>;
+  updateMany?: Maybe<
+    | EndpointUpdateManyWithWhereNestedInput[]
+    | EndpointUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EndpointUpdateWithWhereUniqueWithoutTranslatorInput {
+  where: EndpointWhereUniqueInput;
+  data: EndpointUpdateWithoutTranslatorDataInput;
+}
+
+export interface EndpointUpdateWithoutTranslatorDataInput {
+  type?: Maybe<RequestType>;
+  url?: Maybe<String>;
+  headers?: Maybe<HeaderUpdateManyWithoutEndpointInput>;
+  params?: Maybe<ParamUpdateManyWithoutEndpointInput>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface EndpointUpsertWithWhereUniqueWithoutTranslatorInput {
+  where: EndpointWhereUniqueInput;
+  update: EndpointUpdateWithoutTranslatorDataInput;
+  create: EndpointCreateWithoutTranslatorInput;
+}
+
+export interface EndpointScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  type?: Maybe<RequestType>;
+  type_not?: Maybe<RequestType>;
+  type_in?: Maybe<RequestType[] | RequestType>;
+  type_not_in?: Maybe<RequestType[] | RequestType>;
+  url?: Maybe<String>;
+  url_not?: Maybe<String>;
+  url_in?: Maybe<String[] | String>;
+  url_not_in?: Maybe<String[] | String>;
+  url_lt?: Maybe<String>;
+  url_lte?: Maybe<String>;
+  url_gt?: Maybe<String>;
+  url_gte?: Maybe<String>;
+  url_contains?: Maybe<String>;
+  url_not_contains?: Maybe<String>;
+  url_starts_with?: Maybe<String>;
+  url_not_starts_with?: Maybe<String>;
+  url_ends_with?: Maybe<String>;
+  url_not_ends_with?: Maybe<String>;
+  body?: Maybe<String>;
+  body_not?: Maybe<String>;
+  body_in?: Maybe<String[] | String>;
+  body_not_in?: Maybe<String[] | String>;
+  body_lt?: Maybe<String>;
+  body_lte?: Maybe<String>;
+  body_gt?: Maybe<String>;
+  body_gte?: Maybe<String>;
+  body_contains?: Maybe<String>;
+  body_not_contains?: Maybe<String>;
+  body_starts_with?: Maybe<String>;
+  body_not_starts_with?: Maybe<String>;
+  body_ends_with?: Maybe<String>;
+  body_not_ends_with?: Maybe<String>;
+  apiKey?: Maybe<String>;
+  apiKey_not?: Maybe<String>;
+  apiKey_in?: Maybe<String[] | String>;
+  apiKey_not_in?: Maybe<String[] | String>;
+  apiKey_lt?: Maybe<String>;
+  apiKey_lte?: Maybe<String>;
+  apiKey_gt?: Maybe<String>;
+  apiKey_gte?: Maybe<String>;
+  apiKey_contains?: Maybe<String>;
+  apiKey_not_contains?: Maybe<String>;
+  apiKey_starts_with?: Maybe<String>;
+  apiKey_not_starts_with?: Maybe<String>;
+  apiKey_ends_with?: Maybe<String>;
+  apiKey_not_ends_with?: Maybe<String>;
+  AND?: Maybe<EndpointScalarWhereInput[] | EndpointScalarWhereInput>;
+  OR?: Maybe<EndpointScalarWhereInput[] | EndpointScalarWhereInput>;
+  NOT?: Maybe<EndpointScalarWhereInput[] | EndpointScalarWhereInput>;
+}
+
+export interface EndpointUpdateManyWithWhereNestedInput {
+  where: EndpointScalarWhereInput;
+  data: EndpointUpdateManyDataInput;
+}
+
+export interface EndpointUpdateManyDataInput {
+  type?: Maybe<RequestType>;
+  url?: Maybe<String>;
+  body?: Maybe<String>;
+  apiKey?: Maybe<String>;
+}
+
+export interface TranslatorUpsertWithoutTestsInput {
+  update: TranslatorUpdateWithoutTestsDataInput;
+  create: TranslatorCreateWithoutTestsInput;
+}
+
+export interface TestUpsertWithoutRunsInput {
+  update: TestUpdateWithoutRunsDataInput;
+  create: TestCreateWithoutRunsInput;
+}
+
+export interface RunUpdateManyMutationInput {
+  expected?: Maybe<String>;
+  actual?: Maybe<String>;
+  result?: Maybe<ResultType>;
+}
+
+export interface TestCreateInput {
+  id?: Maybe<ID_Input>;
+  translator: TranslatorCreateOneWithoutTestsInput;
+  request: String;
+  expected: String;
+  runs?: Maybe<RunCreateManyWithoutTestInput>;
+}
+
+export interface TestUpdateInput {
+  translator?: Maybe<TranslatorUpdateOneRequiredWithoutTestsInput>;
+  request?: Maybe<String>;
+  expected?: Maybe<String>;
+  runs?: Maybe<RunUpdateManyWithoutTestInput>;
+}
+
+export interface TestUpdateManyMutationInput {
+  request?: Maybe<String>;
+  expected?: Maybe<String>;
+}
+
+export interface TranslatorCreateInput {
+  id?: Maybe<ID_Input>;
+  type: TranslatorType;
+  endpoints?: Maybe<EndpointCreateManyWithoutTranslatorInput>;
+  requestFunction?: Maybe<String>;
+  responseFunction?: Maybe<String>;
+  tests?: Maybe<TestCreateManyWithoutTranslatorInput>;
+}
+
+export interface TranslatorUpdateInput {
+  type?: Maybe<TranslatorType>;
+  endpoints?: Maybe<EndpointUpdateManyWithoutTranslatorInput>;
+  requestFunction?: Maybe<String>;
+  responseFunction?: Maybe<String>;
+  tests?: Maybe<TestUpdateManyWithoutTranslatorInput>;
+}
+
+export interface TranslatorUpdateManyMutationInput {
+  type?: Maybe<TranslatorType>;
+  requestFunction?: Maybe<String>;
+  responseFunction?: Maybe<String>;
+}
+
+export interface EndpointSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  node?: Maybe<EndpointWhereInput>;
+  AND?: Maybe<
+    EndpointSubscriptionWhereInput[] | EndpointSubscriptionWhereInput
+  >;
+  OR?: Maybe<EndpointSubscriptionWhereInput[] | EndpointSubscriptionWhereInput>;
+  NOT?: Maybe<
+    EndpointSubscriptionWhereInput[] | EndpointSubscriptionWhereInput
+  >;
+}
+
+export interface HeaderSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<HeaderWhereInput>;
+  AND?: Maybe<HeaderSubscriptionWhereInput[] | HeaderSubscriptionWhereInput>;
+  OR?: Maybe<HeaderSubscriptionWhereInput[] | HeaderSubscriptionWhereInput>;
+  NOT?: Maybe<HeaderSubscriptionWhereInput[] | HeaderSubscriptionWhereInput>;
+}
+
+export interface ParamSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ParamWhereInput>;
+  AND?: Maybe<ParamSubscriptionWhereInput[] | ParamSubscriptionWhereInput>;
+  OR?: Maybe<ParamSubscriptionWhereInput[] | ParamSubscriptionWhereInput>;
+  NOT?: Maybe<ParamSubscriptionWhereInput[] | ParamSubscriptionWhereInput>;
+}
+
+export interface RunSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<RunWhereInput>;
+  AND?: Maybe<RunSubscriptionWhereInput[] | RunSubscriptionWhereInput>;
+  OR?: Maybe<RunSubscriptionWhereInput[] | RunSubscriptionWhereInput>;
+  NOT?: Maybe<RunSubscriptionWhereInput[] | RunSubscriptionWhereInput>;
+}
+
+export interface TestSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TestWhereInput>;
+  AND?: Maybe<TestSubscriptionWhereInput[] | TestSubscriptionWhereInput>;
+  OR?: Maybe<TestSubscriptionWhereInput[] | TestSubscriptionWhereInput>;
+  NOT?: Maybe<TestSubscriptionWhereInput[] | TestSubscriptionWhereInput>;
+}
+
+export interface TranslatorSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TranslatorWhereInput>;
+  AND?: Maybe<
+    TranslatorSubscriptionWhereInput[] | TranslatorSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    TranslatorSubscriptionWhereInput[] | TranslatorSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    TranslatorSubscriptionWhereInput[] | TranslatorSubscriptionWhereInput
+  >;
 }
 
 export interface NodeNode {
   id: ID_Output;
 }
 
-export interface User {
+export interface Endpoint {
   id: ID_Output;
-  name: String;
-  email?: String;
+  type: RequestType;
+  url: String;
+  body?: String;
+  apiKey?: String;
 }
 
-export interface UserPromise extends Promise<User>, Fragmentable {
+export interface EndpointPromise extends Promise<Endpoint>, Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
+  translator: <T = TranslatorPromise>() => T;
+  type: () => Promise<RequestType>;
+  url: () => Promise<String>;
+  headers: <T = FragmentableArray<Header>>(args?: {
+    where?: HeaderWhereInput;
+    orderBy?: HeaderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  params: <T = FragmentableArray<Param>>(args?: {
+    where?: ParamWhereInput;
+    orderBy?: ParamOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  body: () => Promise<String>;
+  apiKey: () => Promise<String>;
 }
 
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
+export interface EndpointSubscription
+  extends Promise<AsyncIterator<Endpoint>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
+  translator: <T = TranslatorSubscription>() => T;
+  type: () => Promise<AsyncIterator<RequestType>>;
+  url: () => Promise<AsyncIterator<String>>;
+  headers: <T = Promise<AsyncIterator<HeaderSubscription>>>(args?: {
+    where?: HeaderWhereInput;
+    orderBy?: HeaderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  params: <T = Promise<AsyncIterator<ParamSubscription>>>(args?: {
+    where?: ParamWhereInput;
+    orderBy?: ParamOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  body: () => Promise<AsyncIterator<String>>;
+  apiKey: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserNullablePromise
-  extends Promise<User | null>,
+export interface EndpointNullablePromise
+  extends Promise<Endpoint | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
+  translator: <T = TranslatorPromise>() => T;
+  type: () => Promise<RequestType>;
+  url: () => Promise<String>;
+  headers: <T = FragmentableArray<Header>>(args?: {
+    where?: HeaderWhereInput;
+    orderBy?: HeaderOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  params: <T = FragmentableArray<Param>>(args?: {
+    where?: ParamWhereInput;
+    orderBy?: ParamOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  body: () => Promise<String>;
+  apiKey: () => Promise<String>;
 }
 
-export interface UserConnection {
+export interface Translator {
+  id: ID_Output;
+  type: TranslatorType;
+  requestFunction?: String;
+  responseFunction?: String;
+}
+
+export interface TranslatorPromise extends Promise<Translator>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<TranslatorType>;
+  endpoints: <T = FragmentableArray<Endpoint>>(args?: {
+    where?: EndpointWhereInput;
+    orderBy?: EndpointOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  requestFunction: () => Promise<String>;
+  responseFunction: () => Promise<String>;
+  tests: <T = FragmentableArray<Test>>(args?: {
+    where?: TestWhereInput;
+    orderBy?: TestOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface TranslatorSubscription
+  extends Promise<AsyncIterator<Translator>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<TranslatorType>>;
+  endpoints: <T = Promise<AsyncIterator<EndpointSubscription>>>(args?: {
+    where?: EndpointWhereInput;
+    orderBy?: EndpointOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  requestFunction: () => Promise<AsyncIterator<String>>;
+  responseFunction: () => Promise<AsyncIterator<String>>;
+  tests: <T = Promise<AsyncIterator<TestSubscription>>>(args?: {
+    where?: TestWhereInput;
+    orderBy?: TestOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface TranslatorNullablePromise
+  extends Promise<Translator | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<TranslatorType>;
+  endpoints: <T = FragmentableArray<Endpoint>>(args?: {
+    where?: EndpointWhereInput;
+    orderBy?: EndpointOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  requestFunction: () => Promise<String>;
+  responseFunction: () => Promise<String>;
+  tests: <T = FragmentableArray<Test>>(args?: {
+    where?: TestWhereInput;
+    orderBy?: TestOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface Test {
+  id: ID_Output;
+  request: String;
+  expected: String;
+}
+
+export interface TestPromise extends Promise<Test>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  translator: <T = TranslatorPromise>() => T;
+  request: () => Promise<String>;
+  expected: () => Promise<String>;
+  runs: <T = FragmentableArray<Run>>(args?: {
+    where?: RunWhereInput;
+    orderBy?: RunOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface TestSubscription
+  extends Promise<AsyncIterator<Test>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  translator: <T = TranslatorSubscription>() => T;
+  request: () => Promise<AsyncIterator<String>>;
+  expected: () => Promise<AsyncIterator<String>>;
+  runs: <T = Promise<AsyncIterator<RunSubscription>>>(args?: {
+    where?: RunWhereInput;
+    orderBy?: RunOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface TestNullablePromise
+  extends Promise<Test | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  translator: <T = TranslatorPromise>() => T;
+  request: () => Promise<String>;
+  expected: () => Promise<String>;
+  runs: <T = FragmentableArray<Run>>(args?: {
+    where?: RunWhereInput;
+    orderBy?: RunOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface Run {
+  id: ID_Output;
+  expected: String;
+  actual: String;
+  result: ResultType;
+}
+
+export interface RunPromise extends Promise<Run>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  test: <T = TestPromise>() => T;
+  expected: () => Promise<String>;
+  actual: () => Promise<String>;
+  result: () => Promise<ResultType>;
+}
+
+export interface RunSubscription
+  extends Promise<AsyncIterator<Run>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  test: <T = TestSubscription>() => T;
+  expected: () => Promise<AsyncIterator<String>>;
+  actual: () => Promise<AsyncIterator<String>>;
+  result: () => Promise<AsyncIterator<ResultType>>;
+}
+
+export interface RunNullablePromise extends Promise<Run | null>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  test: <T = TestPromise>() => T;
+  expected: () => Promise<String>;
+  actual: () => Promise<String>;
+  result: () => Promise<ResultType>;
+}
+
+export interface Header {
+  id: ID_Output;
+  key: String;
+  value: String;
+}
+
+export interface HeaderPromise extends Promise<Header>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  endpoint: <T = EndpointPromise>() => T;
+  key: () => Promise<String>;
+  value: () => Promise<String>;
+}
+
+export interface HeaderSubscription
+  extends Promise<AsyncIterator<Header>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  endpoint: <T = EndpointSubscription>() => T;
+  key: () => Promise<AsyncIterator<String>>;
+  value: () => Promise<AsyncIterator<String>>;
+}
+
+export interface HeaderNullablePromise
+  extends Promise<Header | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  endpoint: <T = EndpointPromise>() => T;
+  key: () => Promise<String>;
+  value: () => Promise<String>;
+}
+
+export interface Param {
+  id: ID_Output;
+  key: String;
+  value: String;
+}
+
+export interface ParamPromise extends Promise<Param>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  endpoint: <T = EndpointPromise>() => T;
+  key: () => Promise<String>;
+  value: () => Promise<String>;
+}
+
+export interface ParamSubscription
+  extends Promise<AsyncIterator<Param>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  endpoint: <T = EndpointSubscription>() => T;
+  key: () => Promise<AsyncIterator<String>>;
+  value: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ParamNullablePromise
+  extends Promise<Param | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  endpoint: <T = EndpointPromise>() => T;
+  key: () => Promise<String>;
+  value: () => Promise<String>;
+}
+
+export interface EndpointConnection {
   pageInfo: PageInfo;
-  edges: UserEdge[];
+  edges: EndpointEdge[];
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface EndpointConnectionPromise
+  extends Promise<EndpointConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  edges: <T = FragmentableArray<EndpointEdge>>() => T;
+  aggregate: <T = AggregateEndpointPromise>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface EndpointConnectionSubscription
+  extends Promise<AsyncIterator<EndpointConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EndpointEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEndpointSubscription>() => T;
 }
 
 export interface PageInfo {
@@ -266,35 +2050,309 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserEdge {
-  node: User;
+export interface EndpointEdge {
+  node: Endpoint;
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
+export interface EndpointEdgePromise
+  extends Promise<EndpointEdge>,
+    Fragmentable {
+  node: <T = EndpointPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface EndpointEdgeSubscription
+  extends Promise<AsyncIterator<EndpointEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = EndpointSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateUser {
+export interface AggregateEndpoint {
   count: Int;
 }
 
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface AggregateEndpointPromise
+  extends Promise<AggregateEndpoint>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
+export interface AggregateEndpointSubscription
+  extends Promise<AsyncIterator<AggregateEndpoint>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface HeaderConnection {
+  pageInfo: PageInfo;
+  edges: HeaderEdge[];
+}
+
+export interface HeaderConnectionPromise
+  extends Promise<HeaderConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<HeaderEdge>>() => T;
+  aggregate: <T = AggregateHeaderPromise>() => T;
+}
+
+export interface HeaderConnectionSubscription
+  extends Promise<AsyncIterator<HeaderConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HeaderEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHeaderSubscription>() => T;
+}
+
+export interface HeaderEdge {
+  node: Header;
+  cursor: String;
+}
+
+export interface HeaderEdgePromise extends Promise<HeaderEdge>, Fragmentable {
+  node: <T = HeaderPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HeaderEdgeSubscription
+  extends Promise<AsyncIterator<HeaderEdge>>,
+    Fragmentable {
+  node: <T = HeaderSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateHeader {
+  count: Int;
+}
+
+export interface AggregateHeaderPromise
+  extends Promise<AggregateHeader>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateHeaderSubscription
+  extends Promise<AsyncIterator<AggregateHeader>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ParamConnection {
+  pageInfo: PageInfo;
+  edges: ParamEdge[];
+}
+
+export interface ParamConnectionPromise
+  extends Promise<ParamConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ParamEdge>>() => T;
+  aggregate: <T = AggregateParamPromise>() => T;
+}
+
+export interface ParamConnectionSubscription
+  extends Promise<AsyncIterator<ParamConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ParamEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateParamSubscription>() => T;
+}
+
+export interface ParamEdge {
+  node: Param;
+  cursor: String;
+}
+
+export interface ParamEdgePromise extends Promise<ParamEdge>, Fragmentable {
+  node: <T = ParamPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ParamEdgeSubscription
+  extends Promise<AsyncIterator<ParamEdge>>,
+    Fragmentable {
+  node: <T = ParamSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateParam {
+  count: Int;
+}
+
+export interface AggregateParamPromise
+  extends Promise<AggregateParam>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateParamSubscription
+  extends Promise<AsyncIterator<AggregateParam>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface RunConnection {
+  pageInfo: PageInfo;
+  edges: RunEdge[];
+}
+
+export interface RunConnectionPromise
+  extends Promise<RunConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<RunEdge>>() => T;
+  aggregate: <T = AggregateRunPromise>() => T;
+}
+
+export interface RunConnectionSubscription
+  extends Promise<AsyncIterator<RunConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<RunEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateRunSubscription>() => T;
+}
+
+export interface RunEdge {
+  node: Run;
+  cursor: String;
+}
+
+export interface RunEdgePromise extends Promise<RunEdge>, Fragmentable {
+  node: <T = RunPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface RunEdgeSubscription
+  extends Promise<AsyncIterator<RunEdge>>,
+    Fragmentable {
+  node: <T = RunSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateRun {
+  count: Int;
+}
+
+export interface AggregateRunPromise
+  extends Promise<AggregateRun>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateRunSubscription
+  extends Promise<AsyncIterator<AggregateRun>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TestConnection {
+  pageInfo: PageInfo;
+  edges: TestEdge[];
+}
+
+export interface TestConnectionPromise
+  extends Promise<TestConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TestEdge>>() => T;
+  aggregate: <T = AggregateTestPromise>() => T;
+}
+
+export interface TestConnectionSubscription
+  extends Promise<AsyncIterator<TestConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TestEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTestSubscription>() => T;
+}
+
+export interface TestEdge {
+  node: Test;
+  cursor: String;
+}
+
+export interface TestEdgePromise extends Promise<TestEdge>, Fragmentable {
+  node: <T = TestPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TestEdgeSubscription
+  extends Promise<AsyncIterator<TestEdge>>,
+    Fragmentable {
+  node: <T = TestSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateTest {
+  count: Int;
+}
+
+export interface AggregateTestPromise
+  extends Promise<AggregateTest>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTestSubscription
+  extends Promise<AsyncIterator<AggregateTest>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TranslatorConnection {
+  pageInfo: PageInfo;
+  edges: TranslatorEdge[];
+}
+
+export interface TranslatorConnectionPromise
+  extends Promise<TranslatorConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TranslatorEdge>>() => T;
+  aggregate: <T = AggregateTranslatorPromise>() => T;
+}
+
+export interface TranslatorConnectionSubscription
+  extends Promise<AsyncIterator<TranslatorConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TranslatorEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTranslatorSubscription>() => T;
+}
+
+export interface TranslatorEdge {
+  node: Translator;
+  cursor: String;
+}
+
+export interface TranslatorEdgePromise
+  extends Promise<TranslatorEdge>,
+    Fragmentable {
+  node: <T = TranslatorPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TranslatorEdgeSubscription
+  extends Promise<AsyncIterator<TranslatorEdge>>,
+    Fragmentable {
+  node: <T = TranslatorSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateTranslator {
+  count: Int;
+}
+
+export interface AggregateTranslatorPromise
+  extends Promise<AggregateTranslator>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTranslatorSubscription
+  extends Promise<AsyncIterator<AggregateTranslator>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -315,51 +2373,298 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface UserSubscriptionPayload {
+export interface EndpointSubscriptionPayload {
   mutation: MutationType;
-  node: User;
+  node: Endpoint;
   updatedFields: String[];
-  previousValues: UserPreviousValues;
+  previousValues: EndpointPreviousValues;
 }
 
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
+export interface EndpointSubscriptionPayloadPromise
+  extends Promise<EndpointSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
+  node: <T = EndpointPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
+  previousValues: <T = EndpointPreviousValuesPromise>() => T;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+export interface EndpointSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EndpointSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
+  node: <T = EndpointSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  previousValues: <T = EndpointPreviousValuesSubscription>() => T;
 }
 
-export interface UserPreviousValues {
+export interface EndpointPreviousValues {
   id: ID_Output;
-  name: String;
-  email?: String;
+  type: RequestType;
+  url: String;
+  body?: String;
+  apiKey?: String;
 }
 
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
+export interface EndpointPreviousValuesPromise
+  extends Promise<EndpointPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
+  type: () => Promise<RequestType>;
+  url: () => Promise<String>;
+  body: () => Promise<String>;
+  apiKey: () => Promise<String>;
 }
 
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
+export interface EndpointPreviousValuesSubscription
+  extends Promise<AsyncIterator<EndpointPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
+  type: () => Promise<AsyncIterator<RequestType>>;
+  url: () => Promise<AsyncIterator<String>>;
+  body: () => Promise<AsyncIterator<String>>;
+  apiKey: () => Promise<AsyncIterator<String>>;
+}
+
+export interface HeaderSubscriptionPayload {
+  mutation: MutationType;
+  node: Header;
+  updatedFields: String[];
+  previousValues: HeaderPreviousValues;
+}
+
+export interface HeaderSubscriptionPayloadPromise
+  extends Promise<HeaderSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = HeaderPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = HeaderPreviousValuesPromise>() => T;
+}
+
+export interface HeaderSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<HeaderSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = HeaderSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = HeaderPreviousValuesSubscription>() => T;
+}
+
+export interface HeaderPreviousValues {
+  id: ID_Output;
+  key: String;
+  value: String;
+}
+
+export interface HeaderPreviousValuesPromise
+  extends Promise<HeaderPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  key: () => Promise<String>;
+  value: () => Promise<String>;
+}
+
+export interface HeaderPreviousValuesSubscription
+  extends Promise<AsyncIterator<HeaderPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  key: () => Promise<AsyncIterator<String>>;
+  value: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ParamSubscriptionPayload {
+  mutation: MutationType;
+  node: Param;
+  updatedFields: String[];
+  previousValues: ParamPreviousValues;
+}
+
+export interface ParamSubscriptionPayloadPromise
+  extends Promise<ParamSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ParamPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ParamPreviousValuesPromise>() => T;
+}
+
+export interface ParamSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ParamSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ParamSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ParamPreviousValuesSubscription>() => T;
+}
+
+export interface ParamPreviousValues {
+  id: ID_Output;
+  key: String;
+  value: String;
+}
+
+export interface ParamPreviousValuesPromise
+  extends Promise<ParamPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  key: () => Promise<String>;
+  value: () => Promise<String>;
+}
+
+export interface ParamPreviousValuesSubscription
+  extends Promise<AsyncIterator<ParamPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  key: () => Promise<AsyncIterator<String>>;
+  value: () => Promise<AsyncIterator<String>>;
+}
+
+export interface RunSubscriptionPayload {
+  mutation: MutationType;
+  node: Run;
+  updatedFields: String[];
+  previousValues: RunPreviousValues;
+}
+
+export interface RunSubscriptionPayloadPromise
+  extends Promise<RunSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = RunPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = RunPreviousValuesPromise>() => T;
+}
+
+export interface RunSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<RunSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = RunSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = RunPreviousValuesSubscription>() => T;
+}
+
+export interface RunPreviousValues {
+  id: ID_Output;
+  expected: String;
+  actual: String;
+  result: ResultType;
+}
+
+export interface RunPreviousValuesPromise
+  extends Promise<RunPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  expected: () => Promise<String>;
+  actual: () => Promise<String>;
+  result: () => Promise<ResultType>;
+}
+
+export interface RunPreviousValuesSubscription
+  extends Promise<AsyncIterator<RunPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  expected: () => Promise<AsyncIterator<String>>;
+  actual: () => Promise<AsyncIterator<String>>;
+  result: () => Promise<AsyncIterator<ResultType>>;
+}
+
+export interface TestSubscriptionPayload {
+  mutation: MutationType;
+  node: Test;
+  updatedFields: String[];
+  previousValues: TestPreviousValues;
+}
+
+export interface TestSubscriptionPayloadPromise
+  extends Promise<TestSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TestPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TestPreviousValuesPromise>() => T;
+}
+
+export interface TestSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TestSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TestSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TestPreviousValuesSubscription>() => T;
+}
+
+export interface TestPreviousValues {
+  id: ID_Output;
+  request: String;
+  expected: String;
+}
+
+export interface TestPreviousValuesPromise
+  extends Promise<TestPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  request: () => Promise<String>;
+  expected: () => Promise<String>;
+}
+
+export interface TestPreviousValuesSubscription
+  extends Promise<AsyncIterator<TestPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  request: () => Promise<AsyncIterator<String>>;
+  expected: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TranslatorSubscriptionPayload {
+  mutation: MutationType;
+  node: Translator;
+  updatedFields: String[];
+  previousValues: TranslatorPreviousValues;
+}
+
+export interface TranslatorSubscriptionPayloadPromise
+  extends Promise<TranslatorSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TranslatorPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TranslatorPreviousValuesPromise>() => T;
+}
+
+export interface TranslatorSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TranslatorSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TranslatorSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TranslatorPreviousValuesSubscription>() => T;
+}
+
+export interface TranslatorPreviousValues {
+  id: ID_Output;
+  type: TranslatorType;
+  requestFunction?: String;
+  responseFunction?: String;
+}
+
+export interface TranslatorPreviousValuesPromise
+  extends Promise<TranslatorPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<TranslatorType>;
+  requestFunction: () => Promise<String>;
+  responseFunction: () => Promise<String>;
+}
+
+export interface TranslatorPreviousValuesSubscription
+  extends Promise<AsyncIterator<TranslatorPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<TranslatorType>>;
+  requestFunction: () => Promise<AsyncIterator<String>>;
+  responseFunction: () => Promise<AsyncIterator<String>>;
 }
 
 /*
@@ -391,7 +2696,39 @@ export type Long = string;
 
 export const models: Model[] = [
   {
-    name: "User",
+    name: "Translator",
+    embedded: false
+  },
+  {
+    name: "Endpoint",
+    embedded: false
+  },
+  {
+    name: "Param",
+    embedded: false
+  },
+  {
+    name: "Header",
+    embedded: false
+  },
+  {
+    name: "Test",
+    embedded: false
+  },
+  {
+    name: "Run",
+    embedded: false
+  },
+  {
+    name: "RequestType",
+    embedded: false
+  },
+  {
+    name: "TranslatorType",
+    embedded: false
+  },
+  {
+    name: "ResultType",
     embedded: false
   }
 ];
