@@ -1095,29 +1095,10 @@ export interface NexusGenEnums {
   ResultType: "Fail" | "Pass"
   RunOrderByInput: "actual_ASC" | "actual_DESC" | "createdAt_ASC" | "createdAt_DESC" | "expected_ASC" | "expected_DESC" | "id_ASC" | "id_DESC" | "result_ASC" | "result_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   TestOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "expected_ASC" | "expected_DESC" | "id_ASC" | "id_DESC" | "request_ASC" | "request_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  TranslatorOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "requestFunction_ASC" | "requestFunction_DESC" | "responseFunction_ASC" | "responseFunction_DESC" | "type_ASC" | "type_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   TranslatorType: "Request" | "Response"
 }
 
 export interface NexusGenRootTypes {
-  AggregateEndpoint: { // root type
-    count: number; // Int!
-  }
-  AggregateHeader: { // root type
-    count: number; // Int!
-  }
-  AggregateParam: { // root type
-    count: number; // Int!
-  }
-  AggregateRun: { // root type
-    count: number; // Int!
-  }
-  AggregateTest: { // root type
-    count: number; // Int!
-  }
-  AggregateTranslator: { // root type
-    count: number; // Int!
-  }
   BatchPayload: { // root type
     count: any; // Long!
   }
@@ -1128,46 +1109,16 @@ export interface NexusGenRootTypes {
     type: NexusGenEnums['RequestType']; // RequestType!
     url: string; // String!
   }
-  EndpointConnection: { // root type
-    edges: NexusGenRootTypes['EndpointEdge'][]; // [EndpointEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  EndpointEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Endpoint']; // Endpoint!
-  }
   Header: { // root type
     id: string; // ID!
     key: string; // String!
     value: string; // String!
   }
-  HeaderConnection: { // root type
-    edges: NexusGenRootTypes['HeaderEdge'][]; // [HeaderEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  HeaderEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Header']; // Header!
-  }
   Mutation: {};
-  PageInfo: { // root type
-    endCursor?: string | null; // String
-    hasNextPage: boolean; // Boolean!
-    hasPreviousPage: boolean; // Boolean!
-    startCursor?: string | null; // String
-  }
   Param: { // root type
     id: string; // ID!
     key: string; // String!
     value: string; // String!
-  }
-  ParamConnection: { // root type
-    edges: NexusGenRootTypes['ParamEdge'][]; // [ParamEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  ParamEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Param']; // Param!
   }
   Query: {};
   Run: { // root type
@@ -1176,40 +1127,16 @@ export interface NexusGenRootTypes {
     id: string; // ID!
     result: NexusGenEnums['ResultType']; // ResultType!
   }
-  RunConnection: { // root type
-    edges: NexusGenRootTypes['RunEdge'][]; // [RunEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  RunEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Run']; // Run!
-  }
   Test: { // root type
     expected: string; // String!
     id: string; // ID!
     request: string; // String!
-  }
-  TestConnection: { // root type
-    edges: NexusGenRootTypes['TestEdge'][]; // [TestEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  TestEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Test']; // Test!
   }
   Translator: { // root type
     id: string; // ID!
     requestFunction?: string | null; // String
     responseFunction?: string | null; // String
     type: NexusGenEnums['TranslatorType']; // TranslatorType!
-  }
-  TranslatorConnection: { // root type
-    edges: NexusGenRootTypes['TranslatorEdge'][]; // [TranslatorEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  TranslatorEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Translator']; // Translator!
   }
   String: string;
   Int: number;
@@ -1327,29 +1254,10 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   ResultType: NexusGenEnums['ResultType'];
   RunOrderByInput: NexusGenEnums['RunOrderByInput'];
   TestOrderByInput: NexusGenEnums['TestOrderByInput'];
-  TranslatorOrderByInput: NexusGenEnums['TranslatorOrderByInput'];
   TranslatorType: NexusGenEnums['TranslatorType'];
 }
 
 export interface NexusGenFieldTypes {
-  AggregateEndpoint: { // field return type
-    count: number; // Int!
-  }
-  AggregateHeader: { // field return type
-    count: number; // Int!
-  }
-  AggregateParam: { // field return type
-    count: number; // Int!
-  }
-  AggregateRun: { // field return type
-    count: number; // Int!
-  }
-  AggregateTest: { // field return type
-    count: number; // Int!
-  }
-  AggregateTranslator: { // field return type
-    count: number; // Int!
-  }
   BatchPayload: { // field return type
     count: any; // Long!
   }
@@ -1363,29 +1271,11 @@ export interface NexusGenFieldTypes {
     type: NexusGenEnums['RequestType']; // RequestType!
     url: string; // String!
   }
-  EndpointConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateEndpoint']; // AggregateEndpoint!
-    edges: NexusGenRootTypes['EndpointEdge'][]; // [EndpointEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  EndpointEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Endpoint']; // Endpoint!
-  }
   Header: { // field return type
     endpoint: NexusGenRootTypes['Endpoint']; // Endpoint!
     id: string; // ID!
     key: string; // String!
     value: string; // String!
-  }
-  HeaderConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateHeader']; // AggregateHeader!
-    edges: NexusGenRootTypes['HeaderEdge'][]; // [HeaderEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  HeaderEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Header']; // Header!
   }
   Mutation: { // field return type
     createEndpoint: NexusGenRootTypes['Endpoint']; // Endpoint!
@@ -1425,46 +1315,14 @@ export interface NexusGenFieldTypes {
     upsertTest: NexusGenRootTypes['Test']; // Test!
     upsertTranslator: NexusGenRootTypes['Translator']; // Translator!
   }
-  PageInfo: { // field return type
-    endCursor: string | null; // String
-    hasNextPage: boolean; // Boolean!
-    hasPreviousPage: boolean; // Boolean!
-    startCursor: string | null; // String
-  }
   Param: { // field return type
     endpoint: NexusGenRootTypes['Endpoint']; // Endpoint!
     id: string; // ID!
     key: string; // String!
     value: string; // String!
   }
-  ParamConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateParam']; // AggregateParam!
-    edges: NexusGenRootTypes['ParamEdge'][]; // [ParamEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  ParamEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Param']; // Param!
-  }
   Query: { // field return type
-    endpoint: NexusGenRootTypes['Endpoint'] | null; // Endpoint
-    endpoints: NexusGenRootTypes['Endpoint'][]; // [Endpoint!]!
-    endpointsConnection: NexusGenRootTypes['EndpointConnection']; // EndpointConnection!
-    header: NexusGenRootTypes['Header'] | null; // Header
-    headers: NexusGenRootTypes['Header'][]; // [Header!]!
-    headersConnection: NexusGenRootTypes['HeaderConnection']; // HeaderConnection!
-    param: NexusGenRootTypes['Param'] | null; // Param
-    params: NexusGenRootTypes['Param'][]; // [Param!]!
-    paramsConnection: NexusGenRootTypes['ParamConnection']; // ParamConnection!
-    run: NexusGenRootTypes['Run'] | null; // Run
-    runs: NexusGenRootTypes['Run'][]; // [Run!]!
-    runsConnection: NexusGenRootTypes['RunConnection']; // RunConnection!
-    test: NexusGenRootTypes['Test'] | null; // Test
-    tests: NexusGenRootTypes['Test'][]; // [Test!]!
-    testsConnection: NexusGenRootTypes['TestConnection']; // TestConnection!
     translator: NexusGenRootTypes['Translator'] | null; // Translator
-    translators: NexusGenRootTypes['Translator'][]; // [Translator!]!
-    translatorsConnection: NexusGenRootTypes['TranslatorConnection']; // TranslatorConnection!
   }
   Run: { // field return type
     actual: string; // String!
@@ -1473,30 +1331,12 @@ export interface NexusGenFieldTypes {
     result: NexusGenEnums['ResultType']; // ResultType!
     test: NexusGenRootTypes['Test']; // Test!
   }
-  RunConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateRun']; // AggregateRun!
-    edges: NexusGenRootTypes['RunEdge'][]; // [RunEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  RunEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Run']; // Run!
-  }
   Test: { // field return type
     expected: string; // String!
     id: string; // ID!
     request: string; // String!
     runs: NexusGenRootTypes['Run'][] | null; // [Run!]
     translator: NexusGenRootTypes['Translator']; // Translator!
-  }
-  TestConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateTest']; // AggregateTest!
-    edges: NexusGenRootTypes['TestEdge'][]; // [TestEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  TestEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Test']; // Test!
   }
   Translator: { // field return type
     endpoints: NexusGenRootTypes['Endpoint'][] | null; // [Endpoint!]
@@ -1505,15 +1345,6 @@ export interface NexusGenFieldTypes {
     responseFunction: string | null; // String
     tests: NexusGenRootTypes['Test'][] | null; // [Test!]
     type: NexusGenEnums['TranslatorType']; // TranslatorType!
-  }
-  TranslatorConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateTranslator']; // AggregateTranslator!
-    edges: NexusGenRootTypes['TranslatorEdge'][]; // [TranslatorEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  TranslatorEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Translator']; // Translator!
   }
 }
 
@@ -1673,131 +1504,8 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    endpoint: { // args
-      where: NexusGenInputs['EndpointWhereUniqueInput']; // EndpointWhereUniqueInput!
-    }
-    endpoints: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['EndpointOrderByInput'] | null; // EndpointOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
-    }
-    endpointsConnection: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['EndpointOrderByInput'] | null; // EndpointOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['EndpointWhereInput'] | null; // EndpointWhereInput
-    }
-    header: { // args
-      where: NexusGenInputs['HeaderWhereUniqueInput']; // HeaderWhereUniqueInput!
-    }
-    headers: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['HeaderOrderByInput'] | null; // HeaderOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
-    }
-    headersConnection: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['HeaderOrderByInput'] | null; // HeaderOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['HeaderWhereInput'] | null; // HeaderWhereInput
-    }
-    param: { // args
-      where: NexusGenInputs['ParamWhereUniqueInput']; // ParamWhereUniqueInput!
-    }
-    params: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['ParamOrderByInput'] | null; // ParamOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
-    }
-    paramsConnection: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['ParamOrderByInput'] | null; // ParamOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['ParamWhereInput'] | null; // ParamWhereInput
-    }
-    run: { // args
-      where: NexusGenInputs['RunWhereUniqueInput']; // RunWhereUniqueInput!
-    }
-    runs: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['RunOrderByInput'] | null; // RunOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
-    }
-    runsConnection: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['RunOrderByInput'] | null; // RunOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['RunWhereInput'] | null; // RunWhereInput
-    }
-    test: { // args
-      where: NexusGenInputs['TestWhereUniqueInput']; // TestWhereUniqueInput!
-    }
-    tests: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['TestOrderByInput'] | null; // TestOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
-    }
-    testsConnection: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['TestOrderByInput'] | null; // TestOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['TestWhereInput'] | null; // TestWhereInput
-    }
     translator: { // args
       where: NexusGenInputs['TranslatorWhereUniqueInput']; // TranslatorWhereUniqueInput!
-    }
-    translators: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['TranslatorOrderByInput'] | null; // TranslatorOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['TranslatorWhereInput'] | null; // TranslatorWhereInput
-    }
-    translatorsConnection: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['TranslatorOrderByInput'] | null; // TranslatorOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['TranslatorWhereInput'] | null; // TranslatorWhereInput
     }
   }
   Test: {
@@ -1838,11 +1546,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AggregateEndpoint" | "AggregateHeader" | "AggregateParam" | "AggregateRun" | "AggregateTest" | "AggregateTranslator" | "BatchPayload" | "Endpoint" | "EndpointConnection" | "EndpointEdge" | "Header" | "HeaderConnection" | "HeaderEdge" | "Mutation" | "PageInfo" | "Param" | "ParamConnection" | "ParamEdge" | "Query" | "Run" | "RunConnection" | "RunEdge" | "Test" | "TestConnection" | "TestEdge" | "Translator" | "TranslatorConnection" | "TranslatorEdge";
+export type NexusGenObjectNames = "BatchPayload" | "Endpoint" | "Header" | "Mutation" | "Param" | "Query" | "Run" | "Test" | "Translator";
 
 export type NexusGenInputNames = "EndpointCreateInput" | "EndpointCreateManyWithoutTranslatorInput" | "EndpointCreateOneWithoutHeadersInput" | "EndpointCreateOneWithoutParamsInput" | "EndpointCreateWithoutHeadersInput" | "EndpointCreateWithoutParamsInput" | "EndpointCreateWithoutTranslatorInput" | "EndpointScalarWhereInput" | "EndpointUpdateInput" | "EndpointUpdateManyDataInput" | "EndpointUpdateManyMutationInput" | "EndpointUpdateManyWithWhereNestedInput" | "EndpointUpdateManyWithoutTranslatorInput" | "EndpointUpdateOneRequiredWithoutHeadersInput" | "EndpointUpdateOneRequiredWithoutParamsInput" | "EndpointUpdateWithWhereUniqueWithoutTranslatorInput" | "EndpointUpdateWithoutHeadersDataInput" | "EndpointUpdateWithoutParamsDataInput" | "EndpointUpdateWithoutTranslatorDataInput" | "EndpointUpsertWithWhereUniqueWithoutTranslatorInput" | "EndpointUpsertWithoutHeadersInput" | "EndpointUpsertWithoutParamsInput" | "EndpointWhereInput" | "EndpointWhereUniqueInput" | "HeaderCreateInput" | "HeaderCreateManyWithoutEndpointInput" | "HeaderCreateWithoutEndpointInput" | "HeaderScalarWhereInput" | "HeaderUpdateInput" | "HeaderUpdateManyDataInput" | "HeaderUpdateManyMutationInput" | "HeaderUpdateManyWithWhereNestedInput" | "HeaderUpdateManyWithoutEndpointInput" | "HeaderUpdateWithWhereUniqueWithoutEndpointInput" | "HeaderUpdateWithoutEndpointDataInput" | "HeaderUpsertWithWhereUniqueWithoutEndpointInput" | "HeaderWhereInput" | "HeaderWhereUniqueInput" | "ParamCreateInput" | "ParamCreateManyWithoutEndpointInput" | "ParamCreateWithoutEndpointInput" | "ParamScalarWhereInput" | "ParamUpdateInput" | "ParamUpdateManyDataInput" | "ParamUpdateManyMutationInput" | "ParamUpdateManyWithWhereNestedInput" | "ParamUpdateManyWithoutEndpointInput" | "ParamUpdateWithWhereUniqueWithoutEndpointInput" | "ParamUpdateWithoutEndpointDataInput" | "ParamUpsertWithWhereUniqueWithoutEndpointInput" | "ParamWhereInput" | "ParamWhereUniqueInput" | "RunCreateInput" | "RunCreateManyWithoutTestInput" | "RunCreateWithoutTestInput" | "RunScalarWhereInput" | "RunUpdateInput" | "RunUpdateManyDataInput" | "RunUpdateManyMutationInput" | "RunUpdateManyWithWhereNestedInput" | "RunUpdateManyWithoutTestInput" | "RunUpdateWithWhereUniqueWithoutTestInput" | "RunUpdateWithoutTestDataInput" | "RunUpsertWithWhereUniqueWithoutTestInput" | "RunWhereInput" | "RunWhereUniqueInput" | "TestCreateInput" | "TestCreateManyWithoutTranslatorInput" | "TestCreateOneWithoutRunsInput" | "TestCreateWithoutRunsInput" | "TestCreateWithoutTranslatorInput" | "TestScalarWhereInput" | "TestUpdateInput" | "TestUpdateManyDataInput" | "TestUpdateManyMutationInput" | "TestUpdateManyWithWhereNestedInput" | "TestUpdateManyWithoutTranslatorInput" | "TestUpdateOneRequiredWithoutRunsInput" | "TestUpdateWithWhereUniqueWithoutTranslatorInput" | "TestUpdateWithoutRunsDataInput" | "TestUpdateWithoutTranslatorDataInput" | "TestUpsertWithWhereUniqueWithoutTranslatorInput" | "TestUpsertWithoutRunsInput" | "TestWhereInput" | "TestWhereUniqueInput" | "TranslatorCreateInput" | "TranslatorCreateOneWithoutEndpointsInput" | "TranslatorCreateOneWithoutTestsInput" | "TranslatorCreateWithoutEndpointsInput" | "TranslatorCreateWithoutTestsInput" | "TranslatorUpdateInput" | "TranslatorUpdateManyMutationInput" | "TranslatorUpdateOneRequiredWithoutEndpointsInput" | "TranslatorUpdateOneRequiredWithoutTestsInput" | "TranslatorUpdateWithoutEndpointsDataInput" | "TranslatorUpdateWithoutTestsDataInput" | "TranslatorUpsertWithoutEndpointsInput" | "TranslatorUpsertWithoutTestsInput" | "TranslatorWhereInput" | "TranslatorWhereUniqueInput";
 
-export type NexusGenEnumNames = "EndpointOrderByInput" | "HeaderOrderByInput" | "ParamOrderByInput" | "RequestType" | "ResultType" | "RunOrderByInput" | "TestOrderByInput" | "TranslatorOrderByInput" | "TranslatorType";
+export type NexusGenEnumNames = "EndpointOrderByInput" | "HeaderOrderByInput" | "ParamOrderByInput" | "RequestType" | "ResultType" | "RunOrderByInput" | "TestOrderByInput" | "TranslatorType";
 
 export type NexusGenInterfaceNames = never;
 

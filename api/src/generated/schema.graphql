@@ -2,30 +2,6 @@
 ### Do not make changes to this file directly
 
 
-type AggregateEndpoint {
-  count: Int!
-}
-
-type AggregateHeader {
-  count: Int!
-}
-
-type AggregateParam {
-  count: Int!
-}
-
-type AggregateRun {
-  count: Int!
-}
-
-type AggregateTest {
-  count: Int!
-}
-
-type AggregateTranslator {
-  count: Int!
-}
-
 type BatchPayload {
   count: Long!
 }
@@ -39,12 +15,6 @@ type Endpoint {
   translator: Translator!
   type: RequestType!
   url: String!
-}
-
-type EndpointConnection {
-  aggregate: AggregateEndpoint!
-  edges: [EndpointEdge!]!
-  pageInfo: PageInfo!
 }
 
 input EndpointCreateInput {
@@ -101,11 +71,6 @@ input EndpointCreateWithoutTranslatorInput {
   params: ParamCreateManyWithoutEndpointInput
   type: RequestType!
   url: String!
-}
-
-type EndpointEdge {
-  cursor: String!
-  node: Endpoint!
 }
 
 enum EndpointOrderByInput {
@@ -378,12 +343,6 @@ type Header {
   value: String!
 }
 
-type HeaderConnection {
-  aggregate: AggregateHeader!
-  edges: [HeaderEdge!]!
-  pageInfo: PageInfo!
-}
-
 input HeaderCreateInput {
   endpoint: EndpointCreateOneWithoutHeadersInput!
   id: ID
@@ -400,11 +359,6 @@ input HeaderCreateWithoutEndpointInput {
   id: ID
   key: String!
   value: String!
-}
-
-type HeaderEdge {
-  cursor: String!
-  node: Header!
 }
 
 enum HeaderOrderByInput {
@@ -611,24 +565,11 @@ type Mutation {
   upsertTranslator(create: TranslatorCreateInput!, update: TranslatorUpdateInput!, where: TranslatorWhereUniqueInput!): Translator!
 }
 
-type PageInfo {
-  endCursor: String
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
-}
-
 type Param {
   endpoint: Endpoint!
   id: ID!
   key: String!
   value: String!
-}
-
-type ParamConnection {
-  aggregate: AggregateParam!
-  edges: [ParamEdge!]!
-  pageInfo: PageInfo!
 }
 
 input ParamCreateInput {
@@ -647,11 +588,6 @@ input ParamCreateWithoutEndpointInput {
   id: ID
   key: String!
   value: String!
-}
-
-type ParamEdge {
-  cursor: String!
-  node: Param!
 }
 
 enum ParamOrderByInput {
@@ -818,24 +754,7 @@ input ParamWhereUniqueInput {
 }
 
 type Query {
-  endpoint(where: EndpointWhereUniqueInput!): Endpoint
-  endpoints(after: String, before: String, first: Int, last: Int, orderBy: EndpointOrderByInput, skip: Int, where: EndpointWhereInput): [Endpoint!]!
-  endpointsConnection(after: String, before: String, first: Int, last: Int, orderBy: EndpointOrderByInput, skip: Int, where: EndpointWhereInput): EndpointConnection!
-  header(where: HeaderWhereUniqueInput!): Header
-  headers(after: String, before: String, first: Int, last: Int, orderBy: HeaderOrderByInput, skip: Int, where: HeaderWhereInput): [Header!]!
-  headersConnection(after: String, before: String, first: Int, last: Int, orderBy: HeaderOrderByInput, skip: Int, where: HeaderWhereInput): HeaderConnection!
-  param(where: ParamWhereUniqueInput!): Param
-  params(after: String, before: String, first: Int, last: Int, orderBy: ParamOrderByInput, skip: Int, where: ParamWhereInput): [Param!]!
-  paramsConnection(after: String, before: String, first: Int, last: Int, orderBy: ParamOrderByInput, skip: Int, where: ParamWhereInput): ParamConnection!
-  run(where: RunWhereUniqueInput!): Run
-  runs(after: String, before: String, first: Int, last: Int, orderBy: RunOrderByInput, skip: Int, where: RunWhereInput): [Run!]!
-  runsConnection(after: String, before: String, first: Int, last: Int, orderBy: RunOrderByInput, skip: Int, where: RunWhereInput): RunConnection!
-  test(where: TestWhereUniqueInput!): Test
-  tests(after: String, before: String, first: Int, last: Int, orderBy: TestOrderByInput, skip: Int, where: TestWhereInput): [Test!]!
-  testsConnection(after: String, before: String, first: Int, last: Int, orderBy: TestOrderByInput, skip: Int, where: TestWhereInput): TestConnection!
   translator(where: TranslatorWhereUniqueInput!): Translator
-  translators(after: String, before: String, first: Int, last: Int, orderBy: TranslatorOrderByInput, skip: Int, where: TranslatorWhereInput): [Translator!]!
-  translatorsConnection(after: String, before: String, first: Int, last: Int, orderBy: TranslatorOrderByInput, skip: Int, where: TranslatorWhereInput): TranslatorConnection!
 }
 
 enum RequestType {
@@ -858,12 +777,6 @@ type Run {
   test: Test!
 }
 
-type RunConnection {
-  aggregate: AggregateRun!
-  edges: [RunEdge!]!
-  pageInfo: PageInfo!
-}
-
 input RunCreateInput {
   actual: String!
   expected: String!
@@ -882,11 +795,6 @@ input RunCreateWithoutTestInput {
   expected: String!
   id: ID
   result: ResultType!
-}
-
-type RunEdge {
-  cursor: String!
-  node: Run!
 }
 
 enum RunOrderByInput {
@@ -1074,12 +982,6 @@ type Test {
   translator: Translator!
 }
 
-type TestConnection {
-  aggregate: AggregateTest!
-  edges: [TestEdge!]!
-  pageInfo: PageInfo!
-}
-
 input TestCreateInput {
   expected: String!
   id: ID
@@ -1110,11 +1012,6 @@ input TestCreateWithoutTranslatorInput {
   id: ID
   request: String!
   runs: RunCreateManyWithoutTestInput
-}
-
-type TestEdge {
-  cursor: String!
-  node: Test!
 }
 
 enum TestOrderByInput {
@@ -1312,12 +1209,6 @@ type Translator {
   type: TranslatorType!
 }
 
-type TranslatorConnection {
-  aggregate: AggregateTranslator!
-  edges: [TranslatorEdge!]!
-  pageInfo: PageInfo!
-}
-
 input TranslatorCreateInput {
   endpoints: EndpointCreateManyWithoutTranslatorInput
   id: ID
@@ -1351,26 +1242,6 @@ input TranslatorCreateWithoutTestsInput {
   requestFunction: String
   responseFunction: String
   type: TranslatorType!
-}
-
-type TranslatorEdge {
-  cursor: String!
-  node: Translator!
-}
-
-enum TranslatorOrderByInput {
-  createdAt_ASC
-  createdAt_DESC
-  id_ASC
-  id_DESC
-  requestFunction_ASC
-  requestFunction_DESC
-  responseFunction_ASC
-  responseFunction_DESC
-  type_ASC
-  type_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 enum TranslatorType {
