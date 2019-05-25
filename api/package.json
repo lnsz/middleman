@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/lnsz/middleman#readme",
   "scripts": {
-    "start": "./node_modules/ts-node-dev/bin/ts-node-dev --no-notify --respawn --transpileOnly ./src"
+    "start": "./node_modules/ts-node-dev/bin/ts-node-dev --poll --no-notify --respawn --transpileOnly ./src"
   },
   "dependencies": {
     "@apollographql/graphql-playground-html": "^1.6.6",
