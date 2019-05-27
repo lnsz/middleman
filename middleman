@@ -77,28 +77,16 @@
 [ "$DB_CP" ]                           || DB_CP='5432'
 
 ######################
-# WORKER_SERVICE
+# WORKER
 ######################
 # Server
-[ "$WORKER_SERVICE_NAME" ]             || WORKER_SERVICE_NAME="middleman_worker_service"
-[ "$WORKER_QUEUE_SERVICE_NAME" ]       || WORKER_QUEUE_SERVICE_NAME='middleman_worker_queue_service'
-[ "$WORKER_RUNNER_SERVICE_NAME" ]      || WORKER_RUNNER_SERVICE_NAME='middleman_worker_runner_service'
-[ "$WORKER_SERVICE_IMAGE" ]            || WORKER_SERVICE_IMAGE='middleman/middleman_worker_service'
-[ "$WORKER_SERVICE_TAG" ]              || WORKER_SERVICE_TAG='latest'
-[ "$WORKER_SERVICE_PATH" ]             || WORKER_SERVICE_PATH="${GIT_ROOT}/middleman_worker_service"
-[ "$WORKER_QUEUE_SERVICE_HP" ]         || WORKER_QUEUE_SERVICE_HP='42010'
-[ "$WORKER_RUNNER_SERVICE_HP" ]        || WORKER_RUNNER_SERVICE_HP='42010'
-[ "$WORKER_SERVICE_CP" ]               || WORKER_SERVICE_CP='42010'
-[ "$WORKER_SERVICE_PROTOCOL" ]         || WORKER_SERVICE_PROTOCOL='http'
-[ "$WORKER_SERVICE_URL" ]              || WORKER_SERVICE_URL="${WORKER_SERVICE_PROTOCOL}://${WORKER_SERVICE_NAME}:${WORKER_SERVICE_CP}"
-
-# Database
-[ "$WORKER_DB_NAME" ]                  || WORKER_DB_NAME='middleman_worker_db'
-[ "$WORKER_DB_IMAGE" ]                 || WORKER_DB_IMAGE='redis'
-[ "$WORKER_DB_TAG" ]                   || WORKER_DB_TAG='5.0-alpine'
-[ "$WORKER_DB_VOLUME_NAME" ]           || WORKER_DB_VOLUME_NAME='middleman_worker_db_volume'
-[ "$WORKER_DB_HP" ]                    || WORKER_DB_HP='42011'
-[ "$WORKER_DB_CP" ]                    || WORKER_DB_CP='6379' # Default redis port
+[ "$WORKER_NAME" ]                     || WORKER_NAME="middleman_worker"
+[ "$WORKER_IMAGE" ]                    || WORKER_IMAGE='middleman/middleman_worker'
+[ "$WORKER_TAG" ]                      || WORKER_TAG='latest'
+[ "$WORKER_PATH" ]                     || WORKER_PATH="${GIT_ROOT}/worker"
+[ "$WORKER_HP" ]                       || WORKER_HP='42010'
+[ "$WORKER_CP" ]                       || WORKER_CP='42010'
+[ "$WORKER_PROTOCOL" ]                 || WORKER_PROTOCOL='http'
 
 
 create_compose_file() {
@@ -122,6 +110,7 @@ services:
     volumes:
       - ${API_PATH}/src:/app/src
       - ${API_PATH}/prisma:/app/prisma
+
   ${PRISMA_NAME}:
     image: ${PRISMA_IMAGE}:${PRISMA_TAG}
     restart: always
@@ -140,6 +129,7 @@ services:
             password: ${DB_PASSWORD}
             port: ${DB_CP}
             migrations: true
+
   ${PRISMA_CLI_NAME}:
     image: ${PRISMA_CLI_IMAGE}:${PRISMA_CLI_TAG}
     network_mode: host
@@ -153,6 +143,7 @@ services:
     volumes:
       - ${API_PATH}/src:/app/src
       - ${API_PATH}/prisma:/app/prisma
+
   ${DB_NAME}:
     image: ${DB_IMAGE}:${DB_TAG}
     restart: always
@@ -163,9 +154,30 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ${DB_VOLUME_NAME}:/var/lib/postgresql/data
+
+  ${WORKER_NAME}:
+    image: ${WORKER_IMAGE}:${WORKER_TAG}
+    build:
+      context: ${WORKER_PATH}
+      dockerfile: ${WORKER_PATH}/docker/Dockerfile
+    restart: always
+    ports:
+      - '${WORKER_HP}:${WORKER_CP}'
+    environment:
+      PORT: ${WORKER_CP}
+      DB_HOST: ${DB_NAME}
+      DB_NAME: prisma
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    depends_on: 
+      - ${DB_NAME}
+    volumes:
+      - ${WORKER_PATH}/src:/app/src
+
 volumes:
   ${DB_VOLUME_NAME}:
     external: true
+
 EOT
 elif [ "$MODE" = 'prod' ]
 then
@@ -214,16 +226,13 @@ stop() {
   stop_container "$PRISMA_NAME"
   stop_container "$PRISMA_CLI_NAME"
   stop_container "$DB_NAME"
-  stop_container "$WORKER_QUEUE_SERVICE_NAME"
-  stop_container "$WORKER_RUNNER_SERVICE_NAME"
-  stop_container "$WORKER_DB_NAME"
+  stop_container "$WORKER_NAME"
   echo ''
 }
 
 create_volumes() {
   echo 'Creating volumes:'
   docker volume create "$DB_VOLUME_NAME"
-  docker volume create "$WORKER_DB_VOLUME_NAME"
   echo ''
 }
 
@@ -242,11 +251,30 @@ migrate() {
 
 copy_node_modules() {
   if [ ! -d "${API_PATH}/node_modules" ]; then
-    echo "\nCopying node modules"
+    echo "\nCopying API node modules"
     API_CONTAINER=$(find_container_id $API_NAME)
     docker cp "${API_CONTAINER}:/app/node_modules" "${API_PATH}"
-    echo ''
   fi
+  if [ ! -d "${WORKER_PATH}/node_modules" ]; then
+    echo "\nCopying Worker node modules"
+    WORKER_CONTAINER=$(find_container_id $WORKER_NAME)
+    docker cp "${WORKER_CONTAINER}:/app/node_modules" "${WORKER_PATH}"
+  fi
+  echo ''
+}
+
+copy_yarn_lock() {
+  if [ ! -f "${API_PATH}/yarn.lock" ]; then
+    echo "\nCopying API yarn.lock"
+    API_CONTAINER=$(find_container_id $API_NAME)
+    docker cp "${API_CONTAINER}:/app/yarn.lock" "${API_PATH}"
+  fi
+  if [ ! -f "${WORKER_PATH}/yarn.lock" ]; then
+    echo "\nCopying Worker yarn.lock"
+    WORKER_CONTAINER=$(find_container_id $WORKER_NAME)
+    docker cp "${WORKER_CONTAINER}:/app/yarn.lock" "${WORKER_PATH}"
+  fi
+  echo ''
 }
 
 build() {
@@ -258,6 +286,7 @@ start() {
   docker-compose up -d
   migrate
   copy_node_modules
+  copy_yarn_lock
   docker-compose logs -f
 }
 
@@ -269,24 +298,22 @@ reset() {
 delete_database() {
   echo "Deleting databases"
   docker volume rm "$DB_VOLUME_NAME"         > /dev/null 2>&1 && echo "Removed $DB_VOLUME_NAME"
-  docker volume rm "$WORKER_DB_VOLUME_NAME"  > /dev/null 2>&1 && echo "Removed $WORKER_DB_VOLUME_NAME"
 }
 
 push() {
   push_image "$CLIENT_NAME" "$CLIENT_IMAGE" "$CLIENT_TAG"
   push_image "$API_NAME" "$API_IMAGE" "$API_TAG"
   push_image "$PRISMA_CLI_NAME" "$PRISMA_CLI_IMAGE" "$PRISMA_CLI_TAG"
-  push_image "$WORKER_SERVICE_NAME" "$WORKER_SERVICE_IMAGE" "$WORKER_SERVICE_TAG"
+  push_image "$WORKER_NAME" "$WORKER_IMAGE" "$WORKER_TAG"
 }
 
 install() {
   install_image "$CLIENT_NAME" "$CLIENT_IMAGE" "$CLIENT_TAG"
   install_image "$API_NAME" "$API_IMAGE" "$API_TAG"
   install_image "$PRISMA_CLI_NAME" "$PRISMA_CLI_IMAGE" "$PRISMA_CLI_TAG"
-  install_image "$WORKER_SERVICE_NAME" "$WORKER_SERVICE_IMAGE" "$WORKER_SERVICE_TAG"
+  install_image "$WORKER_NAME" "$WORKER_IMAGE" "$WORKER_TAG"
   docker pull "${DB_IMAGE}:${DB_TAG}"
   docker pull "${PRISMA_IMAGE}:${PRISMA_TAG}"
-  docker pull "${WORKER_DB_IMAGE}:${WORKER_DB_TAG}"
 }
 
 backup() {
@@ -316,7 +343,6 @@ restore() {
     echo "File ${BACKUP_FILE} does not exist"
     echo "Usage: ./middleman restore middleman-db-xxxxxxxxxx.sql"
   fi
-
 }
 
 main() {
