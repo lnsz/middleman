@@ -1428,7 +1428,6 @@ input TestWhereUniqueInput {
 
 type Translator {
   id: ID!
-  type: TranslatorType!
   endpoints(where: EndpointWhereInput, orderBy: EndpointOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Endpoint!]
   requestFunction: String
   responseFunction: String
@@ -1443,7 +1442,6 @@ type TranslatorConnection {
 
 input TranslatorCreateInput {
   id: ID
-  type: TranslatorType!
   endpoints: EndpointCreateManyWithoutTranslatorInput
   requestFunction: String
   responseFunction: String
@@ -1462,7 +1460,6 @@ input TranslatorCreateOneWithoutTestsInput {
 
 input TranslatorCreateWithoutEndpointsInput {
   id: ID
-  type: TranslatorType!
   requestFunction: String
   responseFunction: String
   tests: TestCreateManyWithoutTranslatorInput
@@ -1470,7 +1467,6 @@ input TranslatorCreateWithoutEndpointsInput {
 
 input TranslatorCreateWithoutTestsInput {
   id: ID
-  type: TranslatorType!
   endpoints: EndpointCreateManyWithoutTranslatorInput
   requestFunction: String
   responseFunction: String
@@ -1484,8 +1480,6 @@ type TranslatorEdge {
 enum TranslatorOrderByInput {
   id_ASC
   id_DESC
-  type_ASC
-  type_DESC
   requestFunction_ASC
   requestFunction_DESC
   responseFunction_ASC
@@ -1494,7 +1488,6 @@ enum TranslatorOrderByInput {
 
 type TranslatorPreviousValues {
   id: ID!
-  type: TranslatorType!
   requestFunction: String
   responseFunction: String
 }
@@ -1517,13 +1510,7 @@ input TranslatorSubscriptionWhereInput {
   NOT: [TranslatorSubscriptionWhereInput!]
 }
 
-enum TranslatorType {
-  Request
-  Response
-}
-
 input TranslatorUpdateInput {
-  type: TranslatorType
   endpoints: EndpointUpdateManyWithoutTranslatorInput
   requestFunction: String
   responseFunction: String
@@ -1531,7 +1518,6 @@ input TranslatorUpdateInput {
 }
 
 input TranslatorUpdateManyMutationInput {
-  type: TranslatorType
   requestFunction: String
   responseFunction: String
 }
@@ -1551,14 +1537,12 @@ input TranslatorUpdateOneRequiredWithoutTestsInput {
 }
 
 input TranslatorUpdateWithoutEndpointsDataInput {
-  type: TranslatorType
   requestFunction: String
   responseFunction: String
   tests: TestUpdateManyWithoutTranslatorInput
 }
 
 input TranslatorUpdateWithoutTestsDataInput {
-  type: TranslatorType
   endpoints: EndpointUpdateManyWithoutTranslatorInput
   requestFunction: String
   responseFunction: String
@@ -1589,10 +1573,6 @@ input TranslatorWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  type: TranslatorType
-  type_not: TranslatorType
-  type_in: [TranslatorType!]
-  type_not_in: [TranslatorType!]
   endpoints_every: EndpointWhereInput
   endpoints_some: EndpointWhereInput
   endpoints_none: EndpointWhereInput

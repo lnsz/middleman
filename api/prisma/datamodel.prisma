@@ -1,48 +1,47 @@
 type Translator {
   id: ID! @id,
-  type: TranslatorType!,
-  endpoints: [Endpoint]!,
+  endpoints: [Endpoint]! @relation(name: "EndpointsByTranslator", onDelete: CASCADE),
   requestFunction: String,
   responseFunction: String,
-  tests: [Test]
+  tests: [Test] @relation(name: "TestsByTranslator", onDelete: CASCADE)
 }
 
 type Endpoint {
   id: ID! @id,
-  translator: Translator! @relation(link: INLINE),
+  translator: Translator! @relation(name: "EndpointsByTranslator", link: INLINE),
   type: RequestType!,
   url: String!,
-  headers: [Header],
-  params: [Param],
+  headers: [Header] @relation(name: "HeadersByEndpoint", onDelete: CASCADE),
+  params: [Param] @relation(name: "ParamsByEndpoint", onDelete: CASCADE),
   body: String,
   apiKey: String
 }
 
 type Param {
   id: ID! @id,
-  endpoint: Endpoint! @relations(link: INLINE),
+  endpoint: Endpoint! @relation(name: "ParamsByEndpoint", link: INLINE),
   key: String!,
   value: String!
 }
 
 type Header {
   id: ID! @id,
-  endpoint: Endpoint! @relation(link: INLINE)
+  endpoint: Endpoint! @relation(name: "HeadersByEndpoint", link: INLINE)
   key: String!,
   value: String!
 }
 
 type Test {
   id: ID! @id,
-  translator: Translator! @relation(link: INLINE),
+  translator: Translator! @relation(name: "TestsByTranslator", link: INLINE),
   request: String!,
   expected: String!,
-  runs: [Run]
+  runs: [Run] @relation(name: "RunsByTest", onDelete: CASCADE)
 }
 
 type Run {
   id: ID! @id,
-  test: Test! @relation(link: INLINE),
+  test: Test! @relation(name: "RunsByTest", link: INLINE),
   expected: String!,
   actual: String!,
   result: ResultType!
@@ -50,10 +49,6 @@ type Run {
 
 enum RequestType {
   GET, POST, PUT, DELETE
-}
-
-enum TranslatorType {
-  Request, Response
 }
 
 enum ResultType {

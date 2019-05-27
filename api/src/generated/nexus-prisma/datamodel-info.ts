@@ -12,7 +12,6 @@ export default {
     Test: ['id'],
     Run: ['id'],
     RequestType: [],
-    TranslatorType: [],
     ResultType: []
   },
   embeddedTypes: [],
@@ -1350,22 +1349,6 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "type",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "TranslatorType",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "endpoints",
             "description": null,
             "args": [
@@ -1575,29 +1558,6 @@ export default {
         "inputFields": null,
         "interfaces": [],
         "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "TranslatorType",
-        "description": null,
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "Request",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "Response",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
         "possibleTypes": null
       },
       {
@@ -2574,62 +2534,6 @@ export default {
               "kind": "SCALAR",
               "name": "ID",
               "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "TranslatorType",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "type_not",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "TranslatorType",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "type_in",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "TranslatorType",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "type_not_in",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "TranslatorType",
-                  "ofType": null
-                }
-              }
             },
             "defaultValue": null
           },
@@ -6500,18 +6404,6 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "type_ASC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "type_DESC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "requestFunction_ASC",
             "description": null,
             "isDeprecated": false,
@@ -8953,20 +8845,6 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "TranslatorType",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          },
-          {
             "name": "endpoints",
             "description": null,
             "type": {
@@ -9561,16 +9439,6 @@ export default {
         "description": null,
         "fields": null,
         "inputFields": [
-          {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "TranslatorType",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
           {
             "name": "endpoints",
             "description": null,
@@ -14476,16 +14344,6 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "TranslatorType",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
             "name": "requestFunction",
             "description": null,
             "type": {
@@ -14698,20 +14556,6 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "TranslatorType",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          },
-          {
             "name": "requestFunction",
             "description": null,
             "type": {
@@ -14884,16 +14728,6 @@ export default {
         "description": null,
         "fields": null,
         "inputFields": [
-          {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "TranslatorType",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
           {
             "name": "requestFunction",
             "description": null,
@@ -15980,20 +15814,6 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "TranslatorType",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          },
-          {
             "name": "endpoints",
             "description": null,
             "type": {
@@ -16136,16 +15956,6 @@ export default {
         "description": null,
         "fields": null,
         "inputFields": [
-          {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "TranslatorType",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
           {
             "name": "endpoints",
             "description": null,
@@ -17048,22 +16858,6 @@ export default {
               "ofType": {
                 "kind": "SCALAR",
                 "name": "ID",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "type",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "TranslatorType",
                 "ofType": null
               }
             },

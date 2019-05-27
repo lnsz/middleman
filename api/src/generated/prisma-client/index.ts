@@ -296,8 +296,6 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type TranslatorType = "Request" | "Response";
-
 export type ResultType = "Pass" | "Fail";
 
 export type RequestType = "GET" | "POST" | "PUT" | "DELETE";
@@ -351,8 +349,6 @@ export type ParamOrderByInput =
 export type TranslatorOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "type_ASC"
-  | "type_DESC"
   | "requestFunction_ASC"
   | "requestFunction_DESC"
   | "responseFunction_ASC"
@@ -452,10 +448,6 @@ export interface TranslatorWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  type?: Maybe<TranslatorType>;
-  type_not?: Maybe<TranslatorType>;
-  type_in?: Maybe<TranslatorType[] | TranslatorType>;
-  type_not_in?: Maybe<TranslatorType[] | TranslatorType>;
   endpoints_every?: Maybe<EndpointWhereInput>;
   endpoints_some?: Maybe<EndpointWhereInput>;
   endpoints_none?: Maybe<EndpointWhereInput>;
@@ -736,7 +728,6 @@ export interface TranslatorCreateOneWithoutEndpointsInput {
 
 export interface TranslatorCreateWithoutEndpointsInput {
   id?: Maybe<ID_Input>;
-  type: TranslatorType;
   requestFunction?: Maybe<String>;
   responseFunction?: Maybe<String>;
   tests?: Maybe<TestCreateManyWithoutTranslatorInput>;
@@ -812,7 +803,6 @@ export interface TranslatorUpdateOneRequiredWithoutEndpointsInput {
 }
 
 export interface TranslatorUpdateWithoutEndpointsDataInput {
-  type?: Maybe<TranslatorType>;
   requestFunction?: Maybe<String>;
   responseFunction?: Maybe<String>;
   tests?: Maybe<TestUpdateManyWithoutTranslatorInput>;
@@ -1355,7 +1345,6 @@ export interface TranslatorCreateOneWithoutTestsInput {
 
 export interface TranslatorCreateWithoutTestsInput {
   id?: Maybe<ID_Input>;
-  type: TranslatorType;
   endpoints?: Maybe<EndpointCreateManyWithoutTranslatorInput>;
   requestFunction?: Maybe<String>;
   responseFunction?: Maybe<String>;
@@ -1407,7 +1396,6 @@ export interface TranslatorUpdateOneRequiredWithoutTestsInput {
 }
 
 export interface TranslatorUpdateWithoutTestsDataInput {
-  type?: Maybe<TranslatorType>;
   endpoints?: Maybe<EndpointUpdateManyWithoutTranslatorInput>;
   requestFunction?: Maybe<String>;
   responseFunction?: Maybe<String>;
@@ -1573,7 +1561,6 @@ export interface TestUpdateManyMutationInput {
 
 export interface TranslatorCreateInput {
   id?: Maybe<ID_Input>;
-  type: TranslatorType;
   endpoints?: Maybe<EndpointCreateManyWithoutTranslatorInput>;
   requestFunction?: Maybe<String>;
   responseFunction?: Maybe<String>;
@@ -1581,7 +1568,6 @@ export interface TranslatorCreateInput {
 }
 
 export interface TranslatorUpdateInput {
-  type?: Maybe<TranslatorType>;
   endpoints?: Maybe<EndpointUpdateManyWithoutTranslatorInput>;
   requestFunction?: Maybe<String>;
   responseFunction?: Maybe<String>;
@@ -1589,7 +1575,6 @@ export interface TranslatorUpdateInput {
 }
 
 export interface TranslatorUpdateManyMutationInput {
-  type?: Maybe<TranslatorType>;
   requestFunction?: Maybe<String>;
   responseFunction?: Maybe<String>;
 }
@@ -1769,14 +1754,12 @@ export interface EndpointNullablePromise
 
 export interface Translator {
   id: ID_Output;
-  type: TranslatorType;
   requestFunction?: String;
   responseFunction?: String;
 }
 
 export interface TranslatorPromise extends Promise<Translator>, Fragmentable {
   id: () => Promise<ID_Output>;
-  type: () => Promise<TranslatorType>;
   endpoints: <T = FragmentableArray<Endpoint>>(args?: {
     where?: EndpointWhereInput;
     orderBy?: EndpointOrderByInput;
@@ -1803,7 +1786,6 @@ export interface TranslatorSubscription
   extends Promise<AsyncIterator<Translator>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  type: () => Promise<AsyncIterator<TranslatorType>>;
   endpoints: <T = Promise<AsyncIterator<EndpointSubscription>>>(args?: {
     where?: EndpointWhereInput;
     orderBy?: EndpointOrderByInput;
@@ -1830,7 +1812,6 @@ export interface TranslatorNullablePromise
   extends Promise<Translator | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  type: () => Promise<TranslatorType>;
   endpoints: <T = FragmentableArray<Endpoint>>(args?: {
     where?: EndpointWhereInput;
     orderBy?: EndpointOrderByInput;
@@ -2644,7 +2625,6 @@ export interface TranslatorSubscriptionPayloadSubscription
 
 export interface TranslatorPreviousValues {
   id: ID_Output;
-  type: TranslatorType;
   requestFunction?: String;
   responseFunction?: String;
 }
@@ -2653,7 +2633,6 @@ export interface TranslatorPreviousValuesPromise
   extends Promise<TranslatorPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  type: () => Promise<TranslatorType>;
   requestFunction: () => Promise<String>;
   responseFunction: () => Promise<String>;
 }
@@ -2662,7 +2641,6 @@ export interface TranslatorPreviousValuesSubscription
   extends Promise<AsyncIterator<TranslatorPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  type: () => Promise<AsyncIterator<TranslatorType>>;
   requestFunction: () => Promise<AsyncIterator<String>>;
   responseFunction: () => Promise<AsyncIterator<String>>;
 }
@@ -2721,10 +2699,6 @@ export const models: Model[] = [
   },
   {
     name: "RequestType",
-    embedded: false
-  },
-  {
-    name: "TranslatorType",
     embedded: false
   },
   {

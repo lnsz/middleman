@@ -211,7 +211,6 @@ export interface NexusPrismaTypes {
     }
   }
   enumTypes: {
-    TranslatorType: TranslatorTypeValues,
     ResultType: ResultTypeValues,
     RequestType: RequestTypeValues,
     EndpointOrderByInput: EndpointOrderByInputValues,
@@ -621,7 +620,6 @@ export interface QueryFieldDetails {
 type TranslatorObject =
   | TranslatorFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'type', args?: [] | false, alias?: string  } 
   | { name: 'endpoints', args?: TranslatorEndpointsArgs[] | false, alias?: string  } 
   | { name: 'requestFunction', args?: [] | false, alias?: string  } 
   | { name: 'responseFunction', args?: [] | false, alias?: string  } 
@@ -629,7 +627,6 @@ type TranslatorObject =
 
 type TranslatorFields =
   | 'id'
-  | 'type'
   | 'endpoints'
   | 'requestFunction'
   | 'responseFunction'
@@ -662,19 +659,6 @@ export interface TranslatorFieldDetails {
     list: undefined
     nullable: false
     resolve: undefined
-  }
-  type: {
-    type: 'TranslatorType'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Translator">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.TranslatorType> | prisma.TranslatorType
   }
   endpoints: {
     type: 'Endpoint'
@@ -2799,13 +2783,11 @@ export interface TranslatorSubscriptionPayloadFieldDetails {
 type TranslatorPreviousValuesObject =
   | TranslatorPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'type', args?: [] | false, alias?: string  } 
   | { name: 'requestFunction', args?: [] | false, alias?: string  } 
   | { name: 'responseFunction', args?: [] | false, alias?: string  } 
 
 type TranslatorPreviousValuesFields =
   | 'id'
-  | 'type'
   | 'requestFunction'
   | 'responseFunction'
 
@@ -2821,19 +2803,6 @@ export interface TranslatorPreviousValuesFieldDetails {
     list: undefined
     nullable: false
     resolve: undefined
-  }
-  type: {
-    type: 'TranslatorType'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"TranslatorPreviousValues">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.TranslatorType> | prisma.TranslatorType
   }
   requestFunction: {
     type: 'String'
@@ -3637,10 +3606,6 @@ export interface TranslatorWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  type?: prisma.TranslatorType | null
-  type_not?: prisma.TranslatorType | null
-  type_in?: prisma.TranslatorType[]
-  type_not_in?: prisma.TranslatorType[]
   endpoints_every?: EndpointWhereInput | null
   endpoints_some?: EndpointWhereInput | null
   endpoints_none?: EndpointWhereInput | null
@@ -3695,10 +3660,6 @@ export type TranslatorWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'type', alias?: string  } 
-  | { name: 'type_not', alias?: string  } 
-  | { name: 'type_in', alias?: string  } 
-  | { name: 'type_not_in', alias?: string  } 
   | { name: 'endpoints_every', alias?: string  } 
   | { name: 'endpoints_some', alias?: string  } 
   | { name: 'endpoints_none', alias?: string  } 
@@ -4176,7 +4137,6 @@ export type RunWhereUniqueInputInputObject =
   
 export interface TranslatorCreateInput {
   id?: string | null
-  type?: prisma.TranslatorType
   endpoints?: EndpointCreateManyWithoutTranslatorInput | null
   requestFunction?: string | null
   responseFunction?: string | null
@@ -4185,7 +4145,6 @@ export interface TranslatorCreateInput {
 export type TranslatorCreateInputInputObject =
   | Extract<keyof TranslatorCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'type', alias?: string  } 
   | { name: 'endpoints', alias?: string  } 
   | { name: 'requestFunction', alias?: string  } 
   | { name: 'responseFunction', alias?: string  } 
@@ -4304,7 +4263,6 @@ export type RunCreateWithoutTestInputInputObject =
   | { name: 'result', alias?: string  } 
   
 export interface TranslatorUpdateInput {
-  type?: prisma.TranslatorType | null
   endpoints?: EndpointUpdateManyWithoutTranslatorInput | null
   requestFunction?: string | null
   responseFunction?: string | null
@@ -4312,7 +4270,6 @@ export interface TranslatorUpdateInput {
 }
 export type TranslatorUpdateInputInputObject =
   | Extract<keyof TranslatorUpdateInput, string>
-  | { name: 'type', alias?: string  } 
   | { name: 'endpoints', alias?: string  } 
   | { name: 'requestFunction', alias?: string  } 
   | { name: 'responseFunction', alias?: string  } 
@@ -5206,13 +5163,11 @@ export type TestUpdateManyDataInputInputObject =
   | { name: 'expected', alias?: string  } 
   
 export interface TranslatorUpdateManyMutationInput {
-  type?: prisma.TranslatorType | null
   requestFunction?: string | null
   responseFunction?: string | null
 }
 export type TranslatorUpdateManyMutationInputInputObject =
   | Extract<keyof TranslatorUpdateManyMutationInput, string>
-  | { name: 'type', alias?: string  } 
   | { name: 'requestFunction', alias?: string  } 
   | { name: 'responseFunction', alias?: string  } 
   
@@ -5248,7 +5203,6 @@ export type TranslatorCreateOneWithoutEndpointsInputInputObject =
   
 export interface TranslatorCreateWithoutEndpointsInput {
   id?: string | null
-  type?: prisma.TranslatorType
   requestFunction?: string | null
   responseFunction?: string | null
   tests?: TestCreateManyWithoutTranslatorInput | null
@@ -5256,7 +5210,6 @@ export interface TranslatorCreateWithoutEndpointsInput {
 export type TranslatorCreateWithoutEndpointsInputInputObject =
   | Extract<keyof TranslatorCreateWithoutEndpointsInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'type', alias?: string  } 
   | { name: 'requestFunction', alias?: string  } 
   | { name: 'responseFunction', alias?: string  } 
   | { name: 'tests', alias?: string  } 
@@ -5294,14 +5247,12 @@ export type TranslatorUpdateOneRequiredWithoutEndpointsInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface TranslatorUpdateWithoutEndpointsDataInput {
-  type?: prisma.TranslatorType | null
   requestFunction?: string | null
   responseFunction?: string | null
   tests?: TestUpdateManyWithoutTranslatorInput | null
 }
 export type TranslatorUpdateWithoutEndpointsDataInputInputObject =
   | Extract<keyof TranslatorUpdateWithoutEndpointsDataInput, string>
-  | { name: 'type', alias?: string  } 
   | { name: 'requestFunction', alias?: string  } 
   | { name: 'responseFunction', alias?: string  } 
   | { name: 'tests', alias?: string  } 
@@ -5554,7 +5505,6 @@ export type TranslatorCreateOneWithoutTestsInputInputObject =
   
 export interface TranslatorCreateWithoutTestsInput {
   id?: string | null
-  type?: prisma.TranslatorType
   endpoints?: EndpointCreateManyWithoutTranslatorInput | null
   requestFunction?: string | null
   responseFunction?: string | null
@@ -5562,7 +5512,6 @@ export interface TranslatorCreateWithoutTestsInput {
 export type TranslatorCreateWithoutTestsInputInputObject =
   | Extract<keyof TranslatorCreateWithoutTestsInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'type', alias?: string  } 
   | { name: 'endpoints', alias?: string  } 
   | { name: 'requestFunction', alias?: string  } 
   | { name: 'responseFunction', alias?: string  } 
@@ -5594,14 +5543,12 @@ export type TranslatorUpdateOneRequiredWithoutTestsInputInputObject =
   | { name: 'connect', alias?: string  } 
   
 export interface TranslatorUpdateWithoutTestsDataInput {
-  type?: prisma.TranslatorType | null
   endpoints?: EndpointUpdateManyWithoutTranslatorInput | null
   requestFunction?: string | null
   responseFunction?: string | null
 }
 export type TranslatorUpdateWithoutTestsDataInputInputObject =
   | Extract<keyof TranslatorUpdateWithoutTestsDataInput, string>
-  | { name: 'type', alias?: string  } 
   | { name: 'endpoints', alias?: string  } 
   | { name: 'requestFunction', alias?: string  } 
   | { name: 'responseFunction', alias?: string  } 
@@ -5845,10 +5792,6 @@ export type RunSubscriptionWhereInputInputObject =
   | { name: 'NOT', alias?: string  } 
   
 
-export type TranslatorTypeValues =
-  | 'Request'
-  | 'Response'
-  
 export type ResultTypeValues =
   | 'Pass'
   | 'Fail'
@@ -5928,8 +5871,6 @@ export type RunOrderByInputValues =
 export type TranslatorOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'type_ASC'
-  | 'type_DESC'
   | 'requestFunction_ASC'
   | 'requestFunction_DESC'
   | 'responseFunction_ASC'

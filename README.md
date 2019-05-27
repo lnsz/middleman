@@ -2,16 +2,33 @@
 API Translator as a Service
 
 ### Install
-```npm install```
-```npm install -
+```
+npm install
+```
 
-### Start Prisma
-```docker-compose -f server/docker-compose.yml up -d```
-```prisma deploy -```
+### Build docker images
+```
+./middleman build
+```
 
-### Adding new model
-Modify ```./server/prisma/datamodel.prisma```
-```prisma deploy```
+### Start services
+```
+./middleman start
+```
 
-###
+### Run migrations
+Modify `api/prisma/datamodel.prisma`
+```
+./middleman migrate
+```
+
+### Create db backup
+```
+./middleman backup
+```
+
+### Restore db from backup
+```
+./middleman restore [filename].sql
+```
 

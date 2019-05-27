@@ -17,6 +17,7 @@
 #####################
 [ "$DOCKER_COMPOSE" ]                  || DOCKER_COMPOSE='docker-compose.yml'
 [ "$GIT_ROOT" ]                        || GIT_ROOT="$(pwd)"
+[ "$BACKUPS_PATH" ]                    || BACKUPS_PATH="${GIT_ROOT}/backups"
 
 #####################
 # DOCKER
@@ -289,25 +290,28 @@ install() {
 }
 
 backup() {
+  if [ ! -d "$BACKUPS_PATH" ]; then
+    mkdir -p "$BACKUPS_PATH"
+  fi
   DB_CONTAINER=$(find_container_id $DB_NAME)
   TIMESTAMP=$(date +%y%m%d%H%M%S)
   echo "$TIMESTAMP - Starting backup"
   BACKUP_NAME="middleman-db-$TIMESTAMP.sql"
-  docker exec "$DB_CONTAINER" sh -c "pg_dumpall -U ${DB_USERNAME} > /tmp/${BACKUP_NAME}"   \
-  && docker cp "${DB_CONTAINER}:/tmp/${BACKUP_NAME}" ./backups                          \
-  && echo "Backup completed - Saved $(pwd)/backups/${BACKUP_NAME}"                      \
-  || echo "Backup failed"
+  docker exec "$DB_CONTAINER" sh -c "pg_dumpall -U ${DB_USERNAME} > /tmp/${BACKUP_NAME}"  \
+    && docker cp "${DB_CONTAINER}:/tmp/${BACKUP_NAME}" "$BACKUPS_PATH"                    \
+    && echo "Backup completed - Saved $(pwd)/backups/${BACKUP_NAME}"                      \
+    || echo "Backup failed"
 }
 
 restore() {
-  BACKUP_FILE="$(pwd)/backups/$1"
+  BACKUP_FILE="${BACKUPS_PATH}/${1}"
   if [ -f "$BACKUP_FILE" ]; then
     echo "Restoring ${BACKUP_FILE}"
     DB_CONTAINER=$(find_container_id $DB_NAME)
     docker cp "$BACKUP_FILE" "${DB_CONTAINER}:/tmp/$1"                           \
-    && docker exec "$DB_CONTAINER" sh -c "psql -U ${DB_USERNAME} -f /tmp/$1"   \
-    && echo "Restoration completed"                                              \
-    || echo "Restoration failed"
+      && docker exec "$DB_CONTAINER" sh -c "psql -U ${DB_USERNAME} -f /tmp/$1"   \
+      && echo "Restoration completed"                                            \
+      || echo "Restoration failed"
   else
     echo "File ${BACKUP_FILE} does not exist"
     echo "Usage: ./middleman restore middleman-db-xxxxxxxxxx.sql"

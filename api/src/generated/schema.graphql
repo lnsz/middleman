@@ -2,10 +2,6 @@
 ### Do not make changes to this file directly
 
 
-type BatchPayload {
-  count: Long!
-}
-
 type Endpoint {
   apiKey: String
   body: String
@@ -167,13 +163,6 @@ input EndpointUpdateInput {
 }
 
 input EndpointUpdateManyDataInput {
-  apiKey: String
-  body: String
-  type: RequestType
-  url: String
-}
-
-input EndpointUpdateManyMutationInput {
   apiKey: String
   body: String
   type: RequestType
@@ -433,11 +422,6 @@ input HeaderUpdateManyDataInput {
   value: String
 }
 
-input HeaderUpdateManyMutationInput {
-  key: String
-  value: String
-}
-
 input HeaderUpdateManyWithoutEndpointInput {
   connect: [HeaderWhereUniqueInput!]
   create: [HeaderCreateWithoutEndpointInput!]
@@ -524,45 +508,23 @@ input HeaderWhereUniqueInput {
   id: ID
 }
 
-scalar Long
-
 type Mutation {
   createEndpoint(data: EndpointCreateInput!): Endpoint!
   createHeader(data: HeaderCreateInput!): Header!
   createParam(data: ParamCreateInput!): Param!
-  createRun(data: RunCreateInput!): Run!
   createTest(data: TestCreateInput!): Test!
   createTranslator(data: TranslatorCreateInput!): Translator!
   deleteEndpoint(where: EndpointWhereUniqueInput!): Endpoint
   deleteHeader(where: HeaderWhereUniqueInput!): Header
-  deleteManyEndpoints(where: EndpointWhereInput): BatchPayload!
-  deleteManyHeaders(where: HeaderWhereInput): BatchPayload!
-  deleteManyParams(where: ParamWhereInput): BatchPayload!
-  deleteManyRuns(where: RunWhereInput): BatchPayload!
-  deleteManyTests(where: TestWhereInput): BatchPayload!
-  deleteManyTranslators(where: TranslatorWhereInput): BatchPayload!
   deleteParam(where: ParamWhereUniqueInput!): Param
-  deleteRun(where: RunWhereUniqueInput!): Run
   deleteTest(where: TestWhereUniqueInput!): Test
   deleteTranslator(where: TranslatorWhereUniqueInput!): Translator
+  runTest(testId: ID!): Run!
   updateEndpoint(data: EndpointUpdateInput!, where: EndpointWhereUniqueInput!): Endpoint
   updateHeader(data: HeaderUpdateInput!, where: HeaderWhereUniqueInput!): Header
-  updateManyEndpoints(data: EndpointUpdateManyMutationInput!, where: EndpointWhereInput): BatchPayload!
-  updateManyHeaders(data: HeaderUpdateManyMutationInput!, where: HeaderWhereInput): BatchPayload!
-  updateManyParams(data: ParamUpdateManyMutationInput!, where: ParamWhereInput): BatchPayload!
-  updateManyRuns(data: RunUpdateManyMutationInput!, where: RunWhereInput): BatchPayload!
-  updateManyTests(data: TestUpdateManyMutationInput!, where: TestWhereInput): BatchPayload!
-  updateManyTranslators(data: TranslatorUpdateManyMutationInput!, where: TranslatorWhereInput): BatchPayload!
   updateParam(data: ParamUpdateInput!, where: ParamWhereUniqueInput!): Param
-  updateRun(data: RunUpdateInput!, where: RunWhereUniqueInput!): Run
   updateTest(data: TestUpdateInput!, where: TestWhereUniqueInput!): Test
   updateTranslator(data: TranslatorUpdateInput!, where: TranslatorWhereUniqueInput!): Translator
-  upsertEndpoint(create: EndpointCreateInput!, update: EndpointUpdateInput!, where: EndpointWhereUniqueInput!): Endpoint!
-  upsertHeader(create: HeaderCreateInput!, update: HeaderUpdateInput!, where: HeaderWhereUniqueInput!): Header!
-  upsertParam(create: ParamCreateInput!, update: ParamUpdateInput!, where: ParamWhereUniqueInput!): Param!
-  upsertRun(create: RunCreateInput!, update: RunUpdateInput!, where: RunWhereUniqueInput!): Run!
-  upsertTest(create: TestCreateInput!, update: TestUpdateInput!, where: TestWhereUniqueInput!): Test!
-  upsertTranslator(create: TranslatorCreateInput!, update: TranslatorUpdateInput!, where: TranslatorWhereUniqueInput!): Translator!
 }
 
 type Param {
@@ -662,11 +624,6 @@ input ParamUpdateManyDataInput {
   value: String
 }
 
-input ParamUpdateManyMutationInput {
-  key: String
-  value: String
-}
-
 input ParamUpdateManyWithoutEndpointInput {
   connect: [ParamWhereUniqueInput!]
   create: [ParamCreateWithoutEndpointInput!]
@@ -754,7 +711,13 @@ input ParamWhereUniqueInput {
 }
 
 type Query {
+  endpoints(after: String, before: String, first: Int, last: Int, orderBy: EndpointOrderByInput, skip: Int, where: EndpointWhereInput): [Endpoint!]!
+  headers(after: String, before: String, first: Int, last: Int, orderBy: HeaderOrderByInput, skip: Int, where: HeaderWhereInput): [Header!]!
+  params(after: String, before: String, first: Int, last: Int, orderBy: ParamOrderByInput, skip: Int, where: ParamWhereInput): [Param!]!
+  runs(after: String, before: String, first: Int, last: Int, orderBy: RunOrderByInput, skip: Int, where: RunWhereInput): [Run!]!
+  tests(after: String, before: String, first: Int, last: Int, orderBy: TestOrderByInput, skip: Int, where: TestWhereInput): [Test!]!
   translator(where: TranslatorWhereUniqueInput!): Translator
+  translators(after: String, before: String, first: Int, last: Int, orderBy: TranslatorOrderByInput, skip: Int, where: TranslatorWhereInput): [Translator!]!
 }
 
 enum RequestType {
@@ -775,14 +738,6 @@ type Run {
   id: ID!
   result: ResultType!
   test: Test!
-}
-
-input RunCreateInput {
-  actual: String!
-  expected: String!
-  id: ID
-  result: ResultType!
-  test: TestCreateOneWithoutRunsInput!
 }
 
 input RunCreateManyWithoutTestInput {
@@ -864,20 +819,7 @@ input RunScalarWhereInput {
   result_not_in: [ResultType!]
 }
 
-input RunUpdateInput {
-  actual: String
-  expected: String
-  result: ResultType
-  test: TestUpdateOneRequiredWithoutRunsInput
-}
-
 input RunUpdateManyDataInput {
-  actual: String
-  expected: String
-  result: ResultType
-}
-
-input RunUpdateManyMutationInput {
   actual: String
   expected: String
   result: ResultType
@@ -995,18 +937,6 @@ input TestCreateManyWithoutTranslatorInput {
   create: [TestCreateWithoutTranslatorInput!]
 }
 
-input TestCreateOneWithoutRunsInput {
-  connect: TestWhereUniqueInput
-  create: TestCreateWithoutRunsInput
-}
-
-input TestCreateWithoutRunsInput {
-  expected: String!
-  id: ID
-  request: String!
-  translator: TranslatorCreateOneWithoutTestsInput!
-}
-
 input TestCreateWithoutTranslatorInput {
   expected: String!
   id: ID
@@ -1087,11 +1017,6 @@ input TestUpdateManyDataInput {
   request: String
 }
 
-input TestUpdateManyMutationInput {
-  expected: String
-  request: String
-}
-
 input TestUpdateManyWithoutTranslatorInput {
   connect: [TestWhereUniqueInput!]
   create: [TestCreateWithoutTranslatorInput!]
@@ -1109,19 +1034,6 @@ input TestUpdateManyWithWhereNestedInput {
   where: TestScalarWhereInput!
 }
 
-input TestUpdateOneRequiredWithoutRunsInput {
-  connect: TestWhereUniqueInput
-  create: TestCreateWithoutRunsInput
-  update: TestUpdateWithoutRunsDataInput
-  upsert: TestUpsertWithoutRunsInput
-}
-
-input TestUpdateWithoutRunsDataInput {
-  expected: String
-  request: String
-  translator: TranslatorUpdateOneRequiredWithoutTestsInput
-}
-
 input TestUpdateWithoutTranslatorDataInput {
   expected: String
   request: String
@@ -1131,11 +1043,6 @@ input TestUpdateWithoutTranslatorDataInput {
 input TestUpdateWithWhereUniqueWithoutTranslatorInput {
   data: TestUpdateWithoutTranslatorDataInput!
   where: TestWhereUniqueInput!
-}
-
-input TestUpsertWithoutRunsInput {
-  create: TestCreateWithoutRunsInput!
-  update: TestUpdateWithoutRunsDataInput!
 }
 
 input TestUpsertWithWhereUniqueWithoutTranslatorInput {
@@ -1206,7 +1113,6 @@ type Translator {
   requestFunction: String
   responseFunction: String
   tests(after: String, before: String, first: Int, last: Int, orderBy: TestOrderByInput, skip: Int, where: TestWhereInput): [Test!]
-  type: TranslatorType!
 }
 
 input TranslatorCreateInput {
@@ -1215,7 +1121,6 @@ input TranslatorCreateInput {
   requestFunction: String
   responseFunction: String
   tests: TestCreateManyWithoutTranslatorInput
-  type: TranslatorType!
 }
 
 input TranslatorCreateOneWithoutEndpointsInput {
@@ -1233,7 +1138,6 @@ input TranslatorCreateWithoutEndpointsInput {
   requestFunction: String
   responseFunction: String
   tests: TestCreateManyWithoutTranslatorInput
-  type: TranslatorType!
 }
 
 input TranslatorCreateWithoutTestsInput {
@@ -1241,12 +1145,19 @@ input TranslatorCreateWithoutTestsInput {
   id: ID
   requestFunction: String
   responseFunction: String
-  type: TranslatorType!
 }
 
-enum TranslatorType {
-  Request
-  Response
+enum TranslatorOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  requestFunction_ASC
+  requestFunction_DESC
+  responseFunction_ASC
+  responseFunction_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 input TranslatorUpdateInput {
@@ -1254,13 +1165,6 @@ input TranslatorUpdateInput {
   requestFunction: String
   responseFunction: String
   tests: TestUpdateManyWithoutTranslatorInput
-  type: TranslatorType
-}
-
-input TranslatorUpdateManyMutationInput {
-  requestFunction: String
-  responseFunction: String
-  type: TranslatorType
 }
 
 input TranslatorUpdateOneRequiredWithoutEndpointsInput {
@@ -1281,14 +1185,12 @@ input TranslatorUpdateWithoutEndpointsDataInput {
   requestFunction: String
   responseFunction: String
   tests: TestUpdateManyWithoutTranslatorInput
-  type: TranslatorType
 }
 
 input TranslatorUpdateWithoutTestsDataInput {
   endpoints: EndpointUpdateManyWithoutTranslatorInput
   requestFunction: String
   responseFunction: String
-  type: TranslatorType
 }
 
 input TranslatorUpsertWithoutEndpointsInput {
@@ -1353,10 +1255,6 @@ input TranslatorWhereInput {
   tests_every: TestWhereInput
   tests_none: TestWhereInput
   tests_some: TestWhereInput
-  type: TranslatorType
-  type_in: [TranslatorType!]
-  type_not: TranslatorType
-  type_not_in: [TranslatorType!]
 }
 
 input TranslatorWhereUniqueInput {
