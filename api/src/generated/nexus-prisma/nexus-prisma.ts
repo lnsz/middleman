@@ -17,8 +17,6 @@ export interface NexusPrismaTypes {
       Query: QueryObject
       Translator: TranslatorObject
       Endpoint: EndpointObject
-      Header: HeaderObject
-      Param: ParamObject
       Test: TestObject
       Run: RunObject
       TranslatorConnection: TranslatorConnectionObject
@@ -28,12 +26,6 @@ export interface NexusPrismaTypes {
       EndpointConnection: EndpointConnectionObject
       EndpointEdge: EndpointEdgeObject
       AggregateEndpoint: AggregateEndpointObject
-      ParamConnection: ParamConnectionObject
-      ParamEdge: ParamEdgeObject
-      AggregateParam: AggregateParamObject
-      HeaderConnection: HeaderConnectionObject
-      HeaderEdge: HeaderEdgeObject
-      AggregateHeader: AggregateHeaderObject
       TestConnection: TestConnectionObject
       TestEdge: TestEdgeObject
       AggregateTest: AggregateTestObject
@@ -47,10 +39,6 @@ export interface NexusPrismaTypes {
       TranslatorPreviousValues: TranslatorPreviousValuesObject
       EndpointSubscriptionPayload: EndpointSubscriptionPayloadObject
       EndpointPreviousValues: EndpointPreviousValuesObject
-      ParamSubscriptionPayload: ParamSubscriptionPayloadObject
-      ParamPreviousValues: ParamPreviousValuesObject
-      HeaderSubscriptionPayload: HeaderSubscriptionPayloadObject
-      HeaderPreviousValues: HeaderPreviousValuesObject
       TestSubscriptionPayload: TestSubscriptionPayloadObject
       TestPreviousValues: TestPreviousValuesObject
       RunSubscriptionPayload: RunSubscriptionPayloadObject
@@ -60,8 +48,6 @@ export interface NexusPrismaTypes {
       Query: QueryFieldDetails
       Translator: TranslatorFieldDetails
       Endpoint: EndpointFieldDetails
-      Header: HeaderFieldDetails
-      Param: ParamFieldDetails
       Test: TestFieldDetails
       Run: RunFieldDetails
       TranslatorConnection: TranslatorConnectionFieldDetails
@@ -71,12 +57,6 @@ export interface NexusPrismaTypes {
       EndpointConnection: EndpointConnectionFieldDetails
       EndpointEdge: EndpointEdgeFieldDetails
       AggregateEndpoint: AggregateEndpointFieldDetails
-      ParamConnection: ParamConnectionFieldDetails
-      ParamEdge: ParamEdgeFieldDetails
-      AggregateParam: AggregateParamFieldDetails
-      HeaderConnection: HeaderConnectionFieldDetails
-      HeaderEdge: HeaderEdgeFieldDetails
-      AggregateHeader: AggregateHeaderFieldDetails
       TestConnection: TestConnectionFieldDetails
       TestEdge: TestEdgeFieldDetails
       AggregateTest: AggregateTestFieldDetails
@@ -90,10 +70,6 @@ export interface NexusPrismaTypes {
       TranslatorPreviousValues: TranslatorPreviousValuesFieldDetails
       EndpointSubscriptionPayload: EndpointSubscriptionPayloadFieldDetails
       EndpointPreviousValues: EndpointPreviousValuesFieldDetails
-      ParamSubscriptionPayload: ParamSubscriptionPayloadFieldDetails
-      ParamPreviousValues: ParamPreviousValuesFieldDetails
-      HeaderSubscriptionPayload: HeaderSubscriptionPayloadFieldDetails
-      HeaderPreviousValues: HeaderPreviousValuesFieldDetails
       TestSubscriptionPayload: TestSubscriptionPayloadFieldDetails
       TestPreviousValues: TestPreviousValuesFieldDetails
       RunSubscriptionPayload: RunSubscriptionPayloadFieldDetails
@@ -107,20 +83,12 @@ export interface NexusPrismaTypes {
       TranslatorWhereInput: TranslatorWhereInputInputObject
       TestWhereInput: TestWhereInputInputObject
       RunWhereInput: RunWhereInputInputObject
-      HeaderWhereInput: HeaderWhereInputInputObject
-      ParamWhereInput: ParamWhereInputInputObject
       EndpointWhereUniqueInput: EndpointWhereUniqueInputInputObject
-      ParamWhereUniqueInput: ParamWhereUniqueInputInputObject
-      HeaderWhereUniqueInput: HeaderWhereUniqueInputInputObject
       TestWhereUniqueInput: TestWhereUniqueInputInputObject
       RunWhereUniqueInput: RunWhereUniqueInputInputObject
       TranslatorCreateInput: TranslatorCreateInputInputObject
       EndpointCreateManyWithoutTranslatorInput: EndpointCreateManyWithoutTranslatorInputInputObject
       EndpointCreateWithoutTranslatorInput: EndpointCreateWithoutTranslatorInputInputObject
-      HeaderCreateManyWithoutEndpointInput: HeaderCreateManyWithoutEndpointInputInputObject
-      HeaderCreateWithoutEndpointInput: HeaderCreateWithoutEndpointInputInputObject
-      ParamCreateManyWithoutEndpointInput: ParamCreateManyWithoutEndpointInputInputObject
-      ParamCreateWithoutEndpointInput: ParamCreateWithoutEndpointInputInputObject
       TestCreateManyWithoutTranslatorInput: TestCreateManyWithoutTranslatorInputInputObject
       TestCreateWithoutTranslatorInput: TestCreateWithoutTranslatorInputInputObject
       RunCreateManyWithoutTestInput: RunCreateManyWithoutTestInputInputObject
@@ -129,20 +97,6 @@ export interface NexusPrismaTypes {
       EndpointUpdateManyWithoutTranslatorInput: EndpointUpdateManyWithoutTranslatorInputInputObject
       EndpointUpdateWithWhereUniqueWithoutTranslatorInput: EndpointUpdateWithWhereUniqueWithoutTranslatorInputInputObject
       EndpointUpdateWithoutTranslatorDataInput: EndpointUpdateWithoutTranslatorDataInputInputObject
-      HeaderUpdateManyWithoutEndpointInput: HeaderUpdateManyWithoutEndpointInputInputObject
-      HeaderUpdateWithWhereUniqueWithoutEndpointInput: HeaderUpdateWithWhereUniqueWithoutEndpointInputInputObject
-      HeaderUpdateWithoutEndpointDataInput: HeaderUpdateWithoutEndpointDataInputInputObject
-      HeaderUpsertWithWhereUniqueWithoutEndpointInput: HeaderUpsertWithWhereUniqueWithoutEndpointInputInputObject
-      HeaderScalarWhereInput: HeaderScalarWhereInputInputObject
-      HeaderUpdateManyWithWhereNestedInput: HeaderUpdateManyWithWhereNestedInputInputObject
-      HeaderUpdateManyDataInput: HeaderUpdateManyDataInputInputObject
-      ParamUpdateManyWithoutEndpointInput: ParamUpdateManyWithoutEndpointInputInputObject
-      ParamUpdateWithWhereUniqueWithoutEndpointInput: ParamUpdateWithWhereUniqueWithoutEndpointInputInputObject
-      ParamUpdateWithoutEndpointDataInput: ParamUpdateWithoutEndpointDataInputInputObject
-      ParamUpsertWithWhereUniqueWithoutEndpointInput: ParamUpsertWithWhereUniqueWithoutEndpointInputInputObject
-      ParamScalarWhereInput: ParamScalarWhereInputInputObject
-      ParamUpdateManyWithWhereNestedInput: ParamUpdateManyWithWhereNestedInputInputObject
-      ParamUpdateManyDataInput: ParamUpdateManyDataInputInputObject
       EndpointUpsertWithWhereUniqueWithoutTranslatorInput: EndpointUpsertWithWhereUniqueWithoutTranslatorInputInputObject
       EndpointScalarWhereInput: EndpointScalarWhereInputInputObject
       EndpointUpdateManyWithWhereNestedInput: EndpointUpdateManyWithWhereNestedInputInputObject
@@ -170,22 +124,6 @@ export interface NexusPrismaTypes {
       TranslatorUpdateWithoutEndpointsDataInput: TranslatorUpdateWithoutEndpointsDataInputInputObject
       TranslatorUpsertWithoutEndpointsInput: TranslatorUpsertWithoutEndpointsInputInputObject
       EndpointUpdateManyMutationInput: EndpointUpdateManyMutationInputInputObject
-      ParamCreateInput: ParamCreateInputInputObject
-      EndpointCreateOneWithoutParamsInput: EndpointCreateOneWithoutParamsInputInputObject
-      EndpointCreateWithoutParamsInput: EndpointCreateWithoutParamsInputInputObject
-      ParamUpdateInput: ParamUpdateInputInputObject
-      EndpointUpdateOneRequiredWithoutParamsInput: EndpointUpdateOneRequiredWithoutParamsInputInputObject
-      EndpointUpdateWithoutParamsDataInput: EndpointUpdateWithoutParamsDataInputInputObject
-      EndpointUpsertWithoutParamsInput: EndpointUpsertWithoutParamsInputInputObject
-      ParamUpdateManyMutationInput: ParamUpdateManyMutationInputInputObject
-      HeaderCreateInput: HeaderCreateInputInputObject
-      EndpointCreateOneWithoutHeadersInput: EndpointCreateOneWithoutHeadersInputInputObject
-      EndpointCreateWithoutHeadersInput: EndpointCreateWithoutHeadersInputInputObject
-      HeaderUpdateInput: HeaderUpdateInputInputObject
-      EndpointUpdateOneRequiredWithoutHeadersInput: EndpointUpdateOneRequiredWithoutHeadersInputInputObject
-      EndpointUpdateWithoutHeadersDataInput: EndpointUpdateWithoutHeadersDataInputInputObject
-      EndpointUpsertWithoutHeadersInput: EndpointUpsertWithoutHeadersInputInputObject
-      HeaderUpdateManyMutationInput: HeaderUpdateManyMutationInputInputObject
       TestCreateInput: TestCreateInputInputObject
       TranslatorCreateOneWithoutTestsInput: TranslatorCreateOneWithoutTestsInputInputObject
       TranslatorCreateWithoutTestsInput: TranslatorCreateWithoutTestsInputInputObject
@@ -204,8 +142,6 @@ export interface NexusPrismaTypes {
       RunUpdateManyMutationInput: RunUpdateManyMutationInputInputObject
       TranslatorSubscriptionWhereInput: TranslatorSubscriptionWhereInputInputObject
       EndpointSubscriptionWhereInput: EndpointSubscriptionWhereInputInputObject
-      ParamSubscriptionWhereInput: ParamSubscriptionWhereInputInputObject
-      HeaderSubscriptionWhereInput: HeaderSubscriptionWhereInputInputObject
       TestSubscriptionWhereInput: TestSubscriptionWhereInputInputObject
       RunSubscriptionWhereInput: RunSubscriptionWhereInputInputObject
     }
@@ -214,8 +150,6 @@ export interface NexusPrismaTypes {
     ResultType: ResultTypeValues,
     RequestType: RequestTypeValues,
     EndpointOrderByInput: EndpointOrderByInputValues,
-    HeaderOrderByInput: HeaderOrderByInputValues,
-    ParamOrderByInput: ParamOrderByInputValues,
     TestOrderByInput: TestOrderByInputValues,
     RunOrderByInput: RunOrderByInputValues,
     TranslatorOrderByInput: TranslatorOrderByInputValues,
@@ -233,12 +167,6 @@ type QueryObject =
   | { name: 'endpoint', args?: QueryEndpointArgs[] | false, alias?: string  } 
   | { name: 'endpoints', args?: QueryEndpointsArgs[] | false, alias?: string  } 
   | { name: 'endpointsConnection', args?: QueryEndpointsConnectionArgs[] | false, alias?: string  } 
-  | { name: 'param', args?: QueryParamArgs[] | false, alias?: string  } 
-  | { name: 'params', args?: QueryParamsArgs[] | false, alias?: string  } 
-  | { name: 'paramsConnection', args?: QueryParamsConnectionArgs[] | false, alias?: string  } 
-  | { name: 'header', args?: QueryHeaderArgs[] | false, alias?: string  } 
-  | { name: 'headers', args?: QueryHeadersArgs[] | false, alias?: string  } 
-  | { name: 'headersConnection', args?: QueryHeadersConnectionArgs[] | false, alias?: string  } 
   | { name: 'test', args?: QueryTestArgs[] | false, alias?: string  } 
   | { name: 'tests', args?: QueryTestsArgs[] | false, alias?: string  } 
   | { name: 'testsConnection', args?: QueryTestsConnectionArgs[] | false, alias?: string  } 
@@ -253,12 +181,6 @@ type QueryFields =
   | 'endpoint'
   | 'endpoints'
   | 'endpointsConnection'
-  | 'param'
-  | 'params'
-  | 'paramsConnection'
-  | 'header'
-  | 'headers'
-  | 'headersConnection'
   | 'test'
   | 'tests'
   | 'testsConnection'
@@ -296,42 +218,6 @@ type QueryEndpointsArgs =
   | 'first'
   | 'last'
 type QueryEndpointsConnectionArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryParamArgs =
-  | 'where'
-type QueryParamsArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryParamsConnectionArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryHeaderArgs =
-  | 'where'
-type QueryHeadersArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryHeadersConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -455,84 +341,6 @@ export interface QueryFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.EndpointConnection> | prisma.EndpointConnection
-  }
-  param: {
-    type: 'Param'
-    args: Record<QueryParamArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: ParamWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param | null> | prisma.Param | null
-  }
-  params: {
-    type: 'Param'
-    args: Record<QueryParamsArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: ParamWhereInput | null, orderBy?: prisma.ParamOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param[]> | prisma.Param[]
-  }
-  paramsConnection: {
-    type: 'ParamConnection'
-    args: Record<QueryParamsConnectionArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: ParamWhereInput | null, orderBy?: prisma.ParamOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.ParamConnection> | prisma.ParamConnection
-  }
-  header: {
-    type: 'Header'
-    args: Record<QueryHeaderArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: HeaderWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header | null> | prisma.Header | null
-  }
-  headers: {
-    type: 'Header'
-    args: Record<QueryHeadersArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: HeaderWhereInput | null, orderBy?: prisma.HeaderOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header[]> | prisma.Header[]
-  }
-  headersConnection: {
-    type: 'HeaderConnection'
-    args: Record<QueryHeadersConnectionArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: HeaderWhereInput | null, orderBy?: prisma.HeaderOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.HeaderConnection> | prisma.HeaderConnection
   }
   test: {
     type: 'Test'
@@ -713,38 +521,15 @@ type EndpointObject =
   | { name: 'translator', args?: [] | false, alias?: string  } 
   | { name: 'type', args?: [] | false, alias?: string  } 
   | { name: 'url', args?: [] | false, alias?: string  } 
-  | { name: 'headers', args?: EndpointHeadersArgs[] | false, alias?: string  } 
-  | { name: 'params', args?: EndpointParamsArgs[] | false, alias?: string  } 
-  | { name: 'body', args?: [] | false, alias?: string  } 
-  | { name: 'apiKey', args?: [] | false, alias?: string  } 
 
 type EndpointFields =
   | 'id'
   | 'translator'
   | 'type'
   | 'url'
-  | 'headers'
-  | 'params'
-  | 'body'
-  | 'apiKey'
 
 
-type EndpointHeadersArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type EndpointParamsArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
+
   
 
 export interface EndpointFieldDetails {
@@ -783,168 +568,6 @@ export interface EndpointFieldDetails {
     ) => Promise<prisma.RequestType> | prisma.RequestType
   }
   url: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  headers: {
-    type: 'Header'
-    args: Record<EndpointHeadersArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Endpoint">,
-      args: { where?: HeaderWhereInput | null, orderBy?: prisma.HeaderOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header[]> | prisma.Header[]
-  }
-  params: {
-    type: 'Param'
-    args: Record<EndpointParamsArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Endpoint">,
-      args: { where?: ParamWhereInput | null, orderBy?: prisma.ParamOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param[]> | prisma.Param[]
-  }
-  body: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  apiKey: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-}
-  
-
-// Types for Header
-
-type HeaderObject =
-  | HeaderFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'endpoint', args?: [] | false, alias?: string  } 
-  | { name: 'key', args?: [] | false, alias?: string  } 
-  | { name: 'value', args?: [] | false, alias?: string  } 
-
-type HeaderFields =
-  | 'id'
-  | 'endpoint'
-  | 'key'
-  | 'value'
-
-
-
-  
-
-export interface HeaderFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  endpoint: {
-    type: 'Endpoint'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Header">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Endpoint> | prisma.Endpoint
-  }
-  key: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  value: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
-// Types for Param
-
-type ParamObject =
-  | ParamFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'endpoint', args?: [] | false, alias?: string  } 
-  | { name: 'key', args?: [] | false, alias?: string  } 
-  | { name: 'value', args?: [] | false, alias?: string  } 
-
-type ParamFields =
-  | 'id'
-  | 'endpoint'
-  | 'key'
-  | 'value'
-
-
-
-  
-
-export interface ParamFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  endpoint: {
-    type: 'Endpoint'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Param">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Endpoint> | prisma.Endpoint
-  }
-  key: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  value: {
     type: 'String'
     args: {}
     description: string
@@ -1417,256 +1040,6 @@ export interface AggregateEndpointFieldDetails {
 }
   
 
-// Types for ParamConnection
-
-type ParamConnectionObject =
-  | ParamConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
-
-type ParamConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
-
-export interface ParamConnectionFieldDetails {
-  pageInfo: {
-    type: 'PageInfo'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"ParamConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.PageInfo> | prisma.PageInfo
-  }
-  edges: {
-    type: 'ParamEdge'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"ParamConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.ParamEdge[]> | prisma.ParamEdge[]
-  }
-  aggregate: {
-    type: 'AggregateParam'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"ParamConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateParam> | prisma.AggregateParam
-  }
-}
-  
-
-// Types for ParamEdge
-
-type ParamEdgeObject =
-  | ParamEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
-
-type ParamEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
-
-export interface ParamEdgeFieldDetails {
-  node: {
-    type: 'Param'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"ParamEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param> | prisma.Param
-  }
-  cursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
-// Types for AggregateParam
-
-type AggregateParamObject =
-  | AggregateParamFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
-
-type AggregateParamFields =
-  | 'count'
-
-
-
-  
-
-export interface AggregateParamFieldDetails {
-  count: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
-// Types for HeaderConnection
-
-type HeaderConnectionObject =
-  | HeaderConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
-
-type HeaderConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
-
-export interface HeaderConnectionFieldDetails {
-  pageInfo: {
-    type: 'PageInfo'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"HeaderConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.PageInfo> | prisma.PageInfo
-  }
-  edges: {
-    type: 'HeaderEdge'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"HeaderConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.HeaderEdge[]> | prisma.HeaderEdge[]
-  }
-  aggregate: {
-    type: 'AggregateHeader'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"HeaderConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateHeader> | prisma.AggregateHeader
-  }
-}
-  
-
-// Types for HeaderEdge
-
-type HeaderEdgeObject =
-  | HeaderEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
-
-type HeaderEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
-
-export interface HeaderEdgeFieldDetails {
-  node: {
-    type: 'Header'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"HeaderEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header> | prisma.Header
-  }
-  cursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
-// Types for AggregateHeader
-
-type AggregateHeaderObject =
-  | AggregateHeaderFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
-
-type AggregateHeaderFields =
-  | 'count'
-
-
-
-  
-
-export interface AggregateHeaderFieldDetails {
-  count: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
 // Types for TestConnection
 
 type TestConnectionObject =
@@ -1933,18 +1306,6 @@ type MutationObject =
   | { name: 'upsertEndpoint', args?: MutationUpsertEndpointArgs[] | false, alias?: string  } 
   | { name: 'deleteEndpoint', args?: MutationDeleteEndpointArgs[] | false, alias?: string  } 
   | { name: 'deleteManyEndpoints', args?: MutationDeleteManyEndpointsArgs[] | false, alias?: string  } 
-  | { name: 'createParam', args?: MutationCreateParamArgs[] | false, alias?: string  } 
-  | { name: 'updateParam', args?: MutationUpdateParamArgs[] | false, alias?: string  } 
-  | { name: 'updateManyParams', args?: MutationUpdateManyParamsArgs[] | false, alias?: string  } 
-  | { name: 'upsertParam', args?: MutationUpsertParamArgs[] | false, alias?: string  } 
-  | { name: 'deleteParam', args?: MutationDeleteParamArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyParams', args?: MutationDeleteManyParamsArgs[] | false, alias?: string  } 
-  | { name: 'createHeader', args?: MutationCreateHeaderArgs[] | false, alias?: string  } 
-  | { name: 'updateHeader', args?: MutationUpdateHeaderArgs[] | false, alias?: string  } 
-  | { name: 'updateManyHeaders', args?: MutationUpdateManyHeadersArgs[] | false, alias?: string  } 
-  | { name: 'upsertHeader', args?: MutationUpsertHeaderArgs[] | false, alias?: string  } 
-  | { name: 'deleteHeader', args?: MutationDeleteHeaderArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyHeaders', args?: MutationDeleteManyHeadersArgs[] | false, alias?: string  } 
   | { name: 'createTest', args?: MutationCreateTestArgs[] | false, alias?: string  } 
   | { name: 'updateTest', args?: MutationUpdateTestArgs[] | false, alias?: string  } 
   | { name: 'updateManyTests', args?: MutationUpdateManyTestsArgs[] | false, alias?: string  } 
@@ -1971,18 +1332,6 @@ type MutationFields =
   | 'upsertEndpoint'
   | 'deleteEndpoint'
   | 'deleteManyEndpoints'
-  | 'createParam'
-  | 'updateParam'
-  | 'updateManyParams'
-  | 'upsertParam'
-  | 'deleteParam'
-  | 'deleteManyParams'
-  | 'createHeader'
-  | 'updateHeader'
-  | 'updateManyHeaders'
-  | 'upsertHeader'
-  | 'deleteHeader'
-  | 'deleteManyHeaders'
   | 'createTest'
   | 'updateTest'
   | 'updateManyTests'
@@ -2028,38 +1377,6 @@ type MutationUpsertEndpointArgs =
 type MutationDeleteEndpointArgs =
   | 'where'
 type MutationDeleteManyEndpointsArgs =
-  | 'where'
-type MutationCreateParamArgs =
-  | 'data'
-type MutationUpdateParamArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyParamsArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertParamArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteParamArgs =
-  | 'where'
-type MutationDeleteManyParamsArgs =
-  | 'where'
-type MutationCreateHeaderArgs =
-  | 'data'
-type MutationUpdateHeaderArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyHeadersArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertHeaderArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteHeaderArgs =
-  | 'where'
-type MutationDeleteManyHeadersArgs =
   | 'where'
 type MutationCreateTestArgs =
   | 'data'
@@ -2248,162 +1565,6 @@ export interface MutationFieldDetails {
     resolve: (
       root: core.RootValue<"Mutation">,
       args: { where?: EndpointWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
-  createParam: {
-    type: 'Param'
-    args: Record<MutationCreateParamArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: ParamCreateInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param> | prisma.Param
-  }
-  updateParam: {
-    type: 'Param'
-    args: Record<MutationUpdateParamArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: ParamUpdateInput, where: ParamWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param | null> | prisma.Param | null
-  }
-  updateManyParams: {
-    type: 'BatchPayload'
-    args: Record<MutationUpdateManyParamsArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: ParamUpdateManyMutationInput, where?: ParamWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
-  upsertParam: {
-    type: 'Param'
-    args: Record<MutationUpsertParamArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: ParamWhereUniqueInput, create: ParamCreateInput, update: ParamUpdateInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param> | prisma.Param
-  }
-  deleteParam: {
-    type: 'Param'
-    args: Record<MutationDeleteParamArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: ParamWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param | null> | prisma.Param | null
-  }
-  deleteManyParams: {
-    type: 'BatchPayload'
-    args: Record<MutationDeleteManyParamsArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: ParamWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
-  createHeader: {
-    type: 'Header'
-    args: Record<MutationCreateHeaderArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: HeaderCreateInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header> | prisma.Header
-  }
-  updateHeader: {
-    type: 'Header'
-    args: Record<MutationUpdateHeaderArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: HeaderUpdateInput, where: HeaderWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header | null> | prisma.Header | null
-  }
-  updateManyHeaders: {
-    type: 'BatchPayload'
-    args: Record<MutationUpdateManyHeadersArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: HeaderUpdateManyMutationInput, where?: HeaderWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
-  upsertHeader: {
-    type: 'Header'
-    args: Record<MutationUpsertHeaderArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: HeaderWhereUniqueInput, create: HeaderCreateInput, update: HeaderUpdateInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header> | prisma.Header
-  }
-  deleteHeader: {
-    type: 'Header'
-    args: Record<MutationDeleteHeaderArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: HeaderWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header | null> | prisma.Header | null
-  }
-  deleteManyHeaders: {
-    type: 'BatchPayload'
-    args: Record<MutationDeleteManyHeadersArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: HeaderWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
@@ -2598,16 +1759,12 @@ type SubscriptionObject =
   | SubscriptionFields
   | { name: 'translator', args?: SubscriptionTranslatorArgs[] | false, alias?: string  } 
   | { name: 'endpoint', args?: SubscriptionEndpointArgs[] | false, alias?: string  } 
-  | { name: 'param', args?: SubscriptionParamArgs[] | false, alias?: string  } 
-  | { name: 'header', args?: SubscriptionHeaderArgs[] | false, alias?: string  } 
   | { name: 'test', args?: SubscriptionTestArgs[] | false, alias?: string  } 
   | { name: 'run', args?: SubscriptionRunArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
   | 'translator'
   | 'endpoint'
-  | 'param'
-  | 'header'
   | 'test'
   | 'run'
 
@@ -2615,10 +1772,6 @@ type SubscriptionFields =
 type SubscriptionTranslatorArgs =
   | 'where'
 type SubscriptionEndpointArgs =
-  | 'where'
-type SubscriptionParamArgs =
-  | 'where'
-type SubscriptionHeaderArgs =
   | 'where'
 type SubscriptionTestArgs =
   | 'where'
@@ -2652,32 +1805,6 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.EndpointSubscriptionPayload | null> | prisma.EndpointSubscriptionPayload | null
-  }
-  param: {
-    type: 'ParamSubscriptionPayload'
-    args: Record<SubscriptionParamArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: ParamSubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.ParamSubscriptionPayload | null> | prisma.ParamSubscriptionPayload | null
-  }
-  header: {
-    type: 'HeaderSubscriptionPayload'
-    args: Record<SubscriptionHeaderArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: HeaderSubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.HeaderSubscriptionPayload | null> | prisma.HeaderSubscriptionPayload | null
   }
   test: {
     type: 'TestSubscriptionPayload'
@@ -2900,15 +2027,11 @@ type EndpointPreviousValuesObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'type', args?: [] | false, alias?: string  } 
   | { name: 'url', args?: [] | false, alias?: string  } 
-  | { name: 'body', args?: [] | false, alias?: string  } 
-  | { name: 'apiKey', args?: [] | false, alias?: string  } 
 
 type EndpointPreviousValuesFields =
   | 'id'
   | 'type'
   | 'url'
-  | 'body'
-  | 'apiKey'
 
 
 
@@ -2937,252 +2060,6 @@ export interface EndpointPreviousValuesFieldDetails {
     ) => Promise<prisma.RequestType> | prisma.RequestType
   }
   url: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  body: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  apiKey: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-}
-  
-
-// Types for ParamSubscriptionPayload
-
-type ParamSubscriptionPayloadObject =
-  | ParamSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
-
-type ParamSubscriptionPayloadFields =
-  | 'mutation'
-  | 'node'
-  | 'updatedFields'
-  | 'previousValues'
-
-
-
-  
-
-export interface ParamSubscriptionPayloadFieldDetails {
-  mutation: {
-    type: 'MutationType'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"ParamSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.MutationType> | prisma.MutationType
-  }
-  node: {
-    type: 'Param'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"ParamSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Param | null> | prisma.Param | null
-  }
-  updatedFields: {
-    type: 'String'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: undefined
-  }
-  previousValues: {
-    type: 'ParamPreviousValues'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"ParamSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.ParamPreviousValues | null> | prisma.ParamPreviousValues | null
-  }
-}
-  
-
-// Types for ParamPreviousValues
-
-type ParamPreviousValuesObject =
-  | ParamPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'key', args?: [] | false, alias?: string  } 
-  | { name: 'value', args?: [] | false, alias?: string  } 
-
-type ParamPreviousValuesFields =
-  | 'id'
-  | 'key'
-  | 'value'
-
-
-
-  
-
-export interface ParamPreviousValuesFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  key: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  value: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
-// Types for HeaderSubscriptionPayload
-
-type HeaderSubscriptionPayloadObject =
-  | HeaderSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
-
-type HeaderSubscriptionPayloadFields =
-  | 'mutation'
-  | 'node'
-  | 'updatedFields'
-  | 'previousValues'
-
-
-
-  
-
-export interface HeaderSubscriptionPayloadFieldDetails {
-  mutation: {
-    type: 'MutationType'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"HeaderSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.MutationType> | prisma.MutationType
-  }
-  node: {
-    type: 'Header'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"HeaderSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Header | null> | prisma.Header | null
-  }
-  updatedFields: {
-    type: 'String'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: undefined
-  }
-  previousValues: {
-    type: 'HeaderPreviousValues'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"HeaderSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.HeaderPreviousValues | null> | prisma.HeaderPreviousValues | null
-  }
-}
-  
-
-// Types for HeaderPreviousValues
-
-type HeaderPreviousValuesObject =
-  | HeaderPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'key', args?: [] | false, alias?: string  } 
-  | { name: 'value', args?: [] | false, alias?: string  } 
-
-type HeaderPreviousValuesFields =
-  | 'id'
-  | 'key'
-  | 'value'
-
-
-
-  
-
-export interface HeaderPreviousValuesFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  key: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  value: {
     type: 'String'
     args: {}
     description: string
@@ -3480,40 +2357,6 @@ export interface EndpointWhereInput {
   url_not_starts_with?: string | null
   url_ends_with?: string | null
   url_not_ends_with?: string | null
-  headers_every?: HeaderWhereInput | null
-  headers_some?: HeaderWhereInput | null
-  headers_none?: HeaderWhereInput | null
-  params_every?: ParamWhereInput | null
-  params_some?: ParamWhereInput | null
-  params_none?: ParamWhereInput | null
-  body?: string | null
-  body_not?: string | null
-  body_in?: string[]
-  body_not_in?: string[]
-  body_lt?: string | null
-  body_lte?: string | null
-  body_gt?: string | null
-  body_gte?: string | null
-  body_contains?: string | null
-  body_not_contains?: string | null
-  body_starts_with?: string | null
-  body_not_starts_with?: string | null
-  body_ends_with?: string | null
-  body_not_ends_with?: string | null
-  apiKey?: string | null
-  apiKey_not?: string | null
-  apiKey_in?: string[]
-  apiKey_not_in?: string[]
-  apiKey_lt?: string | null
-  apiKey_lte?: string | null
-  apiKey_gt?: string | null
-  apiKey_gte?: string | null
-  apiKey_contains?: string | null
-  apiKey_not_contains?: string | null
-  apiKey_starts_with?: string | null
-  apiKey_not_starts_with?: string | null
-  apiKey_ends_with?: string | null
-  apiKey_not_ends_with?: string | null
   AND?: EndpointWhereInput[]
   OR?: EndpointWhereInput[]
   NOT?: EndpointWhereInput[]
@@ -3553,40 +2396,6 @@ export type EndpointWhereInputInputObject =
   | { name: 'url_not_starts_with', alias?: string  } 
   | { name: 'url_ends_with', alias?: string  } 
   | { name: 'url_not_ends_with', alias?: string  } 
-  | { name: 'headers_every', alias?: string  } 
-  | { name: 'headers_some', alias?: string  } 
-  | { name: 'headers_none', alias?: string  } 
-  | { name: 'params_every', alias?: string  } 
-  | { name: 'params_some', alias?: string  } 
-  | { name: 'params_none', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'body_not', alias?: string  } 
-  | { name: 'body_in', alias?: string  } 
-  | { name: 'body_not_in', alias?: string  } 
-  | { name: 'body_lt', alias?: string  } 
-  | { name: 'body_lte', alias?: string  } 
-  | { name: 'body_gt', alias?: string  } 
-  | { name: 'body_gte', alias?: string  } 
-  | { name: 'body_contains', alias?: string  } 
-  | { name: 'body_not_contains', alias?: string  } 
-  | { name: 'body_starts_with', alias?: string  } 
-  | { name: 'body_not_starts_with', alias?: string  } 
-  | { name: 'body_ends_with', alias?: string  } 
-  | { name: 'body_not_ends_with', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  | { name: 'apiKey_not', alias?: string  } 
-  | { name: 'apiKey_in', alias?: string  } 
-  | { name: 'apiKey_not_in', alias?: string  } 
-  | { name: 'apiKey_lt', alias?: string  } 
-  | { name: 'apiKey_lte', alias?: string  } 
-  | { name: 'apiKey_gt', alias?: string  } 
-  | { name: 'apiKey_gte', alias?: string  } 
-  | { name: 'apiKey_contains', alias?: string  } 
-  | { name: 'apiKey_not_contains', alias?: string  } 
-  | { name: 'apiKey_starts_with', alias?: string  } 
-  | { name: 'apiKey_not_starts_with', alias?: string  } 
-  | { name: 'apiKey_ends_with', alias?: string  } 
-  | { name: 'apiKey_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -3906,219 +2715,11 @@ export type RunWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface HeaderWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  endpoint?: EndpointWhereInput | null
-  key?: string | null
-  key_not?: string | null
-  key_in?: string[]
-  key_not_in?: string[]
-  key_lt?: string | null
-  key_lte?: string | null
-  key_gt?: string | null
-  key_gte?: string | null
-  key_contains?: string | null
-  key_not_contains?: string | null
-  key_starts_with?: string | null
-  key_not_starts_with?: string | null
-  key_ends_with?: string | null
-  key_not_ends_with?: string | null
-  value?: string | null
-  value_not?: string | null
-  value_in?: string[]
-  value_not_in?: string[]
-  value_lt?: string | null
-  value_lte?: string | null
-  value_gt?: string | null
-  value_gte?: string | null
-  value_contains?: string | null
-  value_not_contains?: string | null
-  value_starts_with?: string | null
-  value_not_starts_with?: string | null
-  value_ends_with?: string | null
-  value_not_ends_with?: string | null
-  AND?: HeaderWhereInput[]
-  OR?: HeaderWhereInput[]
-  NOT?: HeaderWhereInput[]
-}
-export type HeaderWhereInputInputObject =
-  | Extract<keyof HeaderWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'endpoint', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'key_not', alias?: string  } 
-  | { name: 'key_in', alias?: string  } 
-  | { name: 'key_not_in', alias?: string  } 
-  | { name: 'key_lt', alias?: string  } 
-  | { name: 'key_lte', alias?: string  } 
-  | { name: 'key_gt', alias?: string  } 
-  | { name: 'key_gte', alias?: string  } 
-  | { name: 'key_contains', alias?: string  } 
-  | { name: 'key_not_contains', alias?: string  } 
-  | { name: 'key_starts_with', alias?: string  } 
-  | { name: 'key_not_starts_with', alias?: string  } 
-  | { name: 'key_ends_with', alias?: string  } 
-  | { name: 'key_not_ends_with', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  | { name: 'value_not', alias?: string  } 
-  | { name: 'value_in', alias?: string  } 
-  | { name: 'value_not_in', alias?: string  } 
-  | { name: 'value_lt', alias?: string  } 
-  | { name: 'value_lte', alias?: string  } 
-  | { name: 'value_gt', alias?: string  } 
-  | { name: 'value_gte', alias?: string  } 
-  | { name: 'value_contains', alias?: string  } 
-  | { name: 'value_not_contains', alias?: string  } 
-  | { name: 'value_starts_with', alias?: string  } 
-  | { name: 'value_not_starts_with', alias?: string  } 
-  | { name: 'value_ends_with', alias?: string  } 
-  | { name: 'value_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface ParamWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  endpoint?: EndpointWhereInput | null
-  key?: string | null
-  key_not?: string | null
-  key_in?: string[]
-  key_not_in?: string[]
-  key_lt?: string | null
-  key_lte?: string | null
-  key_gt?: string | null
-  key_gte?: string | null
-  key_contains?: string | null
-  key_not_contains?: string | null
-  key_starts_with?: string | null
-  key_not_starts_with?: string | null
-  key_ends_with?: string | null
-  key_not_ends_with?: string | null
-  value?: string | null
-  value_not?: string | null
-  value_in?: string[]
-  value_not_in?: string[]
-  value_lt?: string | null
-  value_lte?: string | null
-  value_gt?: string | null
-  value_gte?: string | null
-  value_contains?: string | null
-  value_not_contains?: string | null
-  value_starts_with?: string | null
-  value_not_starts_with?: string | null
-  value_ends_with?: string | null
-  value_not_ends_with?: string | null
-  AND?: ParamWhereInput[]
-  OR?: ParamWhereInput[]
-  NOT?: ParamWhereInput[]
-}
-export type ParamWhereInputInputObject =
-  | Extract<keyof ParamWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'endpoint', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'key_not', alias?: string  } 
-  | { name: 'key_in', alias?: string  } 
-  | { name: 'key_not_in', alias?: string  } 
-  | { name: 'key_lt', alias?: string  } 
-  | { name: 'key_lte', alias?: string  } 
-  | { name: 'key_gt', alias?: string  } 
-  | { name: 'key_gte', alias?: string  } 
-  | { name: 'key_contains', alias?: string  } 
-  | { name: 'key_not_contains', alias?: string  } 
-  | { name: 'key_starts_with', alias?: string  } 
-  | { name: 'key_not_starts_with', alias?: string  } 
-  | { name: 'key_ends_with', alias?: string  } 
-  | { name: 'key_not_ends_with', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  | { name: 'value_not', alias?: string  } 
-  | { name: 'value_in', alias?: string  } 
-  | { name: 'value_not_in', alias?: string  } 
-  | { name: 'value_lt', alias?: string  } 
-  | { name: 'value_lte', alias?: string  } 
-  | { name: 'value_gt', alias?: string  } 
-  | { name: 'value_gte', alias?: string  } 
-  | { name: 'value_contains', alias?: string  } 
-  | { name: 'value_not_contains', alias?: string  } 
-  | { name: 'value_starts_with', alias?: string  } 
-  | { name: 'value_not_starts_with', alias?: string  } 
-  | { name: 'value_ends_with', alias?: string  } 
-  | { name: 'value_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
 export interface EndpointWhereUniqueInput {
   id?: string | null
 }
 export type EndpointWhereUniqueInputInputObject =
   | Extract<keyof EndpointWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
-export interface ParamWhereUniqueInput {
-  id?: string | null
-}
-export type ParamWhereUniqueInputInputObject =
-  | Extract<keyof ParamWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
-export interface HeaderWhereUniqueInput {
-  id?: string | null
-}
-export type HeaderWhereUniqueInputInputObject =
-  | Extract<keyof HeaderWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
 export interface TestWhereUniqueInput {
@@ -4163,60 +2764,12 @@ export interface EndpointCreateWithoutTranslatorInput {
   id?: string | null
   type?: prisma.RequestType
   url?: string
-  headers?: HeaderCreateManyWithoutEndpointInput | null
-  params?: ParamCreateManyWithoutEndpointInput | null
-  body?: string | null
-  apiKey?: string | null
 }
 export type EndpointCreateWithoutTranslatorInputInputObject =
   | Extract<keyof EndpointCreateWithoutTranslatorInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'url', alias?: string  } 
-  | { name: 'headers', alias?: string  } 
-  | { name: 'params', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  
-export interface HeaderCreateManyWithoutEndpointInput {
-  create?: HeaderCreateWithoutEndpointInput[]
-  connect?: HeaderWhereUniqueInput[]
-}
-export type HeaderCreateManyWithoutEndpointInputInputObject =
-  | Extract<keyof HeaderCreateManyWithoutEndpointInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface HeaderCreateWithoutEndpointInput {
-  id?: string | null
-  key?: string
-  value?: string
-}
-export type HeaderCreateWithoutEndpointInputInputObject =
-  | Extract<keyof HeaderCreateWithoutEndpointInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface ParamCreateManyWithoutEndpointInput {
-  create?: ParamCreateWithoutEndpointInput[]
-  connect?: ParamWhereUniqueInput[]
-}
-export type ParamCreateManyWithoutEndpointInputInputObject =
-  | Extract<keyof ParamCreateManyWithoutEndpointInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface ParamCreateWithoutEndpointInput {
-  id?: string | null
-  key?: string
-  value?: string
-}
-export type ParamCreateWithoutEndpointInputInputObject =
-  | Extract<keyof ParamCreateWithoutEndpointInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
   
 export interface TestCreateManyWithoutTranslatorInput {
   create?: TestCreateWithoutTranslatorInput[]
@@ -4310,349 +2863,11 @@ export type EndpointUpdateWithWhereUniqueWithoutTranslatorInputInputObject =
 export interface EndpointUpdateWithoutTranslatorDataInput {
   type?: prisma.RequestType | null
   url?: string | null
-  headers?: HeaderUpdateManyWithoutEndpointInput | null
-  params?: ParamUpdateManyWithoutEndpointInput | null
-  body?: string | null
-  apiKey?: string | null
 }
 export type EndpointUpdateWithoutTranslatorDataInputInputObject =
   | Extract<keyof EndpointUpdateWithoutTranslatorDataInput, string>
   | { name: 'type', alias?: string  } 
   | { name: 'url', alias?: string  } 
-  | { name: 'headers', alias?: string  } 
-  | { name: 'params', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  
-export interface HeaderUpdateManyWithoutEndpointInput {
-  create?: HeaderCreateWithoutEndpointInput[]
-  delete?: HeaderWhereUniqueInput[]
-  connect?: HeaderWhereUniqueInput[]
-  set?: HeaderWhereUniqueInput[]
-  disconnect?: HeaderWhereUniqueInput[]
-  update?: HeaderUpdateWithWhereUniqueWithoutEndpointInput[]
-  upsert?: HeaderUpsertWithWhereUniqueWithoutEndpointInput[]
-  deleteMany?: HeaderScalarWhereInput[]
-  updateMany?: HeaderUpdateManyWithWhereNestedInput[]
-}
-export type HeaderUpdateManyWithoutEndpointInputInputObject =
-  | Extract<keyof HeaderUpdateManyWithoutEndpointInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
-export interface HeaderUpdateWithWhereUniqueWithoutEndpointInput {
-  where?: HeaderWhereUniqueInput
-  data?: HeaderUpdateWithoutEndpointDataInput
-}
-export type HeaderUpdateWithWhereUniqueWithoutEndpointInputInputObject =
-  | Extract<keyof HeaderUpdateWithWhereUniqueWithoutEndpointInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface HeaderUpdateWithoutEndpointDataInput {
-  key?: string | null
-  value?: string | null
-}
-export type HeaderUpdateWithoutEndpointDataInputInputObject =
-  | Extract<keyof HeaderUpdateWithoutEndpointDataInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface HeaderUpsertWithWhereUniqueWithoutEndpointInput {
-  where?: HeaderWhereUniqueInput
-  update?: HeaderUpdateWithoutEndpointDataInput
-  create?: HeaderCreateWithoutEndpointInput
-}
-export type HeaderUpsertWithWhereUniqueWithoutEndpointInputInputObject =
-  | Extract<keyof HeaderUpsertWithWhereUniqueWithoutEndpointInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface HeaderScalarWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  key?: string | null
-  key_not?: string | null
-  key_in?: string[]
-  key_not_in?: string[]
-  key_lt?: string | null
-  key_lte?: string | null
-  key_gt?: string | null
-  key_gte?: string | null
-  key_contains?: string | null
-  key_not_contains?: string | null
-  key_starts_with?: string | null
-  key_not_starts_with?: string | null
-  key_ends_with?: string | null
-  key_not_ends_with?: string | null
-  value?: string | null
-  value_not?: string | null
-  value_in?: string[]
-  value_not_in?: string[]
-  value_lt?: string | null
-  value_lte?: string | null
-  value_gt?: string | null
-  value_gte?: string | null
-  value_contains?: string | null
-  value_not_contains?: string | null
-  value_starts_with?: string | null
-  value_not_starts_with?: string | null
-  value_ends_with?: string | null
-  value_not_ends_with?: string | null
-  AND?: HeaderScalarWhereInput[]
-  OR?: HeaderScalarWhereInput[]
-  NOT?: HeaderScalarWhereInput[]
-}
-export type HeaderScalarWhereInputInputObject =
-  | Extract<keyof HeaderScalarWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'key_not', alias?: string  } 
-  | { name: 'key_in', alias?: string  } 
-  | { name: 'key_not_in', alias?: string  } 
-  | { name: 'key_lt', alias?: string  } 
-  | { name: 'key_lte', alias?: string  } 
-  | { name: 'key_gt', alias?: string  } 
-  | { name: 'key_gte', alias?: string  } 
-  | { name: 'key_contains', alias?: string  } 
-  | { name: 'key_not_contains', alias?: string  } 
-  | { name: 'key_starts_with', alias?: string  } 
-  | { name: 'key_not_starts_with', alias?: string  } 
-  | { name: 'key_ends_with', alias?: string  } 
-  | { name: 'key_not_ends_with', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  | { name: 'value_not', alias?: string  } 
-  | { name: 'value_in', alias?: string  } 
-  | { name: 'value_not_in', alias?: string  } 
-  | { name: 'value_lt', alias?: string  } 
-  | { name: 'value_lte', alias?: string  } 
-  | { name: 'value_gt', alias?: string  } 
-  | { name: 'value_gte', alias?: string  } 
-  | { name: 'value_contains', alias?: string  } 
-  | { name: 'value_not_contains', alias?: string  } 
-  | { name: 'value_starts_with', alias?: string  } 
-  | { name: 'value_not_starts_with', alias?: string  } 
-  | { name: 'value_ends_with', alias?: string  } 
-  | { name: 'value_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface HeaderUpdateManyWithWhereNestedInput {
-  where?: HeaderScalarWhereInput
-  data?: HeaderUpdateManyDataInput
-}
-export type HeaderUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof HeaderUpdateManyWithWhereNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface HeaderUpdateManyDataInput {
-  key?: string | null
-  value?: string | null
-}
-export type HeaderUpdateManyDataInputInputObject =
-  | Extract<keyof HeaderUpdateManyDataInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface ParamUpdateManyWithoutEndpointInput {
-  create?: ParamCreateWithoutEndpointInput[]
-  delete?: ParamWhereUniqueInput[]
-  connect?: ParamWhereUniqueInput[]
-  set?: ParamWhereUniqueInput[]
-  disconnect?: ParamWhereUniqueInput[]
-  update?: ParamUpdateWithWhereUniqueWithoutEndpointInput[]
-  upsert?: ParamUpsertWithWhereUniqueWithoutEndpointInput[]
-  deleteMany?: ParamScalarWhereInput[]
-  updateMany?: ParamUpdateManyWithWhereNestedInput[]
-}
-export type ParamUpdateManyWithoutEndpointInputInputObject =
-  | Extract<keyof ParamUpdateManyWithoutEndpointInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
-export interface ParamUpdateWithWhereUniqueWithoutEndpointInput {
-  where?: ParamWhereUniqueInput
-  data?: ParamUpdateWithoutEndpointDataInput
-}
-export type ParamUpdateWithWhereUniqueWithoutEndpointInputInputObject =
-  | Extract<keyof ParamUpdateWithWhereUniqueWithoutEndpointInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface ParamUpdateWithoutEndpointDataInput {
-  key?: string | null
-  value?: string | null
-}
-export type ParamUpdateWithoutEndpointDataInputInputObject =
-  | Extract<keyof ParamUpdateWithoutEndpointDataInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface ParamUpsertWithWhereUniqueWithoutEndpointInput {
-  where?: ParamWhereUniqueInput
-  update?: ParamUpdateWithoutEndpointDataInput
-  create?: ParamCreateWithoutEndpointInput
-}
-export type ParamUpsertWithWhereUniqueWithoutEndpointInputInputObject =
-  | Extract<keyof ParamUpsertWithWhereUniqueWithoutEndpointInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface ParamScalarWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  key?: string | null
-  key_not?: string | null
-  key_in?: string[]
-  key_not_in?: string[]
-  key_lt?: string | null
-  key_lte?: string | null
-  key_gt?: string | null
-  key_gte?: string | null
-  key_contains?: string | null
-  key_not_contains?: string | null
-  key_starts_with?: string | null
-  key_not_starts_with?: string | null
-  key_ends_with?: string | null
-  key_not_ends_with?: string | null
-  value?: string | null
-  value_not?: string | null
-  value_in?: string[]
-  value_not_in?: string[]
-  value_lt?: string | null
-  value_lte?: string | null
-  value_gt?: string | null
-  value_gte?: string | null
-  value_contains?: string | null
-  value_not_contains?: string | null
-  value_starts_with?: string | null
-  value_not_starts_with?: string | null
-  value_ends_with?: string | null
-  value_not_ends_with?: string | null
-  AND?: ParamScalarWhereInput[]
-  OR?: ParamScalarWhereInput[]
-  NOT?: ParamScalarWhereInput[]
-}
-export type ParamScalarWhereInputInputObject =
-  | Extract<keyof ParamScalarWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'key_not', alias?: string  } 
-  | { name: 'key_in', alias?: string  } 
-  | { name: 'key_not_in', alias?: string  } 
-  | { name: 'key_lt', alias?: string  } 
-  | { name: 'key_lte', alias?: string  } 
-  | { name: 'key_gt', alias?: string  } 
-  | { name: 'key_gte', alias?: string  } 
-  | { name: 'key_contains', alias?: string  } 
-  | { name: 'key_not_contains', alias?: string  } 
-  | { name: 'key_starts_with', alias?: string  } 
-  | { name: 'key_not_starts_with', alias?: string  } 
-  | { name: 'key_ends_with', alias?: string  } 
-  | { name: 'key_not_ends_with', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  | { name: 'value_not', alias?: string  } 
-  | { name: 'value_in', alias?: string  } 
-  | { name: 'value_not_in', alias?: string  } 
-  | { name: 'value_lt', alias?: string  } 
-  | { name: 'value_lte', alias?: string  } 
-  | { name: 'value_gt', alias?: string  } 
-  | { name: 'value_gte', alias?: string  } 
-  | { name: 'value_contains', alias?: string  } 
-  | { name: 'value_not_contains', alias?: string  } 
-  | { name: 'value_starts_with', alias?: string  } 
-  | { name: 'value_not_starts_with', alias?: string  } 
-  | { name: 'value_ends_with', alias?: string  } 
-  | { name: 'value_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface ParamUpdateManyWithWhereNestedInput {
-  where?: ParamScalarWhereInput
-  data?: ParamUpdateManyDataInput
-}
-export type ParamUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof ParamUpdateManyWithWhereNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface ParamUpdateManyDataInput {
-  key?: string | null
-  value?: string | null
-}
-export type ParamUpdateManyDataInputInputObject =
-  | Extract<keyof ParamUpdateManyDataInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
   
 export interface EndpointUpsertWithWhereUniqueWithoutTranslatorInput {
   where?: EndpointWhereUniqueInput
@@ -4698,34 +2913,6 @@ export interface EndpointScalarWhereInput {
   url_not_starts_with?: string | null
   url_ends_with?: string | null
   url_not_ends_with?: string | null
-  body?: string | null
-  body_not?: string | null
-  body_in?: string[]
-  body_not_in?: string[]
-  body_lt?: string | null
-  body_lte?: string | null
-  body_gt?: string | null
-  body_gte?: string | null
-  body_contains?: string | null
-  body_not_contains?: string | null
-  body_starts_with?: string | null
-  body_not_starts_with?: string | null
-  body_ends_with?: string | null
-  body_not_ends_with?: string | null
-  apiKey?: string | null
-  apiKey_not?: string | null
-  apiKey_in?: string[]
-  apiKey_not_in?: string[]
-  apiKey_lt?: string | null
-  apiKey_lte?: string | null
-  apiKey_gt?: string | null
-  apiKey_gte?: string | null
-  apiKey_contains?: string | null
-  apiKey_not_contains?: string | null
-  apiKey_starts_with?: string | null
-  apiKey_not_starts_with?: string | null
-  apiKey_ends_with?: string | null
-  apiKey_not_ends_with?: string | null
   AND?: EndpointScalarWhereInput[]
   OR?: EndpointScalarWhereInput[]
   NOT?: EndpointScalarWhereInput[]
@@ -4764,34 +2951,6 @@ export type EndpointScalarWhereInputInputObject =
   | { name: 'url_not_starts_with', alias?: string  } 
   | { name: 'url_ends_with', alias?: string  } 
   | { name: 'url_not_ends_with', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'body_not', alias?: string  } 
-  | { name: 'body_in', alias?: string  } 
-  | { name: 'body_not_in', alias?: string  } 
-  | { name: 'body_lt', alias?: string  } 
-  | { name: 'body_lte', alias?: string  } 
-  | { name: 'body_gt', alias?: string  } 
-  | { name: 'body_gte', alias?: string  } 
-  | { name: 'body_contains', alias?: string  } 
-  | { name: 'body_not_contains', alias?: string  } 
-  | { name: 'body_starts_with', alias?: string  } 
-  | { name: 'body_not_starts_with', alias?: string  } 
-  | { name: 'body_ends_with', alias?: string  } 
-  | { name: 'body_not_ends_with', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  | { name: 'apiKey_not', alias?: string  } 
-  | { name: 'apiKey_in', alias?: string  } 
-  | { name: 'apiKey_not_in', alias?: string  } 
-  | { name: 'apiKey_lt', alias?: string  } 
-  | { name: 'apiKey_lte', alias?: string  } 
-  | { name: 'apiKey_gt', alias?: string  } 
-  | { name: 'apiKey_gte', alias?: string  } 
-  | { name: 'apiKey_contains', alias?: string  } 
-  | { name: 'apiKey_not_contains', alias?: string  } 
-  | { name: 'apiKey_starts_with', alias?: string  } 
-  | { name: 'apiKey_not_starts_with', alias?: string  } 
-  | { name: 'apiKey_ends_with', alias?: string  } 
-  | { name: 'apiKey_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -4808,15 +2967,11 @@ export type EndpointUpdateManyWithWhereNestedInputInputObject =
 export interface EndpointUpdateManyDataInput {
   type?: prisma.RequestType | null
   url?: string | null
-  body?: string | null
-  apiKey?: string | null
 }
 export type EndpointUpdateManyDataInputInputObject =
   | Extract<keyof EndpointUpdateManyDataInput, string>
   | { name: 'type', alias?: string  } 
   | { name: 'url', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
   
 export interface TestUpdateManyWithoutTranslatorInput {
   create?: TestCreateWithoutTranslatorInput[]
@@ -5176,10 +3331,6 @@ export interface EndpointCreateInput {
   translator?: TranslatorCreateOneWithoutEndpointsInput
   type?: prisma.RequestType
   url?: string
-  headers?: HeaderCreateManyWithoutEndpointInput | null
-  params?: ParamCreateManyWithoutEndpointInput | null
-  body?: string | null
-  apiKey?: string | null
 }
 export type EndpointCreateInputInputObject =
   | Extract<keyof EndpointCreateInput, string>
@@ -5187,10 +3338,6 @@ export type EndpointCreateInputInputObject =
   | { name: 'translator', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'url', alias?: string  } 
-  | { name: 'headers', alias?: string  } 
-  | { name: 'params', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
   
 export interface TranslatorCreateOneWithoutEndpointsInput {
   create?: TranslatorCreateWithoutEndpointsInput | null
@@ -5218,20 +3365,12 @@ export interface EndpointUpdateInput {
   translator?: TranslatorUpdateOneRequiredWithoutEndpointsInput | null
   type?: prisma.RequestType | null
   url?: string | null
-  headers?: HeaderUpdateManyWithoutEndpointInput | null
-  params?: ParamUpdateManyWithoutEndpointInput | null
-  body?: string | null
-  apiKey?: string | null
 }
 export type EndpointUpdateInputInputObject =
   | Extract<keyof EndpointUpdateInput, string>
   | { name: 'translator', alias?: string  } 
   | { name: 'type', alias?: string  } 
   | { name: 'url', alias?: string  } 
-  | { name: 'headers', alias?: string  } 
-  | { name: 'params', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
   
 export interface TranslatorUpdateOneRequiredWithoutEndpointsInput {
   create?: TranslatorCreateWithoutEndpointsInput | null
@@ -5269,215 +3408,11 @@ export type TranslatorUpsertWithoutEndpointsInputInputObject =
 export interface EndpointUpdateManyMutationInput {
   type?: prisma.RequestType | null
   url?: string | null
-  body?: string | null
-  apiKey?: string | null
 }
 export type EndpointUpdateManyMutationInputInputObject =
   | Extract<keyof EndpointUpdateManyMutationInput, string>
   | { name: 'type', alias?: string  } 
   | { name: 'url', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  
-export interface ParamCreateInput {
-  id?: string | null
-  endpoint?: EndpointCreateOneWithoutParamsInput
-  key?: string
-  value?: string
-}
-export type ParamCreateInputInputObject =
-  | Extract<keyof ParamCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'endpoint', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface EndpointCreateOneWithoutParamsInput {
-  create?: EndpointCreateWithoutParamsInput | null
-  connect?: EndpointWhereUniqueInput | null
-}
-export type EndpointCreateOneWithoutParamsInputInputObject =
-  | Extract<keyof EndpointCreateOneWithoutParamsInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface EndpointCreateWithoutParamsInput {
-  id?: string | null
-  translator?: TranslatorCreateOneWithoutEndpointsInput
-  type?: prisma.RequestType
-  url?: string
-  headers?: HeaderCreateManyWithoutEndpointInput | null
-  body?: string | null
-  apiKey?: string | null
-}
-export type EndpointCreateWithoutParamsInputInputObject =
-  | Extract<keyof EndpointCreateWithoutParamsInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'translator', alias?: string  } 
-  | { name: 'type', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'headers', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  
-export interface ParamUpdateInput {
-  endpoint?: EndpointUpdateOneRequiredWithoutParamsInput | null
-  key?: string | null
-  value?: string | null
-}
-export type ParamUpdateInputInputObject =
-  | Extract<keyof ParamUpdateInput, string>
-  | { name: 'endpoint', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface EndpointUpdateOneRequiredWithoutParamsInput {
-  create?: EndpointCreateWithoutParamsInput | null
-  update?: EndpointUpdateWithoutParamsDataInput | null
-  upsert?: EndpointUpsertWithoutParamsInput | null
-  connect?: EndpointWhereUniqueInput | null
-}
-export type EndpointUpdateOneRequiredWithoutParamsInputInputObject =
-  | Extract<keyof EndpointUpdateOneRequiredWithoutParamsInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface EndpointUpdateWithoutParamsDataInput {
-  translator?: TranslatorUpdateOneRequiredWithoutEndpointsInput | null
-  type?: prisma.RequestType | null
-  url?: string | null
-  headers?: HeaderUpdateManyWithoutEndpointInput | null
-  body?: string | null
-  apiKey?: string | null
-}
-export type EndpointUpdateWithoutParamsDataInputInputObject =
-  | Extract<keyof EndpointUpdateWithoutParamsDataInput, string>
-  | { name: 'translator', alias?: string  } 
-  | { name: 'type', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'headers', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  
-export interface EndpointUpsertWithoutParamsInput {
-  update?: EndpointUpdateWithoutParamsDataInput
-  create?: EndpointCreateWithoutParamsInput
-}
-export type EndpointUpsertWithoutParamsInputInputObject =
-  | Extract<keyof EndpointUpsertWithoutParamsInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface ParamUpdateManyMutationInput {
-  key?: string | null
-  value?: string | null
-}
-export type ParamUpdateManyMutationInputInputObject =
-  | Extract<keyof ParamUpdateManyMutationInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface HeaderCreateInput {
-  id?: string | null
-  endpoint?: EndpointCreateOneWithoutHeadersInput
-  key?: string
-  value?: string
-}
-export type HeaderCreateInputInputObject =
-  | Extract<keyof HeaderCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'endpoint', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface EndpointCreateOneWithoutHeadersInput {
-  create?: EndpointCreateWithoutHeadersInput | null
-  connect?: EndpointWhereUniqueInput | null
-}
-export type EndpointCreateOneWithoutHeadersInputInputObject =
-  | Extract<keyof EndpointCreateOneWithoutHeadersInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface EndpointCreateWithoutHeadersInput {
-  id?: string | null
-  translator?: TranslatorCreateOneWithoutEndpointsInput
-  type?: prisma.RequestType
-  url?: string
-  params?: ParamCreateManyWithoutEndpointInput | null
-  body?: string | null
-  apiKey?: string | null
-}
-export type EndpointCreateWithoutHeadersInputInputObject =
-  | Extract<keyof EndpointCreateWithoutHeadersInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'translator', alias?: string  } 
-  | { name: 'type', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'params', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  
-export interface HeaderUpdateInput {
-  endpoint?: EndpointUpdateOneRequiredWithoutHeadersInput | null
-  key?: string | null
-  value?: string | null
-}
-export type HeaderUpdateInputInputObject =
-  | Extract<keyof HeaderUpdateInput, string>
-  | { name: 'endpoint', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
-  
-export interface EndpointUpdateOneRequiredWithoutHeadersInput {
-  create?: EndpointCreateWithoutHeadersInput | null
-  update?: EndpointUpdateWithoutHeadersDataInput | null
-  upsert?: EndpointUpsertWithoutHeadersInput | null
-  connect?: EndpointWhereUniqueInput | null
-}
-export type EndpointUpdateOneRequiredWithoutHeadersInputInputObject =
-  | Extract<keyof EndpointUpdateOneRequiredWithoutHeadersInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface EndpointUpdateWithoutHeadersDataInput {
-  translator?: TranslatorUpdateOneRequiredWithoutEndpointsInput | null
-  type?: prisma.RequestType | null
-  url?: string | null
-  params?: ParamUpdateManyWithoutEndpointInput | null
-  body?: string | null
-  apiKey?: string | null
-}
-export type EndpointUpdateWithoutHeadersDataInputInputObject =
-  | Extract<keyof EndpointUpdateWithoutHeadersDataInput, string>
-  | { name: 'translator', alias?: string  } 
-  | { name: 'type', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'params', alias?: string  } 
-  | { name: 'body', alias?: string  } 
-  | { name: 'apiKey', alias?: string  } 
-  
-export interface EndpointUpsertWithoutHeadersInput {
-  update?: EndpointUpdateWithoutHeadersDataInput
-  create?: EndpointCreateWithoutHeadersInput
-}
-export type EndpointUpsertWithoutHeadersInputInputObject =
-  | Extract<keyof EndpointUpsertWithoutHeadersInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface HeaderUpdateManyMutationInput {
-  key?: string | null
-  value?: string | null
-}
-export type HeaderUpdateManyMutationInputInputObject =
-  | Extract<keyof HeaderUpdateManyMutationInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'value', alias?: string  } 
   
 export interface TestCreateInput {
   id?: string | null
@@ -5707,48 +3642,6 @@ export type EndpointSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface ParamSubscriptionWhereInput {
-  mutation_in?: prisma.MutationType[]
-  updatedFields_contains?: string | null
-  updatedFields_contains_every?: string[]
-  updatedFields_contains_some?: string[]
-  node?: ParamWhereInput | null
-  AND?: ParamSubscriptionWhereInput[]
-  OR?: ParamSubscriptionWhereInput[]
-  NOT?: ParamSubscriptionWhereInput[]
-}
-export type ParamSubscriptionWhereInputInputObject =
-  | Extract<keyof ParamSubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
-export interface HeaderSubscriptionWhereInput {
-  mutation_in?: prisma.MutationType[]
-  updatedFields_contains?: string | null
-  updatedFields_contains_every?: string[]
-  updatedFields_contains_some?: string[]
-  node?: HeaderWhereInput | null
-  AND?: HeaderSubscriptionWhereInput[]
-  OR?: HeaderSubscriptionWhereInput[]
-  NOT?: HeaderSubscriptionWhereInput[]
-}
-export type HeaderSubscriptionWhereInputInputObject =
-  | Extract<keyof HeaderSubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
 export interface TestSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -5809,34 +3702,6 @@ export type EndpointOrderByInputValues =
   | 'type_DESC'
   | 'url_ASC'
   | 'url_DESC'
-  | 'body_ASC'
-  | 'body_DESC'
-  | 'apiKey_ASC'
-  | 'apiKey_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  
-export type HeaderOrderByInputValues =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'key_ASC'
-  | 'key_DESC'
-  | 'value_ASC'
-  | 'value_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  
-export type ParamOrderByInputValues =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'key_ASC'
-  | 'key_DESC'
-  | 'value_ASC'
-  | 'value_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

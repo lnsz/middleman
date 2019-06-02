@@ -1,27 +1,16 @@
 import db from './db'
 import relations from './relations'
+import { Endpoint, Translator } from './types'
 
-export const findTranslatorById = async (translatorId: string) => {
-  return await db.select('requestFunction', 'responseFunction')
+export const findTranslatorById = async (translatorId: string): Promise<Translator> => {
+  return await db.select('id', 'requestFunction', 'responseFunction')
     .from(relations.translators)
     .where('id', translatorId)
     .first()
 }
 
-export const findEndpointsByTranslatorId = async (translatorId: string) => {
-  return await db.select('id', 'type', 'url', 'body', 'apiKey')
+export const findEndpointsByTranslatorId = async (translatorId: string): Promise<Array<Endpoint>> => {
+  return await db.select('id', 'type', 'url')
     .from(relations.endpoints)
     .where('translator', translatorId)
-}
-
-export const findHeadersByEndpointId = async (endpointId: string) =>{
-  return await db.select('key', 'value')
-    .from(relations.headers)
-    .where('id', endpointId)
-}
-
-export const findParamsByEndpointId = async (endpointId: string) =>{
-  return await db.select('key', 'value')
-    .from(relations.params)
-    .where('id', endpointId)
 }

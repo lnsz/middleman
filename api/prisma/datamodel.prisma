@@ -11,24 +11,6 @@ type Endpoint {
   translator: Translator! @relation(name: "EndpointsByTranslator", link: INLINE),
   type: RequestType!,
   url: String!,
-  headers: [Header] @relation(name: "HeadersByEndpoint", onDelete: CASCADE),
-  params: [Param] @relation(name: "ParamsByEndpoint", onDelete: CASCADE),
-  body: String,
-  apiKey: String
-}
-
-type Param {
-  id: ID! @id,
-  endpoint: Endpoint! @relation(name: "ParamsByEndpoint", link: INLINE),
-  key: String!,
-  value: String!
-}
-
-type Header {
-  id: ID! @id,
-  endpoint: Endpoint! @relation(name: "HeadersByEndpoint", link: INLINE)
-  key: String!,
-  value: String!
 }
 
 type Test {
