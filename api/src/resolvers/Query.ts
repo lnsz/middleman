@@ -7,8 +7,6 @@ export const Query = prismaObjectType({
       'translator',
       'translators',
       'endpoints',
-      'params',
-      'headers',
       'tests',
       'runs'
     ])

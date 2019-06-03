@@ -11,12 +11,6 @@ export const Mutation = prismaObjectType({
       'createEndpoint',
       'updateEndpoint',
       'deleteEndpoint',
-      'createParam',
-      'updateParam',
-      'deleteParam',
-      'createHeader',
-      'updateHeader',
-      'deleteHeader',
       'createTest',
       'updateTest',
       'deleteTest'
