@@ -14,9 +14,19 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/translators/:translator_id',
+      path: '/translators/:translatorId',
       name: 'Translator',
       component: () => import('./views/Translator.vue')
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: () => import('./views/NotFound.vue')
+    },
+    {
+      path: '/500',
+      name: '500',
+      component: () => import('./views/ServerError.vue')
     }
   ],
 })
