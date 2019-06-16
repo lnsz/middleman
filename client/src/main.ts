@@ -7,11 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faBars,
-  faTimes
+  faTimes,
+  faArrowLeft
 } from '@fortawesome/free-solid-svg-icons'
+import {
+  faJs
+} from '@fortawesome/free-brands-svg-icons'
 library.add(
   faBars,
-  faTimes
+  faTimes,
+  faArrowLeft,
+  faJs
 )
 Vue.component('FontAwesomeIcon', FontAwesomeIcon)
 
