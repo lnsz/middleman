@@ -17,6 +17,7 @@
       @input="updateCode"
       @changeTab="changeTab"
     />
+    <RequestList :requests="translator.endpoints" />
   </div>
 
 </template>
@@ -26,6 +27,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator'
 import Header from '@/components/Header.vue'
 import Editor from '@/components/Editor.vue'
 import Spinner from '@/components/Spinner.vue'
+import RequestList from '@/components/RequestList.vue'
 import gql from 'graphql-tag'
 
 const TRANSLATOR_QUERY =
@@ -74,7 +76,8 @@ const TRANSLATOR_MUTATION = {
   components: {
     Header,
     Editor,
-    Spinner
+    Spinner,
+    RequestList
   },
   apollo: {
     translator: {
@@ -125,10 +128,10 @@ export default class Translator extends Vue {
     this.$router.replace({ name: '500' })
   }
 
+  // Computed
   get currentTab() {
     return this.tabs[this.selectedTab].data
   }
-  // Computed
   get code() {
     return (this.translator && this.translator[this.currentTab]) ?
       this.translator[this.currentTab] : ''
@@ -149,9 +152,10 @@ export default class Translator extends Vue {
 <style lang="scss" scoped>
 @import "../assets/styles/functions.scss";
 .translator {
-  display: flex;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
   height: 100vh;
-  justify-content: center;
+  margin: 0 10% 0 10%;
   align-items: center;
   .back-button {
     position: fixed;
@@ -168,8 +172,12 @@ export default class Translator extends Vue {
 
 // Mobile view
 @media only screen and (max-width: breakpoints('mobile')) {
-  .back-button {
-    display: none;
+  .translator {
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr 1fr;
+    .back-button {
+      display: none;
+    }
   }
 }
 </style>

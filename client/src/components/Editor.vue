@@ -67,7 +67,6 @@ export default class Editor extends Vue {
 <style lang="scss" scoped>
 @import "../assets/styles/functions.scss";
 .editor {
-  width: 80%;
   height: 80%;
   font-size: fontsize('code');
   .tab {
@@ -90,8 +89,6 @@ export default class Editor extends Vue {
 // Mobile view
 @media only screen and (max-width: breakpoints('mobile')) {
   .editor {
-    width: 95%;
-    height: 85%;
     padding-top: 10px;
     align-self: flex-start;
     font-size: fontsize('medium');
