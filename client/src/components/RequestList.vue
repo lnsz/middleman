@@ -2,11 +2,14 @@
   <div class="request-list-wrapper">
     <div class="request-list">
       <div class="title">Requests</div>
-      <div
+      <RequestItem
         v-for="request in requests"
         :key="request.id"
-      >
-        {{request.url}}
+        :url="request.url"
+        :type="request.type"
+      />
+      <div class="add-button" >
+        <FontAwesomeIcon class="icon" icon="plus" />
       </div>
     </div>
   </div>
@@ -14,8 +17,13 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
+import RequestItem from '@/components/RequestItem.vue'
 
-@Component
+@Component({
+  components: {
+    RequestItem
+  }
+})
 export default class RequestList extends Vue {
   // Props
   @Prop({ default: [] })
@@ -41,6 +49,27 @@ export default class RequestList extends Vue {
       font-size: fontsize('header');
       width: 100%;
       border-bottom: bgColor('primary') 1px solid;
+    }
+    .add-button {
+      cursor: pointer;
+      margin-top: 15px;
+      background: bgColor('primary');
+      padding: 7px 9px 7px 9px;
+      color: textColor('default');
+      align-self: center;
+      border-radius: values('border-radius');
+      .icon {
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+      }
+      &:hover {
+        background: shade(bgColor('primary'), 20%);
+        transform: translateY(-1px);
+        box-shadow: 3px 3px 11px rgba(0, 0, 0, 0.3);
+      }
+      &:active {
+        transform: translateY(1px);
+        box-shadow: none;
+      }
     }
   }
 }

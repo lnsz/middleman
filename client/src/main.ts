@@ -8,6 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faBars,
   faTimes,
+  faPlus,
   faArrowLeft
 } from '@fortawesome/free-solid-svg-icons'
 import {
@@ -16,6 +17,7 @@ import {
 library.add(
   faBars,
   faTimes,
+  faPlus,
   faArrowLeft,
   faJs
 )
