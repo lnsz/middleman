@@ -17,8 +17,8 @@ export default class RequestItem extends Vue {
   private type: string
 
   // Computed
-  get badgeClass () {
-    switch(this.type) {
+  get badgeClass() {
+    switch (this.type) {
       case 'GET':
         return 'blue'
       case 'POST':
@@ -38,13 +38,22 @@ export default class RequestItem extends Vue {
 .request-badge {
   cursor: pointer;
   color: textColor('default');
-  padding: 7px;
+  padding: 4px 6px 4px 6px;
   border-radius: values('border-radius');
   display: inline-block;
   margin-bottom: 7px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   &.blue {
     background: bgColor('primary');
+  }
+  &.green {
+    background: green;
+  }
+  &.purple {
+    background: purple;
+  }
+  &.red {
+    background: red;
   }
 }
 

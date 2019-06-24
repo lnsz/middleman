@@ -17,7 +17,12 @@
       @input="updateCode"
       @changeTab="changeTab"
     />
-    <RequestList :requests="translator.endpoints" />
+    <RequestList
+      :requests="translator.endpoints"
+      @delete="deleteEndpoint"
+      @create="createEndpoint"
+      @update="updateEndpoint"
+    />
   </div>
 
 </template>
@@ -49,28 +54,75 @@ const TRANSLATOR_QUERY =
     }
   }`
 
-const TRANSLATOR_MUTATION = {
-  requestFunction: gql`mutation updateTranslator($translatorId: ID!, $code: String) {
-    updateTranslator (data: {
-      requestFunction: $code
-    },
-    where: {
-      id: $translatorId
-    }) {
+const UPDATE_TRANSLATOR_MUTATION = {
+  requestFunction: gql`mutation updateTranslator($translatorId: ID!, $code: String!) {
+    updateTranslator (
+      data: {
+        requestFunction: $code
+      },
+      where: {
+        id: $translatorId
+      }
+    ) {
       id
     }
   }`,
-  responseFunction:  gql`mutation updateTranslator($translatorId: ID!, $code: String) {
-    updateTranslator (data: {
-      responseFunction: $code
-    },
-    where: {
-      id: $translatorId
-    }) {
+  responseFunction:  gql`mutation updateTranslator($translatorId: ID!, $code: String!) {
+    updateTranslator (
+      data: {
+        responseFunction: $code
+      },
+      where: {
+        id: $translatorId
+      }
+    ) {
       id
     }
   }`,
 }
+
+const CREATE_ENDPOINT_MUTATION =
+  gql`mutation createEndpoint($translatorId: ID!) {
+    createEndpoint(
+      data: {
+        translator: {
+          connect:{
+            id: $translatorId
+          }
+        },
+        type: GET,
+        url: "https://google.com",
+      }
+    ) {
+      id
+    }
+  }`
+
+const UPDATE_ENDPOINT_MUTATION =
+  gql`mutation updateEnpointMutation($endpointId: ID!, $url: String!, $type: RequestType!) {
+    updateEndpoint (
+      data: {
+        url: $url,
+        type: $type
+      },
+      where: {
+        id: $endpointId
+      }
+    ) {
+      id
+    }
+  }`
+
+const DELETE_ENDPOINT_MUTATION =
+  gql`mutation deleteEndpoint($endpointId: ID!) {
+    deleteEndpoint (
+      where: {
+        id: $endpointId
+      }
+    ) {
+      id
+    }
+  }`
 
 @Component({
   components: {
@@ -114,7 +166,7 @@ export default class Translator extends Vue {
   }
   private mutateTranslator(newCode: string) {
     this.$apollo.mutate({
-      mutation: TRANSLATOR_MUTATION[this.currentTab],
+      mutation: UPDATE_TRANSLATOR_MUTATION[this.currentTab],
       variables: {
         translatorId: this.$route.params.translatorId,
         code: newCode
@@ -126,6 +178,38 @@ export default class Translator extends Vue {
   }
   private internalError() {
     this.$router.replace({ name: '500' })
+  }
+  private async deleteEndpoint(endpointId) {
+    await this.$apollo.mutate({
+      mutation: DELETE_ENDPOINT_MUTATION,
+      variables: {
+        endpointId
+      }
+    })
+    this.$apollo.queries.translator.refetch()
+  }
+  private async createEndpoint() {
+    await this.$apollo.mutate({
+      mutation: CREATE_ENDPOINT_MUTATION,
+      variables: {
+        translatorId: this.$route.params.translatorId
+      }
+    })
+    this.$apollo.queries.translator.refetch()
+  }
+  private updateEndpoint(endpointId, newUrl, newType) {
+    clearTimeout(this.updateTimeout)
+    this.updateTimeout = setTimeout(this.mutateEndpoint.bind(null, endpointId, newUrl, newType), 1000)
+  }
+  private mutateEndpoint(endpointId, newUrl, newType) {
+    this.$apollo.mutate({
+      mutation: UPDATE_ENDPOINT_MUTATION,
+      variables: {
+        endpointId,
+        url: newUrl,
+        type: newType
+      }
+    })
   }
 
   // Computed
@@ -153,9 +237,9 @@ export default class Translator extends Vue {
 @import "../assets/styles/functions.scss";
 .translator {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   height: 100vh;
-  margin: 0 10% 0 10%;
+  margin: 0 7% 0 7%;
   align-items: center;
   .back-button {
     position: fixed;

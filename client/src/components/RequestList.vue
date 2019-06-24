@@ -7,8 +7,13 @@
         :key="request.id"
         :url="request.url"
         :type="request.type"
+        @delete="$emit('delete', request.id)"
+        @update="(url, type) => $emit('update', request.id, url, type)"
       />
-      <div class="add-button" >
+      <div
+        class="add-button"
+        @click="$emit('create')"
+      >
         <FontAwesomeIcon class="icon" icon="plus" />
       </div>
     </div>
@@ -26,7 +31,7 @@ import RequestItem from '@/components/RequestItem.vue'
 })
 export default class RequestList extends Vue {
   // Props
-  @Prop({ default: [] })
+  @Prop({ default: () => [] })
   private requests: [object]
 }
 </script>
@@ -34,16 +39,17 @@ export default class RequestList extends Vue {
 <style lang="scss" scoped>
 @import "../assets/styles/functions.scss";
 .request-list-wrapper {
+  margin-top: 80px;
   padding: 20px;
   height: 80%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
   .request-list {
-    padding-top: 40px;
+    padding: 0 15px 15px 0;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
     .title {
       color: textColor('default');
       font-size: fontsize('header');
@@ -59,7 +65,7 @@ export default class RequestList extends Vue {
       align-self: center;
       border-radius: values('border-radius');
       .icon {
-        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
       }
       &:hover {
         background: shade(bgColor('primary'), 20%);
