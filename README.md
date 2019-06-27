@@ -1,9 +1,12 @@
 # Middleman
 API Translator as a Service
 
+![Alt text](demo/translator.png)
+
+
 ### Install
 ```
-npm install
+./middleman install
 ```
 
 ### Build docker images
@@ -11,9 +14,16 @@ npm install
 ./middleman build
 ```
 
-### Start services
+### Start backend services
 ```
 ./middleman start
+```
+
+### Run client
+```
+cd client
+yarn
+yarn serve
 ```
 
 ### Run migrations
